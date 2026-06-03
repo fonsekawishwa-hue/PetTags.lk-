@@ -55,6 +55,7 @@
 
         .nav-menu {
             display: flex;
+            align-items: center;
             gap: 20px;
         }
 
@@ -68,11 +69,28 @@
             padding: 8px 12px;
             border-radius: 8px;
             transition: all 0.2s;
+            position: relative;
         }
 
         .nav-btn:hover, .nav-btn.active {
             color: var(--primary);
             background-color: #fef3c7;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #ef4444;
+            color: white;
+            font-size: 0.75rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
         }
 
         .role-badge {
@@ -127,7 +145,7 @@
         }
         .card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
         .card.selected { border-color: var(--primary); background-color: #fffbeb; }
-        .card img { width: 100%; height: 160px; object-fit: cover; display: block; background-color: #000; }
+        .card img { width: 100%; height: 160px; object-fit: cover; display: block; background-color: #f3f4f6; }
         .printed-grid .card img { height: 240px; }
         .card p { margin: 12px; font-weight: 600; font-size: 0.9rem; color: #444; text-transform: capitalize; }
         
@@ -159,7 +177,7 @@
         }
 
         @media(min-width: 992px) {
-            .studio-layout { grid-template-columns: 5fr 7fr; items: start; }
+            .studio-layout { grid-template-columns: 5fr 7fr; align-items: start; }
             .sticky-preview { position: sticky; top: 120px; }
         }
 
@@ -187,26 +205,48 @@
             box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
         }
 
+        /* OVERHAULED VECTOR VIEW CSS TO FIX RENDERING ISSUES */
         .live-tag-render {
-            width: 220px;
+            width: 240px;
             height: 140px;
-            background-color: #ff0000;
-            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-size: 1.8rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2), inset 0 -8px 0 rgba(0,0,0,0.15);
-            padding: 10px;
+            padding: 15px;
             box-sizing: border-box;
             transition: all 0.3s ease;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
             word-break: break-all;
+            text-align: center;
+            font-weight: bold;
         }
 
-        .live-tag-render.shape-Circle { border-radius: 50%; width: 160px; height: 160px; }
-        .live-tag-render.shape-bone { border-radius: 14px; position: relative; }
+        /* Functional Shape Masks for Vector Rendering Engine */
+        .live-tag-render.shape-bone {
+            border-radius: 40px / 40px;
+            clip-path: polygon(15% 0%, 85% 0%, 85% 20%, 100% 20%, 100% 80%, 85% 80%, 85% 100%, 15% 100%, 15% 80%, 0% 80%, 0% 20%, 15% 20%);
+        }
+        .live-tag-render.shape-bone2 {
+            border-radius: 20px;
+            clip-path: polygon(20% 10%, 80% 10%, 90% 0%, 100% 30%, 95% 70%, 100% 100%, 80% 90%, 20% 90%, 0% 100%, 5% 70%, 0% 30%, 10% 0%);
+        }
+        .live-tag-render.shape-Circle {
+            border-radius: 50%;
+            width: 160px;
+            height: 160px;
+            clip-path: none;
+        }
+
+        .breed-indicator-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 10px;
+            border: 1px solid #e5e7eb;
+        }
 
         /* Form Controls Styling */
         .form-section { background: white; padding: 25px; border-radius: 16px; border: 1px solid #e5e7eb; margin-bottom: 25px; text-align: left; }
@@ -214,9 +254,9 @@
         .form-section h3 span { background: var(--primary); color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; }
         
         .input-group { margin-bottom: 15px; }
-        .input-group label { display: block; font-size: 0.85rem; font-weight: 700; uppercase; tracking-wider; color: #4b5563; margin-bottom: 6px; }
-        .form-control { width: 100%; border: 1px solid #d1d5db; rounded-xl; padding: 12px; box-sizing: border-box; border-radius: 10px; font-size: 0.95rem; font-weight: 500; transition: border 0.2s; }
-        .form-control:focus { outline: none; border-color: var(--primary); ring: 2px solid #fef3c7; }
+        .input-group label { display: block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; tracking-wider; color: #4b5563; margin-bottom: 6px; }
+        .form-control { width: 100%; border: 1px solid #d1d5db; padding: 12px; box-sizing: border-box; border-radius: 10px; font-size: 0.95rem; font-weight: 500; transition: border 0.2s; }
+        .form-control:focus { outline: none; border-color: var(--primary); }
         
         /* Swatches and selection grids */
         .swatch-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
@@ -225,8 +265,20 @@
         .swatch.selected { box-shadow: 0 0 0 2px var(--primary); transform: scale(1.1); }
         .swatch.selected::after { content: "✓"; color: white; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
 
-        .btn { background-color: var(--primary); color: white; font-weight: 700; border: none; padding: 14px 28px; border-radius: 12px; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1rem; text-transform: uppercase; tracking-wider; }
+        .btn { background-color: var(--primary); color: white; font-weight: 700; border: none; padding: 14px 28px; border-radius: 12px; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1rem; text-transform: uppercase; tracking-wider; text-align: center; }
         .btn:hover { background-color: var(--primary-hover); transform: translateY(-1px); }
+        .btn-secondary { background-color: #4b5563; margin-top: 10px; }
+        .btn-secondary:hover { background-color: #374151; }
+
+        /* Shopping Cart Styles */
+        .cart-item-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+        .cart-summary-box { background: #fffbeb; border: 1px dashed var(--primary); padding: 15px; border-radius: 10px; margin-top: 15px; }
+
+        /* Payment Module Structures */
+        .payment-box { text-align: center; border: 2px dashed #d1d5db; padding: 20px; border-radius: 12px; margin-top: 15px; background: #f9fafb; }
+        .qr-placeholder { width: 180px; height: 180px; background: white; margin: 15px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 4px solid var(--dark); border-radius: 10px; position: relative; }
+        .qr-box-pattern { width: 160px; height: 160px; background-image: radial-gradient(var(--dark) 25%, transparent 25%), radial-gradient(var(--dark) 25%, transparent 25%); background-size: 8px 8px; background-position: 0 0, 4px 4px; opacity: 0.85; }
+        .qr-center-logo { position: absolute; background: white; padding: 4px; font-weight: 900; font-size: 0.65rem; border: 1px solid var(--dark); }
 
         /* Tracking Pipeline Timeline System */
         .tracking-card { background: white; border-radius: 16px; border: 1px solid #e5e7eb; padding: 30px; max-width: 700px; margin: 30px auto; text-align: left; }
@@ -239,7 +291,7 @@
         .timeline-item.active .timeline-title { color: var(--primary-hover); font-size: 1rem; }
         .timeline-item.completed .timeline-title { color: #111827; }
 
-        /* Admin Matrix Control Sheet Table Dashboard */
+        /* Admin Dashboard */
         .admin-dashboard { background: white; border-radius: 16px; border: 1px solid #e5e7eb; padding: 25px; margin-top: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
         .admin-table-container { overflow-x: auto; margin-top: 20px; border-radius: 12px; border: 1px solid #e5e7eb; }
         table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
@@ -255,7 +307,7 @@
         .btn-excel { background-color: #10b981; } .btn-excel:hover { background-color: #059669; }
         .btn-pdf { background-color: #ef4444; } .btn-pdf:hover { background-color: #dc2626; }
         
-        footer { margin-top: 60px; padding: 30px; border-top: 1px solid var(--border-color); font-size: 0.8rem; color: #9ca3af; font-weight: 500; }
+        footer { margin-top: 60px; padding: 30px; border-top: 1px solid var(--border-color); font-size: 0.8rem; color: #9ca3af; font-weight: 500; text-align: center; }
     </style>
 </head>
 <body>
@@ -268,6 +320,7 @@
             <div class="nav-menu">
                 <button class="nav-btn active" id="btn-home" onclick="switchView('home')">Home</button>
                 <button class="nav-btn" id="btn-studio" onclick="switchView('customizer')">Design Studio</button>
+                <button class="nav-btn" id="btn-cart" onclick="switchView('cart')">🛒 Cart <span class="cart-badge" id="global-cart-count">0</span></button>
                 <button class="nav-btn" id="btn-tracking" onclick="switchView('tracking')">Track Order</button>
                 <button class="nav-btn" id="btn-admin" onclick="switchView('admin')" style="border: 1px dashed #f59e0b;">📦 Admin Panel <span class="role-badge">Owner</span></button>
             </div>
@@ -276,6 +329,7 @@
 
     <div class="container">
 
+        <!-- HOME DASHBOARD VIEW -->
         <div id="view-home" class="app-view view-active">
             <img src="assets/theme/1.jpg" alt="Pet Tags Collection Showcase" class="hero-banner">
             
@@ -307,7 +361,7 @@
             </div>
         </div>
 
-
+        <!-- REWRITTEN INTERACTIVE INTERFACE CUSTOMIZER STUDIO -->
         <div id="view-customizer" class="app-view">
             <div style="text-align: left; margin-bottom: 20px;">
                 <h1>Interactive Tag Configurator Studio</h1>
@@ -319,22 +373,25 @@
                     <div class="preview-box">
                         <h4 style="margin: 0 0 10px 0; font-weight: 700; color: #4b5563;">Realtime Component Vector View</h4>
                         <div class="tag-canvas-container">
+                            <!-- Corrected internal architecture layers for vector transformations -->
                             <div id="canvas-tag-render" class="live-tag-render shape-bone" style="background-color: #ff0000;">
                                 <span id="canvas-text-output" class="preview-font-Poppins">PET NAME</span>
                             </div>
                         </div>
-                        <p style="font-size: 0.8rem; color: #6b7280; font-weight: 500; margin: 0;">* Final output utilizes dense commercial-grade beveled edge structures.</p>
+                        <h4 style="margin: 20px 0 5px 0; font-weight: 700; color: #4b5563; text-align: left;">Selected Breed Context Profile:</h4>
+                        <img id="breed-preview-frame" src="assets/breeds/labrador.jpg" class="breed-indicator-img" alt="Selected Breed Silhouette">
+                        <p style="font-size: 0.8rem; color: #6b7280; font-weight: 500; margin-top: 10px;">* Final output utilizes dense commercial-grade beveled edge structures.</p>
                     </div>
                 </div>
 
                 <div class="form-flow">
-                    <form id="tagForm" onsubmit="processOrderSubmission(event)">
+                    <form id="tagForm" onsubmit="addCurrentConfigToCart(event)">
                         
                         <div class="form-section">
                             <h3><span>1</span> Pet Specification Details</h3>
                             <div class="input-group">
                                 <label>Pet Label Name</label>
-                                <input type="text" id="form-petname" class="form-control" placeholder="e.g. REX / MILO" max-length="12" required oninput="syncPreviewState()">
+                                <input type="text" id="form-petname" class="form-control" placeholder="e.g. REX / MILO" maxlength="12" required oninput="syncPreviewState()">
                             </div>
                             <div class="input-group">
                                 <label>Animal Structural Categorization</label>
@@ -346,7 +403,8 @@
                             <div class="input-group">
                                 <label>Breed Identification Profiling</label>
                                 <select id="form-breed" class="form-control" onchange="syncPreviewState()">
-                                    </select>
+                                    <!-- Dynamic elements injected here -->
+                                </select>
                             </div>
                         </div>
 
@@ -356,16 +414,16 @@
                             <div class="input-group">
                                 <label>Base Structural Matrix Shape</label>
                                 <div class="grid" style="grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 5px 0 15px 0;">
-                                    <div class="card selected" id="shape-card-bone" onclick="selectShapeFactor('bone', 'bone.png')">
-                                        <img src="assets/tag-shapes/bone.png" style="height:70px;" alt="Bone Pattern"><p style="font-size:0.75rem; margin:5px;">Bone Pattern</p>
+                                    <div class="card selected" id="shape-card-bone" onclick="selectShapeFactor('bone')">
+                                        <img src="assets/tag-shapes/bone.png" style="height:70px; object-fit:contain;" alt="Bone Pattern"><p style="font-size:0.75rem; margin:5px; text-align:center;">Bone Pattern</p>
                                         <div class="card-checkbox">✓</div>
                                     </div>
-                                    <div class="card" id="shape-card-bone2" onclick="selectShapeFactor('bone2', 'bone2.png')">
-                                        <img src="assets/tag-shapes/bone2.png" style="height:70px;" alt="Bone Solid"><p style="font-size:0.75rem; margin:5px;">Bone Solid</p>
+                                    <div class="card" id="shape-card-bone2" onclick="selectShapeFactor('bone2')">
+                                        <img src="assets/tag-shapes/bone2.png" style="height:70px; object-fit:contain;" alt="Bone Solid"><p style="font-size:0.75rem; margin:5px; text-align:center;">Bone Solid</p>
                                         <div class="card-checkbox">✓</div>
                                     </div>
-                                    <div class="card" id="shape-card-Circle" onclick="selectShapeFactor('Circle', 'Circle.png')">
-                                        <img src="assets/tag-shapes/Circle.png" style="height:70px;" alt="Circle"><p style="font-size:0.75rem; margin:5px;">Classic Circle</p>
+                                    <div class="card" id="shape-card-Circle" onclick="selectShapeFactor('Circle')">
+                                        <img src="assets/tag-shapes/Circle.png" style="height:70px; object-fit:contain;" alt="Circle"><p style="font-size:0.75rem; margin:5px; text-align:center;">Classic Circle</p>
                                         <div class="card-checkbox">✓</div>
                                     </div>
                                 </div>
@@ -374,7 +432,7 @@
                             <div class="input-group">
                                 <label>Print Sizing Target Scaling</label>
                                 <select id="form-size" class="form-control" onchange="syncPreviewState()">
-                                    <option value="Small">Small (Cats / Toy Breeds) - LKR 600</option>
+                                    <option value="Small">Small (Cats / Toy Breeds) - LKR 400</option>
                                     <option value="Standard" selected>Standard (All Common Breeds) - LKR 600</option>
                                     <option value="Large">Large (Large Working Breeds) - LKR 800</option>
                                 </select>
@@ -403,47 +461,109 @@
                             </div>
                         </div>
 
-                        <div class="form-section">
-                            <h3><span>3</span> Shipping Destination Logistics</h3>
-                            <div class="input-group">
-                                <label>Full Name</label>
-                                <input type="text" id="form-custname" class="form-control" required placeholder="Enter primary contact name">
-                            </div>
-                            <div class="grid" style="grid-template-columns: 1fr 1fr; gap:10px; margin:0;">
-                                <div class="input-group">
-                                    <label>Mobile Number 1</label>
-                                    <input type="tel" id="form-phone1" class="form-control" required placeholder="07XXXXXXXX">
-                                </div>
-                                <div class="input-group">
-                                    <label>Mobile Number 2 (Optional)</label>
-                                    <input type="tel" id="form-phone2" class="form-control" placeholder="07XXXXXXXX">
-                                </div>
-                            </div>
-                            <div class="input-group">
-                                <label>Shipping Street Address</label>
-                                <input type="text" id="form-address" class="form-control" required placeholder="House number, Street name, City location">
-                            </div>
-                            <div class="input-group">
-                                <label>District Hub Boundary Zone</label>
-                                <select id="form-district" class="form-control">
-                                    <option value="Colombo">Colombo</option>
-                                    <option value="Gampaha">Gampaha</option>
-                                    <option value="Kalutara">Kalutara</option>
-                                    <option value="Kandy">Kandy</option>
-                                    <option value="Galle">Galle</option>
-                                    <option value="Matara">Matara</option>
-                                    <option value="Kurunegala">Kurunegala</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn">Submit Custom Configuration & Push to Queue</button>
+                        <button type="submit" class="btn">🛒 Add Configured Tag to Shopping Cart</button>
                     </form>
                 </div>
             </div>
         </div>
 
+        <!-- NEW COMPONENT: SHOPPING CART & INTEGRATED PAYMENT WINDOW -->
+        <div id="view-cart" class="app-view">
+            <h1>Your Engineering Build Cart</h1>
+            <p class="subtitle">Review custom metrics and complete checkout processing via local Lankapay nodes.</p>
+            
+            <div class="studio-layout">
+                <div class="form-section">
+                    <h3>Current Cart Enrolled Items</h3>
+                    <div id="cart-items-container">
+                        <!-- Simulated active cart items dump -->
+                    </div>
+                    <div class="cart-summary-box">
+                        <p style="margin:0; font-weight:700; color:var(--dark); display:flex; justify-content:space-between; font-size:1.1rem;">
+                            <span>Total Build Cost (LKR):</span>
+                            <span id="cart-total-amount">0.00</span>
+                        </p>
+                    </div>
+                </div>
 
+                <div class="form-section">
+                    <h3><span>✓</span> Checkout Logistics & Gateway Verification</h3>
+                    <form id="checkoutForm" onsubmit="processOrderSubmission(event)">
+                        <div class="input-group">
+                            <label>Full Name</label>
+                            <input type="text" id="form-custname" class="form-control" required placeholder="Enter primary contact name">
+                        </div>
+                        <div class="grid" style="grid-template-columns: 1fr 1fr; gap:10px; margin:0;">
+                            <div class="input-group">
+                                <label>Mobile Number 1</label>
+                                <input type="tel" id="form-phone1" class="form-control" required placeholder="07XXXXXXXX">
+                            </div>
+                            <div class="input-group">
+                                <label>Mobile Number 2 (Optional)</label>
+                                <input type="tel" id="form-phone2" class="form-control" placeholder="07XXXXXXXX">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Shipping Street Address</label>
+                            <input type="text" id="form-address" class="form-control" required placeholder="House number, Street name, City location">
+                        </div>
+                        <div class="input-group">
+                            <label>District Hub Boundary Zone</label>
+                            <!-- Injected with complete set of all 25 Districts -->
+                            <select id="form-district" class="form-control">
+                                <option value="Ampara">Ampara</option>
+                                <option value="Anuradhapura">Anuradhapura</option>
+                                <option value="Badulla">Badulla</option>
+                                <option value="Batticaloa">Batticaloa</option>
+                                <option value="Colombo" selected>Colombo</option>
+                                <option value="Galle">Galle</option>
+                                <option value="Gampaha">Gampaha</option>
+                                <option value="Hambantota">Hambantota</option>
+                                <option value="Jaffna">Jaffna</option>
+                                <option value="Kalutara">Kalutara</option>
+                                <option value="Kandy">Kandy</option>
+                                <option value="Kegalle">Kegalle</option>
+                                <option value="Kilinochchi">Kilinochchi</option>
+                                <option value="Kurunegala">Kurunegala</option>
+                                <option value="Mannar">Mannar</option>
+                                <option value="Matale">Matale</option>
+                                <option value="Matara">Matara</option>
+                                <option value="Moneragala">Moneragala</option>
+                                <option value="Mullaitivu">Mullaitivu</option>
+                                <option value="Nuwara Eliya">Nuwara Eliya</option>
+                                <option value="Polonnaruwa">Polonnaruwa</option>
+                                <option value="Puttalam">Puttalam</option>
+                                <option value="Ratnapura">Ratnapura</option>
+                                <option value="Trincomalee">Trincomalee</option>
+                                <option value="Vavuniya">Vavuniya</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Preferred Settlement Route</label>
+                            <select id="form-payment-method" class="form-control" onchange="togglePaymentGatewayView()">
+                                <option value="qr">Direct Bank Transfer (LankaQR Code Scanning)</option>
+                                <option value="cod">Cash on Delivery (Standard Courier Node)</option>
+                            </select>
+                        </div>
+
+                        <!-- LANKAQR NODE PREVIEW SECTION -->
+                        <div class="payment-box" id="payment-qr-area">
+                            <p style="margin:0; font-weight:700; font-size:0.9rem; color:var(--dark);">Scan via Commercial, HNB, Sampath, or BOC Apps</p>
+                            <div class="qr-placeholder">
+                                <div class="qr-box-pattern"></div>
+                                <div class="qr-center-logo">PETTAGS.LK</div>
+                            </div>
+                            <p style="margin:0; font-size:0.75rem; color:#6b7280; font-weight:600;">Please attach payment reference timeline note upon completion.</p>
+                        </div>
+
+                        <button type="submit" class="btn" style="margin-top:15px;">Finalize Checkout & Authorize Build</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- TRACKING VIEW -->
         <div id="view-tracking" class="app-view">
             <h1>Production Line Status Tracker</h1>
             <p class="subtitle">Enter reference ID or track recent submissions below.</p>
@@ -451,7 +571,7 @@
             <div class="tracking-card">
                 <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #f3f4f6; padding-bottom:15px; margin-bottom:20px;">
                     <div>
-                        <span style="font-size:0.75rem; font-weight:700; uppercase; color:#9ca3af;">System Pipeline Reference ID</span>
+                        <span style="font-size:0.75rem; font-weight:700; text-transform:uppercase; color:#9ca3af;">System Pipeline Reference ID</span>
                         <h3 style="margin:5px 0 0 0; font-size:1.5rem; font-weight:800; color:#111827;" id="track-id-title">PT-8942</h3>
                     </div>
                     <span class="status-badge badge-active" style="padding: 6px 12px; font-size: 0.8rem;" id="track-general-badge">Production Queue Active</span>
@@ -461,12 +581,11 @@
                     📍 <strong style="color:#111827;">Target Specification Object:</strong> <span id="track-summary-string">Rex (Bone Shape, Standard Size, Sapphire Blue)</span>
                 </div>
 
-                <div class="timeline" id="tracking-timeline-container">
-                    </div>
+                <div class="timeline" id="tracking-timeline-container"></div>
             </div>
         </div>
 
-
+        <!-- ADMIN MATRIX CONTROLLER PANEL -->
         <div id="view-admin" class="app-view">
             <h1>Central Order Registry Matrix</h1>
             <p class="subtitle">Manage customer configurations, alter build state variables, and execute system exports.</p>
@@ -488,8 +607,7 @@
                                 <th>Financial Verification Action</th>
                             </tr>
                         </thead>
-                        <tbody id="admin-table-rows">
-                            </tbody>
+                        <tbody id="admin-table-rows"></tbody>
                     </table>
                 </div>
             </div>
@@ -502,7 +620,7 @@
     </footer>
 
     <script>
-        // Data Dictionaries Setup Config Mapping Maps
+        // Data Dictionaries & Breed Configurations
         const BREED_DATABASE = {
             dog: ["Labrador", "Golden Retriever", "German Shepherd", "Pug", "Beagle", "Husky", "Mixed Breed"],
             cat: ["Persian", "Siamese", "British Shorthair", "Bengal", "Mixed Breed"]
@@ -519,7 +637,9 @@
             "Delivered Destination Met"
         ];
 
-        // Central Local Global Application State Database Arrays (Simulated cloud repository context)
+        // Central Local Memory Engine Storage Arrays
+        let SHOPPING_CART = [];
+        
         let APP_ORDERS_REGISTRY = [
             {
                 id: "PT-8942",
@@ -528,13 +648,9 @@
                 phone: "0771234567",
                 address: "42, Galle Road",
                 district: "Colombo",
-                petName: "Rex",
-                petType: "dog",
-                breed: "German Shepherd",
-                shape: "bone",
-                size: "Standard",
-                color: "#111827",
-                currentStep: 3, // Printing Phase Dispatched
+                itemsCount: 1,
+                summary: "Rex (Bone Shape, Standard Size)",
+                currentStep: 3,
                 payment: "Confirmed"
             },
             {
@@ -544,31 +660,25 @@
                 phone: "0719876543",
                 address: "15/A, Kandy Road",
                 district: "Kandy",
-                petName: "Milo",
-                petType: "cat",
-                breed: "Persian",
-                shape: "Circle",
-                size: "Small",
-                color: "#ec4899",
-                currentStep: 1, // Design Pipeline Started
+                itemsCount: 1,
+                summary: "Milo (Classic Circle, Small Size)",
+                currentStep: 1,
                 payment: "Pending Verification"
             }
         ];
 
-        // Customizer state tracking parameters
         let activeCustomizerShape = "bone";
         let activeCustomizerColor = "#ff0000";
         let trackingViewTargetId = "PT-8942";
 
-        // Native Initial Onload Setup Functions
         window.onload = function() {
             populateBreedDropdown();
             syncPreviewState();
             renderAdminDashboardTable();
             renderTrackingTimelineStream();
+            renderCartViewElements();
         };
 
-        // App View State Router Configuration Management Engine Function
         function switchView(viewName) {
             document.querySelectorAll('.app-view').forEach(v => v.classList.remove('view-active'));
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -579,12 +689,11 @@
             if(targetView) targetView.classList.add('view-active');
             if(targetBtn) targetBtn.classList.add('active');
             
-            // Re-render execution updates to catch internal updates
             if(viewName === 'admin') renderAdminDashboardTable();
             if(viewName === 'tracking') renderTrackingTimelineStream();
+            if(viewName === 'cart') renderCartViewElements();
         }
 
-        // Dropdown dynamic calculation injector logic
         function populateBreedDropdown() {
             const petType = document.getElementById('form-pettype').value;
             const breedSelect = document.getElementById('form-breed');
@@ -592,175 +701,238 @@
             
             BREED_DATABASE[petType].forEach(breed => {
                 let opt = document.createElement('option');
-                opt.value = breed;
+                opt.value = breed.toLowerCase().replace(" ", "-");
                 opt.innerText = breed;
                 breedSelect.appendChild(opt);
             });
         }
 
-        // Shape Selection Parameter Controller Action
-        function selectShapeFactor(shapeId, filename) {
+        function selectShapeFactor(shapeId) {
             activeCustomizerShape = shapeId;
             document.querySelectorAll('[id^="shape-card-"]').forEach(c => c.classList.remove('selected'));
             document.getElementById('shape-card-' + shapeId).classList.add('selected');
             syncPreviewState();
         }
 
-        // Color Selection Parameter Controller Action
-        function selectFilamentColor(colorHex, element) {
+        function selectFilamentColor(colorHex, elementNode) {
             activeCustomizerColor = colorHex;
             document.querySelectorAll('.swatch').forEach(s => s.classList.remove('selected'));
-            element.classList.add('selected');
+            elementNode.classList.add('selected');
             syncPreviewState();
         }
 
-        // Live Customizer Render Parameter Syncer
+        // REWRITTEN AND FIXED LIVE PREVIEW DISPATCH CONTROLLER
         function syncPreviewState() {
             const petNameInput = document.getElementById('form-petname').value;
-            const selectedFont = document.getElementById('form-font').value;
-            
-            const renderCanvas = document.getElementById('canvas-tag-render');
-            const renderText = document.getElementById('canvas-text-output');
-            
-            // Update Text Attributes properties
-            renderText.innerText = petNameInput.toUpperCase() || "YOUR PET";
-            renderText.className = ""; // clear
-            renderText.classList.add('preview-font-' + selectedFont);
-            
-            // Adjust geometry container bounding box classes properties
-            renderCanvas.className = "live-tag-render";
-            renderCanvas.classList.add('shape-' + activeCustomizerShape);
-            renderCanvas.style.backgroundColor = activeCustomizerColor;
+            const currentFontSelection = document.getElementById('form-font').value;
+            const selectedBreed = document.getElementById('form-breed').value;
 
-            // Handle Font readability fallback on white background parameters
-            if(activeCustomizerColor === '#ffffff' || activeCustomizerColor === 'white') {
-                renderText.style.color = "#111827";
-                renderCanvas.style.boxShadow = "0 10px 25px rgba(0,0,0,0.05), inset 0 -8px 0 #eaeaea";
-            } else {
-                renderText.style.color = "white";
-                renderCanvas.style.boxShadow = "0 10px 25px rgba(0,0,0,0.2), inset 0 -8px 0 rgba(0,0,0,0.15)";
-            }
+            const textOutputNode = document.getElementById('canvas-text-output');
+            const renderCanvasBox = document.getElementById('canvas-tag-render');
+            const breedPreviewFrame = document.getElementById('breed-preview-frame');
+
+            // 1. Synchronize text parameters
+            textOutputNode.innerText = petNameInput ? petNameInput.toUpperCase() : "PET NAME";
+
+            // 2. Synchronize typography layouts
+            textOutputNode.className = "";
+            textOutputNode.classList.add('preview-font-' + currentFontSelection);
+
+            // 3. Rectify component background styling matrices
+            renderCanvasBox.style.backgroundColor = activeCustomizerColor;
+
+            // 4. Rectify and toggle active geometric shape classes safely
+            renderCanvasBox.className = "live-tag-render"; 
+            renderCanvasBox.classList.add('shape-' + activeCustomizerShape);
+
+            // 5. Hot swap breed profile framework assets dynamically
+            breedPreviewFrame.src = "assets/breeds/" + selectedBreed + ".jpg";
         }
 
-        // Order Form Execution Pipeline processing submission actions
-        function processOrderSubmission(event) {
+        function togglePaymentGatewayView() {
+            const currentMethod = document.getElementById('form-payment-method').value;
+            const qrPanel = document.getElementById('payment-qr-area');
+            qrPanel.style.display = (currentMethod === 'qr') ? 'block' : 'none';
+        }
+
+        // AUTOMATED RE-CALCULATION CARTE ENGINE
+        function addCurrentConfigToCart(event) {
             event.preventDefault();
+            const petName = document.getElementById('form-petname').value;
+            const breedElement = document.getElementById('form-breed');
+            const breedName = breedElement.options[breedElement.selectedIndex].text;
+            const sizeValue = document.getElementById('form-size').value;
             
-            const idString = "PT-" + Math.floor(1000 + Math.random() * 9000);
-            const newOrderObject = {
-                id: idString,
-                date: new Date().toISOString().split('T')[0],
-                customerName: document.getElementById('form-custname').value,
-                phone: document.getElementById('form-phone1').value,
-                address: document.getElementById('form-address').value,
-                district: document.getElementById('form-district').value,
-                petName: document.getElementById('form-petname').value,
-                petType: document.getElementById('form-pettype').value,
-                breed: document.getElementById('form-breed').value,
+            let pricingValue = 600;
+            if(sizeValue === "Small") pricingValue = 400;
+            if(sizeValue === "Large") pricingValue = 800;
+
+            const cartItem = {
+                petName: petName,
+                breedName: breedName,
                 shape: activeCustomizerShape,
-                size: document.getElementById('form-size').value.split(' ')[0],
+                size: sizeValue,
                 color: activeCustomizerColor,
-                currentStep: 0, // Order Submitted Successfully initialization phase tracking parameter index
-                payment: "Pending Verification"
+                price: pricingValue
             };
 
-            APP_ORDERS_REGISTRY.unshift(newOrderObject);
-            trackingViewTargetId = idString;
+            SHOPPING_CART.push(cartItem);
+            document.getElementById('global-cart-count').innerText = SHOPPING_CART.length;
+            alert(`🎉 ${petName.toUpperCase()} Tag Configuration successfully enrolled into your session cart!`);
+            switchView('cart');
+        }
+
+        function renderCartViewElements() {
+            const container = document.getElementById('cart-items-container');
+            const totalDisplay = document.getElementById('cart-total-amount');
             
-            alert("🎉 Design Registered! Code pipeline uploaded to project tracking tree storage matrices. Transitioning to Live Flow Tracking Monitor view.");
+            if(SHOPPING_CART.length === 0) {
+                container.innerHTML = `<p style="font-weight:600; color:#9ca3af; padding: 20px 0;">Your configuration cart is currently empty. Head over to the Design Studio to create one!</p>`;
+                totalDisplay.innerText = "0.00";
+                return;
+            }
+
+            container.innerHTML = "";
+            let totalCumulativeSum = 0;
+
+            SHOPPING_CART.forEach((item, idx) => {
+                totalCumulativeSum += item.price;
+                const row = document.createElement('div');
+                row.className = "cart-item-row";
+                row.innerHTML = `
+                    <div>
+                        <strong style="font-size:1.05rem; color:var(--dark); text-transform:uppercase;">${item.petName}</strong>
+                        <p style="margin:4px 0 0 0; font-size:0.8rem; color:#6b7280; font-weight:600;">
+                            Shape: ${item.shape} | Size: ${item.size} | Breed: ${item.breedName}
+                        </p>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:15px;">
+                        <span style="font-weight:700; color:var(--dark);">LKR ${item.price}.00</span>
+                        <button type="button" onclick="removeCartItem(${idx})" style="background:none; border:none; color:#ef4444; font-weight:bold; cursor:pointer;">✕</button>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+
+            totalDisplay.innerText = totalCumulativeSum + ".00";
+        }
+
+        function removeCartItem(index) {
+            SHOPPING_CART.splice(index, 1);
+            document.getElementById('global-cart-count').innerText = SHOPPING_CART.length;
+            renderCartViewElements();
+        }
+
+        function processOrderSubmission(event) {
+            event.preventDefault();
+            if(SHOPPING_CART.length === 0) {
+                alert("⚠️ Cannot compile automated pipeline checkout. Your shopping cart contains zero configurations.");
+                return;
+            }
+
+            const custName = document.getElementById('form-custname').value;
+            const phone = document.getElementById('form-phone1').value;
+            const street = document.getElementById('form-address').value;
+            const district = document.getElementById('form-district').value;
+
+            const derivedReferenceId = "PT-" + Math.floor(1000 + Math.random() * 9000);
             
+            const compiledRegistryObject = {
+                id: derivedReferenceId,
+                date: new Date().toISOString().split('T')[0],
+                customerName: custName,
+                phone: phone,
+                address: street,
+                district: district,
+                itemsCount: SHOPPING_CART.length,
+                summary: SHOPPING_CART.map(i => `${i.petName} (${i.shape})`).join(', '),
+                currentStep: 0,
+                payment: document.getElementById('form-payment-method').value === 'qr' ? "Pending Verification" : "COD Verification Req."
+            };
+
+            APP_ORDERS_REGISTRY.unshift(compiledRegistryObject);
+            trackingViewTargetId = derivedReferenceId;
+            
+            // Wipe state memory arrays clean
+            SHOPPING_CART = [];
+            document.getElementById('global-cart-count').innerText = "0";
             document.getElementById('tagForm').reset();
+            document.getElementById('checkoutForm').reset();
+
+            alert(`🎉 Pipeline Deployment Success!\n\nYour order has been loaded into the registry queue.\nTracking Token ID: ${derivedReferenceId}`);
             switchView('tracking');
         }
 
-        // Tracking Screen Status Update Execution Functions UI
         function renderTrackingTimelineStream() {
-            const currentOrder = APP_ORDERS_REGISTRY.find(o => o.id === trackingViewTargetId) || APP_ORDERS_REGISTRY[0];
-            if(!currentOrder) return;
+            const activeOrder = APP_ORDERS_REGISTRY.find(o => o.id === trackingViewTargetId) || APP_ORDERS_REGISTRY[0];
+            if(!activeOrder) return;
 
-            trackingViewTargetId = currentOrder.id;
-            document.getElementById('track-id-title').innerText = currentOrder.id;
-            document.getElementById('track-summary-string').innerText = `${currentOrder.petName} (${currentOrder.shape} shape, ${currentOrder.size}, Filament color: ${currentOrder.color})`;
+            document.getElementById('track-id-title').innerText = activeOrder.id;
+            document.getElementById('track-summary-string').innerText = `${activeOrder.summary} - Region: ${activeOrder.district}`;
             
             const badge = document.getElementById('track-general-badge');
-            if(currentOrder.currentStep === 7) {
-                badge.innerText = "Order Complete Met";
+            if(activeOrder.currentStep === 7) {
+                badge.innerText = "Cargo Pipeline Delivered";
                 badge.className = "status-badge badge-complete";
             } else {
                 badge.innerText = "Production Queue Active";
                 badge.className = "status-badge badge-active";
             }
 
-            const container = document.getElementById('tracking-timeline-container');
-            container.innerHTML = "";
+            const streamContainer = document.getElementById('tracking-timeline-container');
+            streamContainer.innerHTML = "";
 
-            PIPELINE_TRACKING_STEPS.forEach((step, idx) => {
-                let statusClass = "";
-                if(idx < currentOrder.currentStep) statusClass = "completed";
-                else if(idx === currentOrder.currentStep) statusClass = "active";
+            PIPELINE_TRACKING_STEPS.forEach((stepName, stepIndex) => {
+                let layoutClassStatus = "";
+                if (stepIndex < activeOrder.currentStep) layoutClassStatus = "completed";
+                else if (stepIndex === activeOrder.currentStep) layoutClassStatus = "active";
 
-                let item = document.createElement('div');
-                item.className = `timeline-item ${statusClass}`;
-                item.innerHTML = `
+                const timelineItem = document.createElement('div');
+                timelineItem.className = `timeline-item ${layoutClassStatus}`;
+                timelineItem.innerHTML = `
                     <div class="timeline-node"></div>
-                    <p class="timeline-title">${step}</p>
+                    <p class="timeline-title">${stepName}</p>
                 `;
-                container.appendChild(item);
+                streamContainer.appendChild(timelineItem);
             });
         }
 
-        // Admin Dashboard Core Table Management Injection Render
         function renderAdminDashboardTable() {
-            const tbody = document.getElementById('admin-table-rows');
-            tbody.innerHTML = "";
+            const rowsTargetNode = document.getElementById('admin-table-rows');
+            rowsTargetNode.innerHTML = "";
 
-            APP_ORDERS_REGISTRY.forEach((order) => {
-                let tr = document.createElement('tr');
+            APP_ORDERS_REGISTRY.forEach(order => {
+                const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td><strong>${order.id}</strong><br><span style="font-size:0.7rem; color:#9ca3af;">${order.date}</span></td>
+                    <td><span style="font-family:monospace; font-weight:800; color:#2563eb; cursor:pointer;" onclick="trackingViewTargetId='${order.id}'; switchView('tracking');">${order.id}</span></td>
                     <td>
-                        <span style="font-weight:700; color:#111827; block;">${order.customerName}</span>
-                        <span style="font-size:0.75rem; color:#4b5563; display:block;">📞 ${order.phone}</span>
-                        <span style="font-size:0.7rem; color:#9ca3af; display:block; max-width:160px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">📍 ${order.address}, ${order.district}</span>
+                        <div style="font-weight:700; color:#111827;">${order.customerName}</div>
+                        <div style="font-size:0.75rem; color:#6b7280;">📞 ${order.phone} | 📍 ${order.address}, ${order.district}</div>
                     </td>
                     <td>
-                        <span style="font-weight:700; color:#111827; display:block; text-transform:capitalize;">${order.petName} <span style="font-weight:500; font-size:0.75rem; color:#6b7280;">(${order.breed})</span></span>
-                        <span style="font-size:0.7rem; color:#6b7280; display:flex; align-items:center; gap:5px; margin-top:2px; text-transform:capitalize;">
-                            Shape: ${order.shape} 
-                            <span style="display:inline-block; width:10px; height:10px; border-radius:50%; border:1px solid #d1d5db; background-color:${order.color};"></span>
-                        </span>
+                        <div style="font-weight:600; color:#374151;">${order.summary}</div>
+                        <div style="font-size:0.75rem; color:#9ca3af;">Total Items: ${order.itemsCount}</div>
                     </td>
                     <td>
-                        <select onchange="updateOrderStep('${order.id}', this.value)" style="padding:6px; font-size:0.75rem; font-weight:700; border-radius:6px; border:1px solid #d1d5db; background-color:#f9fafb;">
-                            ${PIPELINE_TRACKING_STEPS.map((step, idx) => `
-                                <option value="${idx}" ${order.currentStep === idx ? 'selected' : ''}>${step}</option>
-                            `).join('')}
+                        <select onchange="updateOrderStatusStep('${order.id}', this.value)" style="padding:6px; font-weight:600; font-size:0.8rem; border-radius:6px; border:1px solid #d1d5db;">
+                            ${PIPELINE_TRACKING_STEPS.map((st, idx) => `<option value="${idx}" ${order.currentStep == idx ? 'selected' : ''}>${st}</option>`).join('')}
                         </select>
                     </td>
                     <td>
-                        <button onclick="togglePaymentState('${order.id}')" class="status-badge ${order.payment === 'Confirmed' ? 'badge-complete' : 'badge-pending'}" style="border:none; cursor:pointer; width:100%; text-align:center;">
-                            ${order.payment}
-                        </button>
+                        <span class="status-badge ${order.payment === 'Confirmed' ? 'badge-complete' : 'badge-pending'}">${order.payment}</span>
                     </td>
                 `;
-                tbody.appendChild(tr);
+                rowsTargetNode.appendChild(tr);
             });
         }
 
-        // Admin Adjustment Data Interaction Controllers Function State Mutations
-        function updateOrderStep(orderId, stepIndex) {
-            let order = APP_ORDERS_REGISTRY.find(o => o.id === orderId);
+        function updateOrderStatusStep(orderId, newStepIndex) {
+            const order = APP_ORDERS_REGISTRY.find(o => o.id === orderId);
             if(order) {
-                order.currentStep = parseInt(stepIndex);
-                alert(`⚙️ Operation Status System Update: Set order tracking state ${orderId} mapping position to step indicator index.`);
-            }
-        }
-
-        function togglePaymentState(orderId) {
-            let order = APP_ORDERS_REGISTRY.find(o => o.id === orderId);
-            if(order) {
-                order.payment = order.payment === "Confirmed" ? "Pending Verification" : "Confirmed";
-                renderAdminDashboardTable();
+                order.currentStep = parseInt(newStepIndex);
+                if(parseInt(newStepIndex) === 7) {
+                    order.payment = "Confirmed";
+                }
             }
         }
     </script>
