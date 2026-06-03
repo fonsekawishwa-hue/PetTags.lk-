@@ -565,7 +565,6 @@
         <div id="view-tracking" class="app-view">
             <h1>Production Line Status Tracker</h1>
             <p class="subtitle">Enter reference ID or track recent submissions below.</p>
-            <!-- Content here as needed -->
         </div>
 
         <!-- NEW COMPONENT SCREEN: ADMIN SECURITY SHIELD -->
@@ -689,7 +688,7 @@
         // FILAMENT COLOR SOLUTION MATRIX HANDLER
         function selectFilamentColor(colorHex, swatchElement) {
             currentSelectedColor = colorHex;
-            document.querySelectorAll(".swatch").forEach(sw = > sw.classList.remove("selected"));
+            document.querySelectorAll(".swatch").forEach(sw => sw.classList.remove("selected"));
             swatchElement.classList.add("selected");
             syncPreviewState();
         }
@@ -750,4 +749,3 @@
     </script>
 </body>
 </html>
-``` Use this code block directly—it contains everything you need!
