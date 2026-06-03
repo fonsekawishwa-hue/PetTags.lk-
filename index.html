@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetTags.lk - Premium Custom Pet Tags Sri Lanka</title>
     <style>
-        /* ==========================================
-           MODERN PET SHOP BRAND STYLING & DESIGN SYSTEM
-           ========================================== */
         :root {
             --primary: #f59e0b;
             --primary-hover: #d97706;
@@ -51,15 +48,10 @@
             color: inherit;
         }
 
-        /* UPGRADED: Increased logo presentation sizing for higher brand attraction */
         .logo { 
             width: 220px; 
             height: auto; 
             object-fit: contain; 
-            transition: transform 0.2s ease;
-        }
-        .logo:hover {
-            transform: scale(1.02);
         }
 
         .nav-menu {
@@ -109,11 +101,12 @@
             border-radius: 6px;
             font-size: 0.75rem;
             font-weight: bold;
+            margin-left: 5px;
         }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         
-        /* App View Route Management */
+        /* Dynamic Routing Views */
         .app-view { display: none; }
         .app-view.view-active { display: block; animation: fadeIn 0.3s ease-in-out; }
 
@@ -126,13 +119,12 @@
         h2 { color: #222; text-align: left; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; margin-top: 40px; font-size: 1.6rem; font-weight: 700; }
         .subtitle { color: #666; font-size: 1.1rem; margin-bottom: 0; }
 
-        /* Typography & Custom Preview Font Injectors */
+        /* Font classes */
         .preview-font-Poppins { font-family: 'Poppins', sans-serif; font-weight: bold; }
         .preview-font-Roboto { font-family: 'Roboto', sans-serif; font-weight: bold; }
         .preview-font-Arial { font-family: 'Arial', sans-serif; font-weight: 900; }
         .preview-font-ComicSans { font-family: 'Comic Sans MS', cursive; }
 
-        /* Grid Layout Frameworks (Fully Mobile Responsive) */
         .grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
@@ -141,7 +133,6 @@
         }
         .printed-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
 
-        /* Cards and Item Selection Matrices */
         .card { 
             background: white; 
             border-radius: 12px; 
@@ -177,7 +168,6 @@
 
         .hero-banner { width: 100%; max-height: 350px; object-fit: cover; border-radius: 12px; margin-top: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
 
-        /* Interactive Dynamic Customizer Forms Layout */
         .studio-layout {
             display: grid;
             grid-template-columns: 1fr;
@@ -190,7 +180,6 @@
             .sticky-preview { position: sticky; top: 120px; }
         }
 
-        /* Live Canvas Preview Component Panel */
         .preview-box {
             background: white;
             border-radius: 16px;
@@ -214,7 +203,6 @@
             box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
         }
 
-        /* FIXED RESPONSIVE INLINE SVG SCALING STYLES */
         .live-tag-svg-wrapper {
             width: 260px;
             height: 180px;
@@ -226,84 +214,63 @@
         .breed-indicator-img {
             width: 100%;
             height: 150px;
-            object-fit: cover;
+            object-fit: contain;
+            background: #000;
             border-radius: 10px;
             margin-top: 10px;
             border: 1px solid #e5e7eb;
         }
 
-        /* Form Controls Styling */
         .form-section { background: white; padding: 25px; border-radius: 16px; border: 1px solid #e5e7eb; margin-bottom: 25px; text-align: left; }
         .form-section h3 { margin-top: 0; margin-bottom: 20px; font-size: 1.25rem; font-weight: 700; color: var(--dark); display: flex; align-items: center; gap: 10px; }
         .form-section h3 span { background: var(--primary); color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; }
         
         .input-group { margin-bottom: 15px; }
-        .input-group label { display: block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; tracking-wider; color: #4b5563; margin-bottom: 6px; }
-        .form-control { width: 100%; border: 1px solid #d1d5db; padding: 12px; box-sizing: border-box; border-radius: 10px; font-size: 0.95rem; font-weight: 500; transition: border 0.2s; }
+        .input-group label { display: block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: #4b5563; margin-bottom: 6px; }
+        .form-control { width: 100%; border: 1px solid #d1d5db; padding: 12px; box-sizing: border-box; border-radius: 10px; font-size: 0.95rem; font-weight: 500; }
         .form-control:focus { outline: none; border-color: var(--primary); }
         
-        /* Swatches and selection grids */
         .swatch-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
         .swatch { width: 36px; height: 36px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px #d1d5db; cursor: pointer; transition: transform 0.2s; position: relative; }
-        .swatch:hover { transform: scale(1.05); }
         .swatch.selected { box-shadow: 0 0 0 2px var(--primary); transform: scale(1.1); }
-        .swatch.selected::after { content: "✓"; color: white; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+        .swatch.selected::after { content: "✓"; color: white; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem; }
 
-        .btn { background-color: var(--primary); color: white; font-weight: 700; border: none; padding: 14px 28px; border-radius: 12px; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1rem; text-transform: uppercase; tracking-wider; text-align: center; }
+        .btn { background-color: var(--primary); color: white; font-weight: 700; border: none; padding: 14px 28px; border-radius: 12px; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1rem; text-transform: uppercase; text-align: center; }
         .btn:hover { background-color: var(--primary-hover); transform: translateY(-1px); }
-        .btn-secondary { background-color: #4b5563; margin-top: 10px; }
-        .btn-secondary:hover { background-color: #374151; }
-
-        /* Shopping Cart Styles */
+        
         .cart-item-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
         .cart-summary-box { background: #fffbeb; border: 1px dashed var(--primary); padding: 15px; border-radius: 10px; margin-top: 15px; }
 
-        /* Payment Module Structures */
         .payment-box { text-align: center; border: 2px dashed #d1d5db; padding: 20px; border-radius: 12px; margin-top: 15px; background: #f9fafb; }
         .qr-placeholder { width: 180px; height: 180px; background: white; margin: 15px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 4px solid var(--dark); border-radius: 10px; position: relative; }
         .qr-box-pattern { width: 160px; height: 160px; background-image: radial-gradient(var(--dark) 25%, transparent 25%), radial-gradient(var(--dark) 25%, transparent 25%); background-size: 8px 8px; background-position: 0 0, 4px 4px; opacity: 0.85; }
         .qr-center-logo { position: absolute; background: white; padding: 4px; font-weight: 900; font-size: 0.65rem; border: 1px solid var(--dark); }
 
-        /* Tracking Pipeline Timeline System */
+        /* Tracking Timeline CSS */
         .tracking-card { background: white; border-radius: 16px; border: 1px solid #e5e7eb; padding: 30px; max-width: 700px; margin: 30px auto; text-align: left; }
         .timeline { position: relative; border-left: 2px solid #e5e7eb; padding-left: 30px; margin-left: 15px; margin-top: 30px; }
-        .timeline-item { position: relative; margin-bottom: 25px; }
-        .timeline-node { position: absolute; left: -39px; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: white; border: 2px solid #d1d5db; transition: all 0.3s; }
+        .timeline-item { position: relative; margin-bottom: 25px; opacity: 0.4; }
+        .timeline-node { position: absolute; left: -39px; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: white; border: 2px solid #d1d5db; }
+        .timeline-item.completed { opacity: 0.8; }
         .timeline-item.completed .timeline-node { background: #10b981; border-color: #10b981; }
+        .timeline-item.active { opacity: 1; }
         .timeline-item.active .timeline-node { background: var(--primary); border-color: var(--primary); transform: scale(1.25); box-shadow: 0 0 0 4px #fef3c7; }
         .timeline-title { font-weight: 700; font-size: 0.95rem; color: #4b5563; margin: 0; }
         .timeline-item.active .timeline-title { color: var(--primary-hover); font-size: 1rem; }
-        .timeline-item.completed .timeline-title { color: #111827; }
 
-        /* Admin Gateway Lock View System Styling */
-        .lock-screen-container {
-            max-width: 400px;
-            margin: 60px auto;
-            background: white;
-            padding: 35px;
-            border-radius: 16px;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-
-        /* Admin Dashboard */
-        .admin-dashboard { background: white; border-radius: 16px; border: 1px solid #e5e7eb; padding: 25px; margin-top: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .lock-screen-container { max-width: 400px; margin: 60px auto; background: white; padding: 35px; border-radius: 16px; border: 1px solid #e5e7eb; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; }
+        .admin-dashboard { background: white; border-radius: 16px; border: 1px solid #e5e7eb; padding: 25px; margin-top: 30px; }
         .admin-table-container { overflow-x: auto; margin-top: 20px; border-radius: 12px; border: 1px solid #e5e7eb; }
         table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
         th { background-color: #f9fafb; padding: 14px; font-weight: 700; color: #4b5563; border-bottom: 1px solid #e5e7eb; }
         td { padding: 14px; border-bottom: 1px solid #f3f4f6; font-weight: 500; }
-        .status-badge { padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; display: inline-block; }
-        .badge-pending { background-color: #fef3c7; color: #d97706; }
-        .badge-active { background-color: #dbeafe; color: #2563eb; }
-        .badge-complete { background-color: #d1fae5; color: #059669; }
-
-        .admin-actions { display: flex; gap: 10px; justify-content: flex-end; margin-bottom: 20px; }
-        .btn-sm { padding: 8px 14px; font-size: 0.8rem; border-radius: 6px; width: auto; text-transform: none; font-weight: 600; }
-        .btn-excel { background-color: #10b981; } .btn-excel:hover { background-color: #059669; }
-        .btn-pdf { background-color: #ef4444; } .btn-pdf:hover { background-color: #dc2626; }
         
-        footer { margin-top: 60px; padding: 30px; border-top: 1px solid var(--border-color); font-size: 0.8rem; color: #9ca3af; font-weight: 500; text-align: center; }
+        .status-badge { padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
+        .badge-pending { background-color: #fef3c7; color: #d97706; }
+        .badge-printing { background-color: #dbeafe; color: #2563eb; }
+        .badge-complete { background-color: #d1fae5; color: #059669; }
+        
+        footer { margin-top: 60px; padding: 30px; border-top: 1px solid var(--border-color); font-size: 0.8rem; color: #9ca3af; text-align: center; }
     </style>
 </head>
 <body>
@@ -315,17 +282,16 @@
             </a>
             <div class="nav-menu">
                 <button class="nav-btn active" id="btn-home" onclick="switchView('home')">Home</button>
-                <button class="nav-btn" id="btn-studio" onclick="switchView('customizer')">Design Studio</button>
+                <button class="nav-btn" id="btn-customizer" onclick="switchView('customizer')">Design Studio</button>
                 <button class="nav-btn" id="btn-cart" onclick="switchView('cart')">🛒 Cart <span class="cart-badge" id="global-cart-count">0</span></button>
                 <button class="nav-btn" id="btn-tracking" onclick="switchView('tracking')">Track Order</button>
-                <button class="nav-btn" id="btn-admin" onclick="switchView('admin-lock')" style="border: 1px dashed #f59e0b;">📦 Admin Panel <span class="role-badge">Owner</span></button>
+                <button class="nav-btn" id="btn-admin-lock" onclick="switchView('admin-lock')" style="border: 1px dashed #f59e0b;">📦 Admin Panel <span class="role-badge">Owner</span></button>
             </div>
         </div>
     </header>
 
     <div class="container">
 
-        <!-- HOME DASHBOARD VIEW -->
         <div id="view-home" class="app-view view-active">
             <img src="assets/theme/1.jpg" alt="Pet Tags Collection Showcase" class="hero-banner">
             
@@ -357,7 +323,6 @@
             </div>
         </div>
 
-        <!-- REWRITTEN INTERACTIVE INTERFACE CUSTOMIZER STUDIO -->
         <div id="view-customizer" class="app-view">
             <div style="text-align: left; margin-bottom: 20px;">
                 <h1>Interactive Tag Configurator Studio</h1>
@@ -369,23 +334,20 @@
                     <div class="preview-box">
                         <h4 style="margin: 0 0 10px 0; font-weight: 700; color: #4b5563;">Realtime Component Vector View</h4>
                         <div class="tag-canvas-container">
-                            <!-- UPGRADED VIA INLINE SCALABLE SYSTEM LOGIC (REPLACED DENSE CLIP-PATHS) -->
                             <div class="live-tag-svg-wrapper">
-                                <svg id="vector-rendering-engine" viewBox="0 0 300 200" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                <svg id="vector-rendering-engine" viewBox="0 0 300 200" width="100%" height="100%">
                                     <path id="svg-tag-base" d="M240,65 C255,40 295,55 285,85 C275,105 275,105 285,120 C295,150 255,165 240,140 L60,140 C45,165 5,150 15,120 C25,105 25,105 15,85 C5,55 45,40 60,65 Z" fill="#ff0000" filter="drop-shadow(0px 4px 6px rgba(0,0,0,0.2))"/>
-                                    <text id="svg-tag-text" x="150" y="112" text-anchor="middle" fill="#ffffff" class="preview-font-Poppins" font-size="28" letter-spacing="1">PET NAME</text>
+                                    <text id="svg-tag-text" x="150" y="112" text-anchor="middle" fill="#ffffff" class="preview-font-Poppins" font-size="28">PET NAME</text>
                                 </svg>
                             </div>
                         </div>
-                        <h4 style="margin: 20px 0 5px 0; font-weight: 700; color: #4b5563; text-align: left;">Selected Breed Context Profile:</h4>
-                        <img id="breed-preview-frame" src="assets/breeds/labrador.jpg" class="breed-indicator-img" alt="Selected Breed Silhouette">
-                        <p style="font-size: 0.8rem; color: #6b7280; font-weight: 500; margin-top: 10px;">* Final output utilizes dense commercial-grade beveled edge structures.</p>
+                        <h4 style="margin: 20px 0 5px 0; font-weight: 700; color: #4b5563; text-align: left;">Selected Breed Silhouette Map:</h4>
+                        <img id="breed-preview-frame" src="assets/pet-breeds/dog/American Bully.jpg" class="breed-indicator-img" alt="Selected Breed Silhouette">
                     </div>
                 </div>
 
                 <div class="form-flow">
                     <form id="tagForm" onsubmit="addCurrentConfigToCart(event)">
-                        
                         <div class="form-section">
                             <h3><span>1</span> Pet Specification Details</h3>
                             <div class="input-group">
@@ -393,23 +355,21 @@
                                 <input type="text" id="form-petname" class="form-control" placeholder="e.g. REX / MILO" maxlength="12" required oninput="syncPreviewState()">
                             </div>
                             <div class="input-group">
-                                <label>Animal Structural Categorization</label>
+                                <label>Animal Categorization</label>
                                 <select id="form-pettype" class="form-control" onchange="populateBreedDropdown(); syncPreviewState();">
                                     <option value="dog">🐶 Dog Breed Family</option>
                                     <option value="cat">🐱 Cat Breed Family</option>
                                 </select>
                             </div>
                             <div class="input-group">
-                                <label>Breed Identification Profiling</label>
+                                <label>Breed Identification Silhouette</label>
                                 <select id="form-breed" class="form-control" onchange="syncPreviewState()">
-                                    <!-- Dynamic elements injected here -->
-                                </select>
+                                    </select>
                             </div>
                         </div>
 
                         <div class="form-section">
                             <h3><span>2</span> Structural Form Configuration</h3>
-                            
                             <div class="input-group">
                                 <label>Base Structural Matrix Shape</label>
                                 <div class="grid" style="grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 5px 0 15px 0;">
@@ -431,9 +391,9 @@
                             <div class="input-group">
                                 <label>Print Sizing Target Scaling</label>
                                 <select id="form-size" class="form-control" onchange="syncPreviewState()">
-                                    <option value="Small">Small (Cats / Toy Breeds) - LKR 400</option>
-                                    <option value="Standard" selected>Standard (All Common Breeds) - LKR 600</option>
-                                    <option value="Large">Large (Large Working Breeds) - LKR 800</option>
+                                    <option value="Small" data-price="400">Small (Cats / Toy Breeds) - LKR 400</option>
+                                    <option value="Standard" data-price="600" selected>Standard (All Common Breeds) - LKR 600</option>
+                                    <option value="Large" data-price="800">Large (Large Working Breeds) - LKR 800</option>
                                 </select>
                             </div>
 
@@ -466,16 +426,15 @@
             </div>
         </div>
 
-        <!-- NEW COMPONENT: SHOPPING CART & INTEGRATED PAYMENT WINDOW -->
         <div id="view-cart" class="app-view">
             <h1>Your Engineering Build Cart</h1>
-            <p class="subtitle">Review custom metrics and complete checkout processing via local Lankapay nodes.</p>
+            <p class="subtitle">Review custom metrics and complete checkout processing.</p>
             
             <div class="studio-layout">
                 <div class="form-section">
                     <h3>Current Cart Enrolled Items</h3>
                     <div id="cart-items-container">
-                        <!-- Simulated active cart items dump -->
+                        <p style="color:#6b7280; text-align:center; padding: 20px 0;">Your cart is completely empty. Head to the Design Studio to create a tag!</p>
                     </div>
                     <div class="cart-summary-box">
                         <p style="margin:0; font-weight:700; color:var(--dark); display:flex; justify-content:space-between; font-size:1.1rem;">
@@ -486,21 +445,15 @@
                 </div>
 
                 <div class="form-section">
-                    <h3><span>✓</span> Checkout Logistics & Gateway Verification</h3>
+                    <h3><span>✓</span> Checkout Logistics & Payment</h3>
                     <form id="checkoutForm" onsubmit="processOrderSubmission(event)">
                         <div class="input-group">
                             <label>Full Name</label>
                             <input type="text" id="form-custname" class="form-control" required placeholder="Enter primary contact name">
                         </div>
-                        <div class="grid" style="grid-template-columns: 1fr 1fr; gap:10px; margin:0;">
-                            <div class="input-group">
-                                <label>Mobile Number 1</label>
-                                <input type="tel" id="form-phone1" class="form-control" required placeholder="07XXXXXXXX">
-                            </div>
-                            <div class="input-group">
-                                <label>Mobile Number 2 (Optional)</label>
-                                <input type="tel" id="form-phone2" class="form-control" placeholder="07XXXXXXXX">
-                            </div>
+                        <div class="input-group">
+                            <label>Mobile Number</label>
+                            <input type="tel" id="form-phone1" class="form-control" required placeholder="07XXXXXXXX">
                         </div>
                         <div class="input-group">
                             <label>Shipping Street Address</label>
@@ -509,34 +462,12 @@
                         <div class="input-group">
                             <label>District Hub Boundary Zone</label>
                             <select id="form-district" class="form-control">
-                                <option value="Ampara">Ampara</option>
-                                <option value="Anuradhapura">Anuradhapura</option>
-                                <option value="Badulla">Badulla</option>
-                                <option value="Batticaloa">Batticaloa</option>
                                 <option value="Colombo" selected>Colombo</option>
-                                <option value="Galle">Galle</option>
                                 <option value="Gampaha">Gampaha</option>
-                                <option value="Hambantota">Hambantota</option>
-                                <option value="Jaffna">Jaffna</option>
-                                <option value="Kalutara">Kalutara</option>
                                 <option value="Kandy">Kandy</option>
-                                <option value="Kegalle">Kegalle</option>
-                                <option value="Kilinochchi">Kilinochchi</option>
-                                <option value="Kurunegala">Kurunegala</option>
-                                <option value="Mannar">Mannar</option>
-                                <option value="Matale">Matale</option>
-                                <option value="Matara">Matara</option>
-                                <option value="Moneragala">Moneragala</option>
-                                <option value="Mullaitivu">Mullaitivu</option>
-                                <option value="Nuwara Eliya">Nuwara Eliya</option>
-                                <option value="Polonnaruwa">Polonnaruwa</option>
-                                <option value="Puttalam">Puttalam</option>
-                                <option value="Ratnapura">Ratnapura</option>
-                                <option value="Trincomalee">Trincomalee</option>
-                                <option value="Vavuniya">Vavuniya</option>
+                                <option value="Galle">Galle</option>
                             </select>
                         </div>
-
                         <div class="input-group">
                             <label>Preferred Settlement Route</label>
                             <select id="form-payment-method" class="form-control" onchange="togglePaymentGatewayView()">
@@ -545,48 +476,80 @@
                             </select>
                         </div>
 
-                        <!-- LANKAQR NODE PREVIEW SECTION -->
                         <div class="payment-box" id="payment-qr-area">
                             <p style="margin:0; font-weight:700; font-size:0.9rem; color:var(--dark);">Scan via Commercial, HNB, Sampath, or BOC Apps</p>
                             <div class="qr-placeholder">
                                 <div class="qr-box-pattern"></div>
                                 <div class="qr-center-logo">PETTAGS.LK</div>
                             </div>
-                            <p style="margin:0; font-size:0.75rem; color:#6b7280; font-weight:600;">Please attach payment reference timeline note upon completion.</p>
                         </div>
-
                         <button type="submit" class="btn" style="margin-top:15px;">Finalize Checkout & Authorize Build</button>
                     </form>
                 </div>
             </div>
         </div>
 
-        <!-- TRACKING VIEW -->
         <div id="view-tracking" class="app-view">
             <h1>Production Line Status Tracker</h1>
-            <p class="subtitle">Enter reference ID or track recent submissions below.</p>
+            <p class="subtitle">Enter your reference ID to monitor your build pipeline status.</p>
+            
+            <div class="form-section" style="max-width: 600px; margin: 30px auto; text-align: center;">
+                <div class="input-group" style="text-align: left;">
+                    <label>Enter Order ID (e.g., PT-8942)</label>
+                    <input type="text" id="tracking-search-id" class="form-control" placeholder="PT-XXXX" style="text-align: center; font-weight: bold; text-transform: uppercase;">
+                </div>
+                <button class="btn" style="width: auto;" onclick="searchOrderTracking()">Query Production Server</button>
+            </div>
+
+            <div id="tracking-result-box" class="tracking-card" style="display: none;">
+                <h3 style="margin-top:0;">Order Reference: <span id="track-order-id" style="color:var(--primary);">PT-XXXX</span></h3>
+                <p><strong>Customer Name:</strong> <span id="track-cust-name">-</span></p>
+                <p><strong>Tag Details:</strong> <span id="track-tag-desc">-</span></p>
+                
+                <div class="timeline">
+                    <div class="timeline-item" id="step-1"><div class="timeline-node"></div><p class="timeline-title">Order Submitted Successfully</p></div>
+                    <div class="timeline-item" id="step-2"><div class="timeline-node"></div><p class="timeline-title">3D Digital Design Mapping Started</p></div>
+                    <div class="timeline-item" id="step-3"><div class="timeline-node"></div><p class="timeline-title">High-Density Fused Layer Printing Active</p></div>
+                    <div class="timeline-item" id="step-4"><div class="timeline-node"></div><p class="timeline-title">Quality Assurance & Edge Beveling Passed</p></div>
+                    <div class="timeline-item" id="step-5"><div class="timeline-node"></div><p class="timeline-title">Dispatched to Local Courier Hub node</p></div>
+                </div>
+            </div>
         </div>
 
-        <!-- NEW COMPONENT SCREEN: ADMIN SECURITY SHIELD -->
         <div id="view-admin-lock" class="app-view">
             <div class="lock-screen-container">
                 <div style="font-size: 3rem; margin-bottom: 10px;">🔒</div>
                 <h3>Owner Security Verification</h3>
-                <p style="color:#6b7280; font-size:0.9rem; margin-bottom:20px;">Access to administrative console logs requires master encryption authorization keys.</p>
                 <div class="input-group" style="text-align: left;">
                     <label>Admin Passphrase Pin</label>
                     <input type="password" id="admin-password-input" class="form-control" placeholder="••••••••" style="text-align: center; letter-spacing: 4px;">
                 </div>
-                <p id="lock-error-msg" style="color:#ef4444; font-size:0.85rem; font-weight:600; display:none; margin: 10px 0;">Incorrect Authorization Token. Please verify entry parameters.</p>
+                <p id="lock-error-msg" style="color:#ef4444; font-size:0.85rem; font-weight:600; display:none; margin: 10px 0;">Incorrect Code. Use "admin123".</p>
                 <button class="btn" onclick="validateAdminGatephrase()">Unlock Secure Node</button>
             </div>
         </div>
 
-        <!-- ADMIN WORKSPACE LOG CONSOLE -->
         <div id="view-admin" class="app-view">
             <div class="admin-dashboard">
-                <h2>Admin Workspace Node Panel</h2>
-                <p>Protected administration database management.</p>
+                <h2>Admin Workspace Central Console Log</h2>
+                <p>Incoming build stream details from production forms across Sri Lanka.</p>
+                
+                <div class="admin-table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer Name</th>
+                                <th>Pet Name</th>
+                                <th>Breed / Shape</th>
+                                <th>Build Params</th>
+                                <th>Status Node</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-orders-table-body">
+                            </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -596,156 +559,139 @@
         &copy; 2026 PetTags.lk. All Rights Reserved. Crafted for Pet Lovers in Sri Lanka.
     </footer>
 
-    <!-- ==========================================
-       JAVASCRIPT APPLICATION ROUTING & VIEW ENGINE
-       ========================================== -->
     <script>
-        // GLOBAL REGISTRY APP STATE
+        // CLIENT DATABASE APP STATE 
         let activeSelectedShape = "bone";
         let currentSelectedColor = "#ff0000";
+        let userShoppingCartRegistry = [];
         let isSystemAdminAuthenticated = false;
 
-        // BREED IDENTIFICATION DATABASE DIRECTORY
+        // MOCK MASTER INCOMING INVENTORY PRODUCTION POOL DATABASE
+        let masterOrdersDatabase = [
+            { id: "PT-8942", name: "Kasun Perera", phone: "0771234567", petName: "REX", type: "dog", breed: "German Shepherd", shape: "Bone Pattern", specs: "Standard Size / Red", status: 3 },
+            { id: "PT-4129", name: "Nisha Fernando", phone: "0719876543", petName: "MILO", type: "cat", breed: "shape 2", shape: "Classic Circle", specs: "Small Size / Blue", status: 1 }
+        ];
+
         const breedRegistryData = {
-            dog: [
-                { id: "american_bully", name: "American Bully", file: "American Bully.jpg" },
-                { id: "beagle", name: "Beagle", file: "Beagle.jpg" },
-                { id: "dalmatian", name: "Dalmatian", file: "dalmatian.jpg" },
-                { id: "german_shepherd", name: "German Shepherd", file: "German Shepherd.jpg" },
-                { id: "golden_retriever", name: "Golden Retriever", file: "Golden Retriever.jpg" },
-                { id: "rottweiler", name: "Rottweiler", file: "rottweiler.jpg" },
-                { id: "shih_tzu", name: "Shih Tzu", file: "Shih Tzu.jpg" },
-                { id: "siberian_husky", name: "Siberian Husky", file: "Siberian Husky.jpg" }
-            ],
-            cat: [
-                { id: "shape_1", name: "Peeking Cat Silhouette 1", file: "shape 1.jpg" },
-                { id: "shape_2", name: "Profile Clean Cutout 2", file: "shape 2.jpg" }
-            ]
+            dog: ["American Bully 2", "American Bully", "Beagle", "dalmatian", "German Shepherd", "German Shepherd2", "Golden Retriever", "normal", "richbake", "rottweiler", "Shih Tzu", "Siberian Husky"],
+            cat: ["shape 1", "shape 2", "shape 3", "shape 4"]
         };
 
-        // MATHEMATICAL VECTOR SHAPE GEOMETRY PATH COORDINATES
         const vectorShapePaths = {
             bone: "M240,65 C255,40 295,55 285,85 C275,105 275,105 285,120 C295,150 255,165 240,140 L60,140 C45,165 5,150 15,120 C25,105 25,105 15,85 C5,55 45,40 60,65 Z",
             bone2: "M30,50 L270,50 C295,50 295,150 270,150 L30,150 C5,150 5,50 30,50 Z",
             Circle: "M 150, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"
         };
 
-        // DOM CORE INITIALIZATION LOADER
         window.addEventListener("DOMContentLoaded", () => {
             populateBreedDropdown();
             syncPreviewState();
+            renderAdminDashboardOrders();
         });
 
-        // VIEW ROUTING ENGINE COMPONENT
+        // CENTRAL ROUTING NAV SYSTEM
         function switchView(viewId) {
-            // Intercept Admin requests if not authenticated
             if (viewId === 'admin' && !isSystemAdminAuthenticated) {
                 viewId = 'admin-lock';
             }
+            document.querySelectorAll('.app-view').forEach(v => v.classList.remove('view-active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
 
-            // Remove active status from all view targets
-            document.querySelectorAll('.app-view').forEach(view => {
-                view.classList.remove('view-active');
-            });
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-
-            // Activate specific selected screen node
-            const targetView = document.getElementById(`view-${viewId}`);
-            if (targetView) targetView.classList.add('view-active');
-
-            // Set navbar active tab indicator
-            let navButtonMap = { 'home': 'btn-home', 'customizer': 'btn-studio', 'cart': 'btn-cart', 'tracking': 'btn-tracking', 'admin': 'btn-admin', 'admin-lock': 'btn-admin' };
-            const activeBtnId = navButtonMap[viewId];
-            if (activeBtnId) document.getElementById(activeBtnId).classList.add('active');
+            document.getElementById(`view-${viewId}`).classList.add('view-active');
+            
+            let btnIdMap = {'home':'btn-home','customizer':'btn-customizer','cart':'btn-cart','tracking':'btn-tracking','admin':'btn-admin-lock','admin-lock':'btn-admin-lock'};
+            if(btnIdMap[viewId]) document.getElementById(btnIdMap[viewId]).classList.add('active');
             
             window.scrollTo(0, 0);
         }
 
-        // DYNAMIC DROPDOWN GENERATOR FOR PET FAMILY SELECTION
         function populateBreedDropdown() {
-            const currentPetType = document.getElementById("form-pettype").value;
-            const breedSelectElement = document.getElementById("form-breed");
-            breedSelectElement.innerHTML = "";
-
-            breedRegistryData[currentPetType].forEach(breed => {
-                let optionNode = document.createElement("option");
-                optionNode.value = breed.id;
-                optionNode.textContent = breed.name;
-                breedSelectElement.appendChild(optionNode);
+            const petType = document.getElementById("form-pettype").value;
+            const breedSelect = document.getElementById("form-breed");
+            breedSelect.innerHTML = "";
+            breedRegistryData[petType].forEach(b => {
+                let opt = document.createElement("option");
+                opt.value = b; opt.textContent = b;
+                breedSelect.appendChild(opt);
             });
         }
 
-        // INTERACTIVE studio MATRICES: HANDLING SELECTED ACTIVE SHAPE CARDS
         function selectShapeFactor(shapeKey) {
             activeSelectedShape = shapeKey;
-            document.querySelectorAll("[id^='shape-card-']").forEach(card => card.classList.remove("selected"));
+            document.querySelectorAll("[id^='shape-card-']").forEach(c => c.classList.remove("selected"));
             document.getElementById(`shape-card-${shapeKey}`).classList.add("selected");
             syncPreviewState();
         }
 
-        // FILAMENT COLOR SOLUTION MATRIX HANDLER
-        function selectFilamentColor(colorHex, swatchElement) {
+        function selectFilamentColor(colorHex, el) {
             currentSelectedColor = colorHex;
-            document.querySelectorAll(".swatch").forEach(sw => sw.classList.remove("selected"));
-            swatchElement.classList.add("selected");
+            document.querySelectorAll(".swatch").forEach(s => s.classList.remove("selected"));
+            el.classList.add("selected");
             syncPreviewState();
         }
 
-        // RE-ENGINEERED REALTIME VECTOR ENGINE PREVIEW SYNCHRONIZER
         function syncPreviewState() {
-            const petNameInputValue = document.getElementById("form-petname").value || "PET NAME";
-            const fontSelectionValue = document.getElementById("form-font").value;
+            const name = document.getElementById("form-petname").value || "PET NAME";
+            const font = document.getElementById("form-font").value;
             
-            // 1. Synchronize text data variables
-            const svgTextNode = document.getElementById("svg-tag-text");
-            if (svgTextNode) {
-                svgTextNode.textContent = petNameInputValue.toUpperCase();
-                svgTextNode.setAttribute("class", `preview-font-${fontSelectionValue}`);
+            const svgText = document.getElementById("svg-tag-text");
+            if (svgText) {
+                svgText.textContent = name.toUpperCase();
+                svgText.setAttribute("class", `preview-font-${font}`);
             }
 
-            // 2. Map structural mathematical paths contextually
-            const svgPathNode = document.getElementById("svg-tag-base");
-            if (svgPathNode && vectorShapePaths[activeSelectedShape]) {
-                svgPathNode.setAttribute("d", vectorShapePaths[activeSelectedShape]);
-                svgPathNode.setAttribute("fill", currentSelectedColor);
+            const svgPath = document.getElementById("svg-tag-base");
+            if (svgPath && vectorShapePaths[activeSelectedShape]) {
+                svgPath.setAttribute("d", vectorShapePaths[activeSelectedShape]);
+                svgPath.setAttribute("fill", currentSelectedColor);
             }
 
-            // 3. Dynamic Breed Identification Frame Updates
-            const currentPetType = document.getElementById("form-pettype").value;
-            const currentBreedId = document.getElementById("form-breed").value;
-            const breedPreviewFrame = document.getElementById("breed-preview-frame");
-
-            if (breedPreviewFrame && currentBreedId) {
-                const searchBreedObj = breedRegistryData[currentPetType].find(b => b.id === currentBreedId);
-                if (searchBreedObj) {
-                    const folderPath = currentPetType === 'dog' ? 'breeds/' : 'tag-shapes/';
-                    breedPreviewFrame.src = `assets/${folderPath}${searchBreedObj.file}`;
-                }
+            const petType = document.getElementById("form-pettype").value;
+            const breed = document.getElementById("form-breed").value;
+            const previewImg = document.getElementById("breed-preview-frame");
+            if (previewImg && breed) {
+                previewImg.src = `assets/pet-breeds/${petType}/${breed}.jpg`;
             }
         }
 
-        // ACCESS BARRIER VERIFICATION MODULE FOR SECURE PANEL
-        function validateAdminGatephrase() {
-            const enteredTokenInput = document.getElementById("admin-password-input").value;
-            if (enteredTokenInput === "admin123" || enteredTokenInput === "owner789") {
-                isSystemAdminAuthenticated = true;
-                document.getElementById("lock-error-msg").style.display = "none";
-                document.getElementById("admin-password-input").value = "";
-                switchView('admin');
-            } else {
-                document.getElementById("lock-error-msg").style.display = "block";
-            }
+        // CART LOGIC
+        function addCurrentConfigToCart(e) {
+            e.preventDefault();
+            const petName = document.getElementById("form-petname").value.toUpperCase();
+            const petType = document.getElementById("form-pettype").value;
+            const breed = document.getElementById("form-breed").value;
+            const sizeSelect = document.getElementById("form-size");
+            const size = sizeSelect.value;
+            const price = parseInt(sizeSelect.options[sizeSelect.selectedIndex].getAttribute("data-price"));
+
+            const item = { petName, petType, breed, size, price, shape: activeSelectedShape, color: currentSelectedColor };
+            userShoppingCartRegistry.push(item);
+            
+            updateCartUI();
+            alert(`🛒 Successfully added custom tag layout for "${petName}" to your build schedule!`);
+            switchView('cart');
         }
 
-        // REQUISITE PLACEHOLDER UTILITIES
-        function togglePaymentGatewayView() {
-            const paymentMethod = document.getElementById("form-payment-method").value;
-            document.getElementById("payment-qr-area").style.display = paymentMethod === 'qr' ? 'block' : 'none';
-        }
-        function addCurrentConfigToCart(e) { e.preventDefault(); alert("Configuration successfully added to system build queue!"); }
-        function processOrderSubmission(e) { e.preventDefault(); alert("Order request successfully transmitted to local Sri Lankan production hubs!"); }
-    </script>
-</body>
-</html>
+        function updateCartUI() {
+            document.getElementById("global-cart-count").textContent = userShoppingCartRegistry.length;
+            const container = document.getElementById("cart-items-container");
+            if (userShoppingCartRegistry.length === 0) {
+                container.innerHTML = `<p style="color:#6b7280; text-align:center; padding: 20px 0;">Your cart is completely empty. Head to the Design Studio to create a tag!</p>`;
+                document.getElementById("cart-total-amount").textContent = "0.00";
+                return;
+            }
+
+            container.innerHTML = "";
+            let total = 0;
+            userShoppingCartRegistry.forEach((item, index) => {
+                total += item.price;
+                let div = document.createElement("div");
+                div.className = "cart-item-row";
+                div.innerHTML = `
+                    <div>
+                        <strong style="font-size:1.05rem; color:var(--dark);">${item.petName} (${item.shape.toUpperCase()})</strong>
+                        <div style="font-size:0.8rem; color:#6b7280; margin-top:3px;">Breed: ${item.breed} | Size: ${item.size}</div>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:15px;">
+                        <span style="font-weight:700; color:var(--dark);">LKR ${item.price}.00</span>
+                        <button onclick="removeCartItem(${index})" style="background:none; border:none; color:#ef44
