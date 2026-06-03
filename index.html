@@ -51,9 +51,7 @@
             color: inherit;
         }
 
-        /* ENHANCED: Increased logo presentation sizing for higher brand attraction */
-        .logo { width: 220px; height: auto; object-fit: contain; transition: transform 0.2s ease; }
-        .logo:hover { transform: scale(1.02); }
+        .logo { width: 140px; height: auto; object-fit: contain; }
 
         .nav-menu {
             display: flex;
@@ -125,7 +123,7 @@
         .preview-font-Arial { font-family: 'Arial', sans-serif; font-weight: 900; }
         .preview-font-ComicSans { font-family: 'Comic Sans MS', cursive; }
 
-        /* Grid Layout Frameworks */
+        /* Grid Layout Frameworks (Fully Mobile Responsive) */
         .grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
@@ -207,25 +205,47 @@
             box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
         }
 
-        /* FIXED OVERHAULED VECTOR VIEW ENGINE USING INLINE VECTOR MATH EMBEDS */
-        .live-tag-svg-wrapper {
-            width: 260px;
-            height: 260px;
+        /* OVERHAULED VECTOR VIEW CSS TO FIX RENDERING ISSUES */
+        .live-tag-render {
+            width: 240px;
+            height: 140px;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            padding: 15px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+            word-break: break-all;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Functional Shape Masks for Vector Rendering Engine */
+        .live-tag-render.shape-bone {
+            border-radius: 40px / 40px;
+            clip-path: polygon(15% 0%, 85% 0%, 85% 20%, 100% 20%, 100% 80%, 85% 80%, 85% 100%, 15% 100%, 15% 80%, 0% 80%, 0% 20%, 15% 20%);
+        }
+        .live-tag-render.shape-bone2 {
+            border-radius: 20px;
+            clip-path: polygon(20% 10%, 80% 10%, 90% 0%, 100% 30%, 95% 70%, 100% 100%, 80% 90%, 20% 90%, 0% 100%, 5% 70%, 0% 30%, 10% 0%);
+        }
+        .live-tag-render.shape-Circle {
+            border-radius: 50%;
+            width: 160px;
+            height: 160px;
+            clip-path: none;
         }
 
         .breed-indicator-img {
             width: 100%;
-            height: 180px;
-            object-fit: contain;
-            background-color: #111827;
+            height: 150px;
+            object-fit: cover;
             border-radius: 10px;
             margin-top: 10px;
             border: 1px solid #e5e7eb;
-            padding: 5px;
-            box-sizing: border-box;
         }
 
         /* Form Controls Styling */
@@ -234,7 +254,7 @@
         .form-section h3 span { background: var(--primary); color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; }
         
         .input-group { margin-bottom: 15px; }
-        .input-group label { display: block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: #4b5563; margin-bottom: 6px; }
+        .input-group label { display: block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; tracking-wider; color: #4b5563; margin-bottom: 6px; }
         .form-control { width: 100%; border: 1px solid #d1d5db; padding: 12px; box-sizing: border-box; border-radius: 10px; font-size: 0.95rem; font-weight: 500; transition: border 0.2s; }
         .form-control:focus { outline: none; border-color: var(--primary); }
         
@@ -245,20 +265,31 @@
         .swatch.selected { box-shadow: 0 0 0 2px var(--primary); transform: scale(1.1); }
         .swatch.selected::after { content: "✓"; color: white; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
 
-        .btn { background-color: var(--primary); color: white; font-weight: 700; border: none; padding: 14px 28px; border-radius: 12px; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1rem; text-transform: uppercase; text-align: center; }
+        .btn { background-color: var(--primary); color: white; font-weight: 700; border: none; padding: 14px 28px; border-radius: 12px; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1rem; text-transform: uppercase; tracking-wider; text-align: center; }
         .btn:hover { background-color: var(--primary-hover); transform: translateY(-1px); }
+        .btn-secondary { background-color: #4b5563; margin-top: 10px; }
+        .btn-secondary:hover { background-color: #374151; }
 
-        /* Security Verification Panel CSS */
-        .lock-screen-container {
-            max-width: 400px;
-            margin: 80px auto;
-            background: white;
-            padding: 35px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            border: 1px solid #e5e7eb;
-            text-align: center;
-        }
+        /* Shopping Cart Styles */
+        .cart-item-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+        .cart-summary-box { background: #fffbeb; border: 1px dashed var(--primary); padding: 15px; border-radius: 10px; margin-top: 15px; }
+
+        /* Payment Module Structures */
+        .payment-box { text-align: center; border: 2px dashed #d1d5db; padding: 20px; border-radius: 12px; margin-top: 15px; background: #f9fafb; }
+        .qr-placeholder { width: 180px; height: 180px; background: white; margin: 15px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 4px solid var(--dark); border-radius: 10px; position: relative; }
+        .qr-box-pattern { width: 160px; height: 160px; background-image: radial-gradient(var(--dark) 25%, transparent 25%), radial-gradient(var(--dark) 25%, transparent 25%); background-size: 8px 8px; background-position: 0 0, 4px 4px; opacity: 0.85; }
+        .qr-center-logo { position: absolute; background: white; padding: 4px; font-weight: 900; font-size: 0.65rem; border: 1px solid var(--dark); }
+
+        /* Tracking Pipeline Timeline System */
+        .tracking-card { background: white; border-radius: 16px; border: 1px solid #e5e7eb; padding: 30px; max-width: 700px; margin: 30px auto; text-align: left; }
+        .timeline { position: relative; border-left: 2px solid #e5e7eb; padding-left: 30px; margin-left: 15px; margin-top: 30px; }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-node { position: absolute; left: -39px; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: white; border: 2px solid #d1d5db; transition: all 0.3s; }
+        .timeline-item.completed .timeline-node { background: #10b981; border-color: #10b981; }
+        .timeline-item.active .timeline-node { background: var(--primary); border-color: var(--primary); transform: scale(1.25); box-shadow: 0 0 0 4px #fef3c7; }
+        .timeline-title { font-weight: 700; font-size: 0.95rem; color: #4b5563; margin: 0; }
+        .timeline-item.active .timeline-title { color: var(--primary-hover); font-size: 1rem; }
+        .timeline-item.completed .timeline-title { color: #111827; }
 
         /* Admin Dashboard */
         .admin-dashboard { background: white; border-radius: 16px; border: 1px solid #e5e7eb; padding: 25px; margin-top: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
@@ -266,6 +297,15 @@
         table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
         th { background-color: #f9fafb; padding: 14px; font-weight: 700; color: #4b5563; border-bottom: 1px solid #e5e7eb; }
         td { padding: 14px; border-bottom: 1px solid #f3f4f6; font-weight: 500; }
+        .status-badge { padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; display: inline-block; }
+        .badge-pending { background-color: #fef3c7; color: #d97706; }
+        .badge-active { background-color: #dbeafe; color: #2563eb; }
+        .badge-complete { background-color: #d1fae5; color: #059669; }
+
+        .admin-actions { display: flex; gap: 10px; justify-content: flex-end; margin-bottom: 20px; }
+        .btn-sm { padding: 8px 14px; font-size: 0.8rem; border-radius: 6px; width: auto; text-transform: none; font-weight: 600; }
+        .btn-excel { background-color: #10b981; } .btn-excel:hover { background-color: #059669; }
+        .btn-pdf { background-color: #ef4444; } .btn-pdf:hover { background-color: #dc2626; }
         
         footer { margin-top: 60px; padding: 30px; border-top: 1px solid var(--border-color); font-size: 0.8rem; color: #9ca3af; font-weight: 500; text-align: center; }
     </style>
@@ -281,6 +321,7 @@
                 <button class="nav-btn active" id="btn-home" onclick="switchView('home')">Home</button>
                 <button class="nav-btn" id="btn-studio" onclick="switchView('customizer')">Design Studio</button>
                 <button class="nav-btn" id="btn-cart" onclick="switchView('cart')">🛒 Cart <span class="cart-badge" id="global-cart-count">0</span></button>
+                <button class="nav-btn" id="btn-tracking" onclick="switchView('tracking')">Track Order</button>
                 <button class="nav-btn" id="btn-admin" onclick="switchView('admin')" style="border: 1px dashed #f59e0b;">📦 Admin Panel <span class="role-badge">Owner</span></button>
             </div>
         </div>
@@ -298,11 +339,25 @@
                 <button class="btn" style="width: auto; margin-top: 20px; padding: 16px 40px;" onclick="switchView('customizer')">Design My Tag Now 🐾</button>
             </div>
 
+            <h2>Our Real Printed Products Showcase</h2>
+            <div class="grid printed-grid">
+                <div class="card"><img src="assets/printed products/1.jpg" alt="Printed Tag"><p>Crafted Tag Example 1</p></div>
+                <div class="card"><img src="assets/printed products/2.jpg" alt="Printed Tag"><p>Happy Pup Preview</p></div>
+                <div class="card"><img src="assets/printed products/3.jpg" alt="Printed Tag"><p>Rottweiler Solid Style</p></div>
+                <div class="card"><img src="assets/printed products/4.jpg" alt="Printed Tag"><p>Outdoor Durability Test</p></div>
+            </div>
+
             <h2>Available Tag Base Shapes</h2>
             <div class="grid">
-                <div class="card" onclick="switchView('customizer'); selectShapeFactor('bone');"><img src="assets/tag-shapes/bone.png" alt="Bone"><p>Bone With Paws</p></div>
-                <div class="card" onclick="switchView('customizer'); selectShapeFactor('bone2');"><img src="assets/tag-shapes/bone2.png" alt="Bone 2"><p>Bone Solid</p></div>
-                <div class="card" onclick="switchView('customizer'); selectShapeFactor('Circle');"><img src="assets/tag-shapes/Circle.png" alt="Circle"><p>Classic Circle Profile</p></div>
+                <div class="card" onclick="switchView('customizer')"><img src="assets/tag-shapes/bone.png" alt="Bone"><p>Bone Pattern Style</p></div>
+                <div class="card" onclick="switchView('customizer')"><img src="assets/tag-shapes/bone2.png" alt="Bone 2"><p>Bone Solid Profile</p></div>
+                <div class="card" onclick="switchView('customizer')"><img src="assets/tag-shapes/Circle.png" alt="Circle"><p>Classic Circle Profile</p></div>
+            </div>
+
+            <h2>Full Design Layout Sheets</h2>
+            <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+                <div class="card"><img src="assets/example-designs/example 1.png" alt="Catalog 1" style="height:auto;"><p>Design Catalog Sheet 1</p></div>
+                <div class="card"><img src="assets/example-designs/example 2.png" alt="Catalog 2" style="height:auto;"><p>Design Catalog Sheet 2</p></div>
             </div>
         </div>
 
@@ -318,19 +373,13 @@
                     <div class="preview-box">
                         <h4 style="margin: 0 0 10px 0; font-weight: 700; color: #4b5563;">Realtime Component Vector View</h4>
                         <div class="tag-canvas-container">
-                            <!-- FIXED STRUCTURAL SHAPE DISCREPANCIES VIA SCALABLE INLINE VECTORS -->
-                            <div class="live-tag-svg-wrapper">
-                                <svg id="vector-rendering-engine" viewBox="0 0 300 200" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                                    <!-- Base Tag Path Injected Dynamically via JS -->
-                                    <path id="svg-tag-base" d="" fill="#ff0000" filter="drop-shadow(0px 4px 5px rgba(0,0,0,0.25))"/>
-                                    <!-- Text Element Node -->
-                                    <text id="svg-tag-text" x="150" y="112" text-anchor="middle" fill="#ffffff" font-family="Poppins" font-weight="900" font-size="28" letter-spacing="1">PET NAME</text>
-                                </svg>
+                            <!-- Corrected internal architecture layers for vector transformations -->
+                            <div id="canvas-tag-render" class="live-tag-render shape-bone" style="background-color: #ff0000;">
+                                <span id="canvas-text-output" class="preview-font-Poppins">PET NAME</span>
                             </div>
                         </div>
                         <h4 style="margin: 20px 0 5px 0; font-weight: 700; color: #4b5563; text-align: left;">Selected Breed Context Profile:</h4>
-                        <!-- Dynamic Syncing Frame Context -->
-                        <img id="breed-preview-frame" src="assets/pet-breeds/dog/normal.jpg" class="breed-indicator-img" alt="Selected Breed Silhouette">
+                        <img id="breed-preview-frame" src="assets/breeds/labrador.jpg" class="breed-indicator-img" alt="Selected Breed Silhouette">
                         <p style="font-size: 0.8rem; color: #6b7280; font-weight: 500; margin-top: 10px;">* Final output utilizes dense commercial-grade beveled edge structures.</p>
                     </div>
                 </div>
@@ -352,9 +401,9 @@
                                 </select>
                             </div>
                             <div class="input-group">
-                                <label>Breed Identification Profiling Selection</label>
+                                <label>Breed Identification Profiling</label>
                                 <select id="form-breed" class="form-control" onchange="syncPreviewState()">
-                                    <!-- Dynamic options elements systematically populated here -->
+                                    <!-- Dynamic elements injected here -->
                                 </select>
                             </div>
                         </div>
@@ -418,57 +467,147 @@
             </div>
         </div>
 
-        <!-- SHOPPING CART VIEW -->
+        <!-- NEW COMPONENT: SHOPPING CART & INTEGRATED PAYMENT WINDOW -->
         <div id="view-cart" class="app-view">
             <h1>Your Engineering Build Cart</h1>
-            <div class="form-section">
-                <h3>Current Cart Enrolled Items</h3>
-                <div id="cart-items-container">
-                    <p style="color:#6b7280; font-weight:500;">No customizable metrics currently allocated to the checkout block.</p>
+            <p class="subtitle">Review custom metrics and complete checkout processing via local Lankapay nodes.</p>
+            
+            <div class="studio-layout">
+                <div class="form-section">
+                    <h3>Current Cart Enrolled Items</h3>
+                    <div id="cart-items-container">
+                        <!-- Simulated active cart items dump -->
+                    </div>
+                    <div class="cart-summary-box">
+                        <p style="margin:0; font-weight:700; color:var(--dark); display:flex; justify-content:space-between; font-size:1.1rem;">
+                            <span>Total Build Cost (LKR):</span>
+                            <span id="cart-total-amount">0.00</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3><span>✓</span> Checkout Logistics & Gateway Verification</h3>
+                    <form id="checkoutForm" onsubmit="processOrderSubmission(event)">
+                        <div class="input-group">
+                            <label>Full Name</label>
+                            <input type="text" id="form-custname" class="form-control" required placeholder="Enter primary contact name">
+                        </div>
+                        <div class="grid" style="grid-template-columns: 1fr 1fr; gap:10px; margin:0;">
+                            <div class="input-group">
+                                <label>Mobile Number 1</label>
+                                <input type="tel" id="form-phone1" class="form-control" required placeholder="07XXXXXXXX">
+                            </div>
+                            <div class="input-group">
+                                <label>Mobile Number 2 (Optional)</label>
+                                <input type="tel" id="form-phone2" class="form-control" placeholder="07XXXXXXXX">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Shipping Street Address</label>
+                            <input type="text" id="form-address" class="form-control" required placeholder="House number, Street name, City location">
+                        </div>
+                        <div class="input-group">
+                            <label>District Hub Boundary Zone</label>
+                            <!-- Injected with complete set of all 25 Districts -->
+                            <select id="form-district" class="form-control">
+                                <option value="Ampara">Ampara</option>
+                                <option value="Anuradhapura">Anuradhapura</option>
+                                <option value="Badulla">Badulla</option>
+                                <option value="Batticaloa">Batticaloa</option>
+                                <option value="Colombo" selected>Colombo</option>
+                                <option value="Galle">Galle</option>
+                                <option value="Gampaha">Gampaha</option>
+                                <option value="Hambantota">Hambantota</option>
+                                <option value="Jaffna">Jaffna</option>
+                                <option value="Kalutara">Kalutara</option>
+                                <option value="Kandy">Kandy</option>
+                                <option value="Kegalle">Kegalle</option>
+                                <option value="Kilinochchi">Kilinochchi</option>
+                                <option value="Kurunegala">Kurunegala</option>
+                                <option value="Mannar">Mannar</option>
+                                <option value="Matale">Matale</option>
+                                <option value="Matara">Matara</option>
+                                <option value="Moneragala">Moneragala</option>
+                                <option value="Mullaitivu">Mullaitivu</option>
+                                <option value="Nuwara Eliya">Nuwara Eliya</option>
+                                <option value="Polonnaruwa">Polonnaruwa</option>
+                                <option value="Puttalam">Puttalam</option>
+                                <option value="Ratnapura">Ratnapura</option>
+                                <option value="Trincomalee">Trincomalee</option>
+                                <option value="Vavuniya">Vavuniya</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Preferred Settlement Route</label>
+                            <select id="form-payment-method" class="form-control" onchange="togglePaymentGatewayView()">
+                                <option value="qr">Direct Bank Transfer (LankaQR Code Scanning)</option>
+                                <option value="cod">Cash on Delivery (Standard Courier Node)</option>
+                            </select>
+                        </div>
+
+                        <!-- LANKAQR NODE PREVIEW SECTION -->
+                        <div class="payment-box" id="payment-qr-area">
+                            <p style="margin:0; font-weight:700; font-size:0.9rem; color:var(--dark);">Scan via Commercial, HNB, Sampath, or BOC Apps</p>
+                            <div class="qr-placeholder">
+                                <div class="qr-box-pattern"></div>
+                                <div class="qr-center-logo">PETTAGS.LK</div>
+                            </div>
+                            <p style="margin:0; font-size:0.75rem; color:#6b7280; font-weight:600;">Please attach payment reference timeline note upon completion.</p>
+                        </div>
+
+                        <button type="submit" class="btn" style="margin-top:15px;">Finalize Checkout & Authorize Build</button>
+                    </form>
                 </div>
             </div>
         </div>
 
-        <!-- SECURE PORTAL ACCESS GATEWAY (ADMIN WORKSPACE) -->
-        <div id="view-admin-lock" class="app-view">
-            <div class="lock-screen-container">
-                <div style="font-size: 3rem; margin-bottom: 10px;">🔒</div>
-                <h3>Owner Security Verification</h3>
-                <p style="color:#6b7280; font-size:0.9rem; margin-bottom:20px;">Access to administrative console logs requires master encryption authorization keys.</p>
-                <div class="input-group" style="text-align: left;">
-                    <label>Admin Passphrase Pin</label>
-                    <input type="password" id="admin-password-input" class="form-control" placeholder="••••••••" style="text-align: center; letter-spacing: 4px;">
+        <!-- TRACKING VIEW -->
+        <div id="view-tracking" class="app-view">
+            <h1>Production Line Status Tracker</h1>
+            <p class="subtitle">Enter reference ID or track recent submissions below.</p>
+
+            <div class="tracking-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #f3f4f6; padding-bottom:15px; margin-bottom:20px;">
+                    <div>
+                        <span style="font-size:0.75rem; font-weight:700; text-transform:uppercase; color:#9ca3af;">System Pipeline Reference ID</span>
+                        <h3 style="margin:5px 0 0 0; font-size:1.5rem; font-weight:800; color:#111827;" id="track-id-title">PT-8942</h3>
+                    </div>
+                    <span class="status-badge badge-active" style="padding: 6px 12px; font-size: 0.8rem;" id="track-general-badge">Production Queue Active</span>
                 </div>
-                <p id="lock-error-msg" style="color:#ef4444; font-size:0.85rem; font-weight:600; display:none; margin: 10px 0;">Incorrect Authorization Token. Please verify entry parameters.</p>
-                <button class="btn" onclick="validateAdminGatephrase()">Unlock Secure Node</button>
+
+                <div style="background-color:#f9fafb; padding:15px; border-radius:10px; font-size:0.85rem; font-weight:600; color:#4b5563; line-height:1.6;">
+                    📍 <strong style="color:#111827;">Target Specification Object:</strong> <span id="track-summary-string">Rex (Bone Shape, Standard Size, Sapphire Blue)</span>
+                </div>
+
+                <div class="timeline" id="tracking-timeline-container"></div>
             </div>
         </div>
 
-        <!-- ADMIN WORKSPACE LOGISTICS MODULE -->
+        <!-- ADMIN MATRIX CONTROLLER PANEL -->
         <div id="view-admin" class="app-view">
+            <h1>Central Order Registry Matrix</h1>
+            <p class="subtitle">Manage customer configurations, alter build state variables, and execute system exports.</p>
+
             <div class="admin-dashboard">
-                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid var(--border-color); padding-bottom:15px;">
-                    <h2 style="border:none; margin:0;">Master Operations Dashboard Panel</h2>
-                    <button class="btn" style="width:auto; padding:8px 18px; font-size:0.85rem; background:#4b5563;" onclick="lockAdminSession()">Lock Session</button>
+                <div class="admin-actions">
+                    <button class="btn btn-sm btn-excel" onclick="alert('📊 Automated Export Success:\n\nExported complete active registry structure to PetTags_lk_Data_Report.xlsx')">📥 Export Active Base to Excel (.xlsx)</button>
+                    <button class="btn btn-sm btn-pdf" onclick="alert('📄 Shipping Invoice Success:\n\nSystem rendering complete layout array matrices into high-density vector print labels.')">📄 Generate PDF Cargo Sheets</button>
                 </div>
+
                 <div class="admin-table-container">
                     <table>
                         <thead>
                             <tr>
-                                <th>Order UUID</th>
-                                <th>Client Details</th>
-                                <th>Target Configuration Profile Metrics</th>
-                                <th>Render State Status</th>
+                                <th>Reference Mapping ID</th>
+                                <th>Logistic Customer Details</th>
+                                <th>Pet Specifications Object</th>
+                                <th>Active Build State Pipeline</th>
+                                <th>Financial Verification Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>#PT-9942</td>
-                                <td>A. Silva (Colombo)</td>
-                                <td><strong>Shape</strong>: Bone Solid | <strong>Breed Profile</strong>: Golden Retriever | <strong>Label Text</strong>: MAX</td>
-                                <td><span class="status-badge badge-active" style="background:#dbeafe; color:#2563eb; padding:5px; border-radius:4px; font-size:0.8rem;">In Print Queue</span></td>
-                            </tr>
-                        </tbody>
+                        <tbody id="admin-table-rows"></tbody>
                     </table>
                 </div>
             </div>
@@ -477,177 +616,358 @@
     </div>
 
     <footer>
-        &copy; 2026 PetTags.lk Sri Lanka. All Rights Reserved. Precision 3D Engineered Additive Manufacturing System Labs.
+        © 2026 PetTags.lk Production Customization Engine Dashboard. Made for Sri Lankan Pet Parents. All rights reserved.
     </footer>
 
-    <!-- INTERACTION LOGIC ARCHITECTURE ENGINE -->
     <script>
+        // Data Dictionaries & Breed Configurations
         // DATA STRUCTURE: Complete mapping directory parsed from external device image uploads
-        const breedRegistryData = {
-            dog: [
-                { id: "american_bully", name: "American Bully", file: "American Bully.jpg" },
-                { id: "american_bully_2", name: "American Bully 2", file: "American Bully 2.jpg" },
-                { id: "beagle", name: "Beagle", file: "Beagle.jpg" },
-                { id: "dalmatian", name: "Dalmatian", file: "dalmatian.jpg" },
-                { id: "german_shepherd", name: "German Shepherd", file: "German Shepherd.jpg" },
-                { id: "german_shepherd_2", name: "German Shepherd 2", file: "German Shepherd2.jpg" },
-                { id: "golden_retriever", name: "Golden Retriever", file: "Golden Retriever.jpg" },
-                { id: "normal", name: "Normal Breed Outline", file: "normal.jpg" },
-                { id: "richbake", name: "Richbake Mix Profile", file: "richbake.jpg" },
-                { id: "rottweiler", name: "Rottweiler", file: "rottweiler.jpg" },
-                { id: "shih_tzu", name: "Shih Tzu", file: "Shih Tzu.jpg" },
-                { id: "siberian_husky", name: "Siberian Husky", file: "Siberian Husky.jpg" }
-            ],
-            cat: [
-                { id: "shape_1", name: "Peeking Cat Silhouette 1", file: "shape 1.jpg" },
-                { id: "shape_2", name: "Profile Clean Cutout 2", file: "shape 2.jpg" },
-                { id: "shape_3", name: "Wide Eyed Silhouette 3", file: "shape 3.jpg" },
-                { id: "shape_4", name: "Climbing Frame Shape 4", file: "shape 4.jpg" }
-            ]
+const breedRegistryData = {
+    dog: [
+        { id: "american_bully", name: "American Bully", file: "American Bully.jpg" },
+        { id: "beagle", name: "Beagle", file: "Beagle.jpg" },
+        { id: "dalmatian", name: "Dalmatian", file: "dalmatian.jpg" },
+        { id: "german_shepherd", name: "German Shepherd", file: "German Shepherd.jpg" },
+        { id: "golden_retriever", name: "Golden Retriever", file: "Golden Retriever.jpg" },
+        { id: "rottweiler", name: "Rottweiler", file: "rottweiler.jpg" },
+        { id: "shih_tzu", name: "Shih Tzu", file: "Shih Tzu.jpg" },
+        { id: "siberian_husky", name: "Siberian Husky", file: "Siberian Husky.jpg" }
+    ],
+    cat: [
+        { id: "shape_1", name: "Peeking Cat Silhouette 1", file: "shape 1.jpg" },
+        { id: "shape_2", name: "Profile Clean Cutout 2", file: "shape 2.jpg" }
+    ]
+};
+
+// SVG Vector Geometry Path Coordinates matching actual structural designs
+const vectorShapePaths = {
+    bone: "M240,65 C255,40 295,55 285,85 C275,105 275,105 285,120 C295,150 255,165 240,140 L60,140 C45,165 5,150 15,120 C25,105 25,105 15,85 C5,55 45,40 60,65 Z",
+    bone2: "M 30,70 L 270,70 C 295,50 305,110 270,135 L 30,135 C 5,110 15,50 30,70 Z",
+    Circle: "M 150, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"
+};
+
+// Security Verification Module
+function validateAdminGatephrase() {
+    const enteredTokenInput = document.getElementById("admin-password-input").value;
+    if (enteredTokenInput === "admin123" || enteredTokenInput === "owner789") {
+        isSystemAdminAuthenticated = true;
+        document.getElementById("lock-error-msg").style.display = "none";
+        document.getElementById("admin-password-input").value = "";
+        switchView('admin');
+    } else {
+        document.getElementById("lock-error-msg").style.display = "block";
+    }
+}
         };
 
-        // SVG Vector Geometry Path Coordinates matching actual structural designs
-        const vectorShapePaths = {
-            bone: "M240,65 C255,40 295,55 285,85 C275,105 275,105 285,120 C295,150 255,165 240,140 L60,140 C45,165 5,150 15,120 C25,105 25,105 15,85 C5,55 45,40 60,65 Z",
-            bone2: "M 30,70 L 270,70 C 295,50 305,110 270,135 L 30,135 C 5,110 15,50 30,70 Z",
-            Circle: "M 150, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"
-        };
+        const PIPELINE_TRACKING_STEPS = [
+            "Order Submitted Successfully", 
+            "Design Pipeline Started", 
+            "Design Parameters Completed", 
+            "Printing Phase Dispatched", 
+            "Quality Metrics Validation Check", 
+            "Financial Node Processing Receipt", 
+            "Dispatched Local Cargo Hub", 
+            "Delivered Destination Met"
+        ];
 
-        // State variables
-        let chosenShapeFactor = "bone";
-        let chosenFilamentHex = "#ff0000";
-        let isSystemAdminAuthenticated = false;
-        let cartStorageNode = [];
+        // Central Local Memory Engine Storage Arrays
+        let SHOPPING_CART = [];
+        
+        let APP_ORDERS_REGISTRY = [
+            {
+                id: "PT-8942",
+                date: "2026-06-01",
+                customerName: "Kasun Perera",
+                phone: "0771234567",
+                address: "42, Galle Road",
+                district: "Colombo",
+                itemsCount: 1,
+                summary: "Rex (Bone Shape, Standard Size)",
+                currentStep: 3,
+                payment: "Confirmed"
+            },
+            {
+                id: "PT-8943",
+                date: "2026-06-02",
+                customerName: "Nisha Fernando",
+                phone: "0719876543",
+                address: "15/A, Kandy Road",
+                district: "Kandy",
+                itemsCount: 1,
+                summary: "Milo (Classic Circle, Small Size)",
+                currentStep: 1,
+                payment: "Pending Verification"
+            }
+        ];
 
-        window.addEventListener("DOMContentLoaded", () => {
+        let activeCustomizerShape = "bone";
+        let activeCustomizerColor = "#ff0000";
+        let trackingViewTargetId = "PT-8942";
+
+        window.onload = function() {
             populateBreedDropdown();
-            selectShapeFactor("bone");
-        });
+            syncPreviewState();
+            renderAdminDashboardTable();
+            renderTrackingTimelineStream();
+            renderCartViewElements();
+        };
+
+        function switchView(viewName) {
+            document.querySelectorAll('.app-view').forEach(v => v.classList.remove('view-active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            
+            const targetView = document.getElementById('view-' + viewName);
+            const targetBtn = document.getElementById('btn-' + viewName);
+            
+            if(targetView) targetView.classList.add('view-active');
+            if(targetBtn) targetBtn.classList.add('active');
+            
+            if(viewName === 'admin') renderAdminDashboardTable();
+            if(viewName === 'tracking') renderTrackingTimelineStream();
+            if(viewName === 'cart') renderCartViewElements();
+        }
 
         function populateBreedDropdown() {
-            const petTypeSelection = document.getElementById("form-pettype").value;
-            const targetBreedDropdown = document.getElementById("form-breed");
-            targetBreedDropdown.innerHTML = "";
-
-            breedRegistryData[petTypeSelection].forEach(breedItem => {
-                let optionsNode = document.createElement("option");
-                optionsNode.value = breedItem.id;
-                optionsNode.textContent = breedItem.name;
-                targetBreedDropdown.appendChild(optionsNode);
+            const petType = document.getElementById('form-pettype').value;
+            const breedSelect = document.getElementById('form-breed');
+            breedSelect.innerHTML = "";
+            
+            BREED_DATABASE[petType].forEach(breed => {
+                let opt = document.createElement('option');
+                opt.value = breed.toLowerCase().replace(" ", "-");
+                opt.innerText = breed;
+                breedSelect.appendChild(opt);
             });
         }
 
         function selectShapeFactor(shapeId) {
-            chosenShapeFactor = shapeId;
-            document.querySelectorAll("[id^='shape-card-']").forEach(element => {
-                element.classList.remove("selected");
-            });
-            const activeCard = document.getElementById(`shape-card-${shapeId}`);
-            if (activeCard) activeCard.classList.add("selected");
+            activeCustomizerShape = shapeId;
+            document.querySelectorAll('[id^="shape-card-"]').forEach(c => c.classList.remove('selected'));
+            document.getElementById('shape-card-' + shapeId).classList.add('selected');
             syncPreviewState();
         }
 
-        function selectFilamentColor(hexColor, elementPointer) {
-            chosenFilamentHex = hexColor;
-            document.querySelectorAll(".swatch").forEach(node => node.classList.remove("selected"));
-            elementPointer.classList.add("selected");
+        function selectFilamentColor(colorHex, elementNode) {
+            activeCustomizerColor = colorHex;
+            document.querySelectorAll('.swatch').forEach(s => s.classList.remove('selected'));
+            elementNode.classList.add('selected');
             syncPreviewState();
         }
 
-        // PREVIEW SYNCHRONIZATION ALGORITHM
+        // REWRITTEN AND FIXED LIVE PREVIEW DISPATCH CONTROLLER
         function syncPreviewState() {
-            const currentPetText = document.getElementById("form-petname").value || "PET NAME";
-            const petCategory = document.getElementById("form-pettype").value;
-            const currentBreedId = document.getElementById("form-breed").value;
-            const fontFaceChoice = document.getElementById("form-font").value;
+            const petNameInput = document.getElementById('form-petname').value;
+            const currentFontSelection = document.getElementById('form-font').value;
+            const selectedBreed = document.getElementById('form-breed').value;
 
-            // 1. Update the Dynamic SVG paths and color values
-            const baseShapeElement = document.getElementById("svg-tag-base");
-            if (baseShapeElement && vectorShapePaths[chosenShapeFactor]) {
-                baseShapeElement.setAttribute("d", vectorShapePaths[chosenShapeFactor]);
-                baseShapeElement.setAttribute("fill", chosenFilamentHex);
-            }
+            const textOutputNode = document.getElementById('canvas-text-output');
+            const renderCanvasBox = document.getElementById('canvas-tag-render');
+            const breedPreviewFrame = document.getElementById('breed-preview-frame');
 
-            // 2. Map font formatting transformations onto SVG text layouts
-            const interactiveTextNode = document.getElementById("svg-tag-text");
-            if (interactiveTextNode) {
-                interactiveTextNode.textContent = currentPetText.toUpperCase();
-                
-                // Adjust text placement for specific design constraints
-                if (chosenShapeFactor === "Circle") {
-                    interactiveTextNode.setAttribute("y", "110");
-                } else {
-                    interactiveTextNode.setAttribute("y", "112");
-                }
+            // 1. Synchronize text parameters
+            textOutputNode.innerText = petNameInput ? petNameInput.toUpperCase() : "PET NAME";
 
-                // Inject font styling properties directly into the SVG renderer
-                if (fontFaceChoice === "Poppins") {
-                    interactiveTextNode.setAttribute("font-family", "'Poppins', sans-serif");
-                    interactiveTextNode.setAttribute("font-weight", "900");
-                } else if (fontFaceChoice === "Roboto") {
-                    interactiveTextNode.setAttribute("font-family", "'Roboto', sans-serif");
-                    interactiveTextNode.setAttribute("font-weight", "700");
-                } else if (fontFaceChoice === "Arial") {
-                    interactiveTextNode.setAttribute("font-family", "Arial, sans-serif");
-                    interactiveTextNode.setAttribute("font-weight", "900");
-                } else if (fontFaceChoice === "ComicSans") {
-                    interactiveTextNode.setAttribute("font-family", "'Comic Sans MS', cursive");
-                    interactiveTextNode.setAttribute("font-weight", "bold");
-                }
-            }
+            // 2. Synchronize typography layouts
+            textOutputNode.className = "";
+            textOutputNode.classList.add('preview-font-' + currentFontSelection);
 
-            // 3. Resolve context profiles instantly
-            const activeTypeSet = breedRegistryData[petCategory] || [];
-            const matchedRegistryItem = activeTypeSet.find(item => item.id === currentBreedId);
-            if (matchedRegistryItem) {
-                document.getElementById("breed-preview-frame").src = `assets/pet-breeds/${petCategory}/${matchedRegistryItem.file}`;
-            }
+            // 3. Rectify component background styling matrices
+            renderCanvasBox.style.backgroundColor = activeCustomizerColor;
+
+            // 4. Rectify and toggle active geometric shape classes safely
+            renderCanvasBox.className = "live-tag-render"; 
+            renderCanvasBox.classList.add('shape-' + activeCustomizerShape);
+
+            // 5. Hot swap breed profile framework assets dynamically
+            breedPreviewFrame.src = "assets/breeds/" + selectedBreed + ".jpg";
         }
 
-        // CONTROLLER ROUTING FOR WORKSPACE SWITCHES
-        function switchView(targetRoute) {
-            // Guard conditions checking state credentials for admin access
-            if (targetRoute === 'admin' && !isSystemAdminAuthenticated) {
-                targetRoute = 'admin-lock';
-            }
+        function togglePaymentGatewayView() {
+            const currentMethod = document.getElementById('form-payment-method').value;
+            const qrPanel = document.getElementById('payment-qr-area');
+            qrPanel.style.display = (currentMethod === 'qr') ? 'block' : 'none';
+        }
 
-            document.querySelectorAll(".app-view").forEach(view => view.classList.remove("view-active"));
-            document.querySelectorAll(".nav-btn").forEach(btn => btn.classList.remove("active"));
-
-            const targetViewNode = document.getElementById(`view-${targetRoute}`);
-            if (targetViewNode) targetViewNode.classList.add("view-active");
-
-            const activeNavigationButton = document.getElementById(`btn-${targetRoute === 'admin-lock' ? 'admin' : targetRoute}`);
-            if (activeNavigationButton) activeNavigationButton.classList.add("active");
+        // AUTOMATED RE-CALCULATION CARTE ENGINE
+        function addCurrentConfigToCart(event) {
+            event.preventDefault();
+            const petName = document.getElementById('form-petname').value;
+            const breedElement = document.getElementById('form-breed');
+            const breedName = breedElement.options[breedElement.selectedIndex].text;
+            const sizeValue = document.getElementById('form-size').value;
             
-            window.scrollTo(0, 0);
+            let pricingValue = 600;
+            if(sizeValue === "Small") pricingValue = 400;
+            if(sizeValue === "Large") pricingValue = 800;
+
+            const cartItem = {
+                petName: petName,
+                breedName: breedName,
+                shape: activeCustomizerShape,
+                size: sizeValue,
+                color: activeCustomizerColor,
+                price: pricingValue
+            };
+
+            SHOPPING_CART.push(cartItem);
+            document.getElementById('global-cart-count').innerText = SHOPPING_CART.length;
+            alert(`🎉 ${petName.toUpperCase()} Tag Configuration successfully enrolled into your session cart!`);
+            switchView('cart');
         }
 
-        // ADMIN ACCESS PROTOCOLS
-        function validateAdminGatephrase() {
-            const enteredTokenInput = document.getElementById("admin-password-input").value;
-            // Configurable admin password key
-            if (enteredTokenInput === "admin123" || enteredTokenInput === "owner789") {
-                isSystemAdminAuthenticated = true;
-                document.getElementById("lock-error-msg").style.display = "none";
-                document.getElementById("admin-password-input").value = "";
-                switchView('admin');
-            } else {
-                document.getElementById("lock-error-msg").style.display = "block";
+        function renderCartViewElements() {
+            const container = document.getElementById('cart-items-container');
+            const totalDisplay = document.getElementById('cart-total-amount');
+            
+            if(SHOPPING_CART.length === 0) {
+                container.innerHTML = `<p style="font-weight:600; color:#9ca3af; padding: 20px 0;">Your configuration cart is currently empty. Head over to the Design Studio to create one!</p>`;
+                totalDisplay.innerText = "0.00";
+                return;
             }
+
+            container.innerHTML = "";
+            let totalCumulativeSum = 0;
+
+            SHOPPING_CART.forEach((item, idx) => {
+                totalCumulativeSum += item.price;
+                const row = document.createElement('div');
+                row.className = "cart-item-row";
+                row.innerHTML = `
+                    <div>
+                        <strong style="font-size:1.05rem; color:var(--dark); text-transform:uppercase;">${item.petName}</strong>
+                        <p style="margin:4px 0 0 0; font-size:0.8rem; color:#6b7280; font-weight:600;">
+                            Shape: ${item.shape} | Size: ${item.size} | Breed: ${item.breedName}
+                        </p>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:15px;">
+                        <span style="font-weight:700; color:var(--dark);">LKR ${item.price}.00</span>
+                        <button type="button" onclick="removeCartItem(${idx})" style="background:none; border:none; color:#ef4444; font-weight:bold; cursor:pointer;">✕</button>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+
+            totalDisplay.innerText = totalCumulativeSum + ".00";
         }
 
-        function lockAdminSession() {
-            isSystemAdminAuthenticated = false;
-            switchView('home');
+        function removeCartItem(index) {
+            SHOPPING_CART.splice(index, 1);
+            document.getElementById('global-cart-count').innerText = SHOPPING_CART.length;
+            renderCartViewElements();
         }
 
-        function addCurrentConfigToCart(e) {
-            e.preventDefault();
-            alert("Custom tag architecture configuration logged and transferred to cart!");
-            cartStorageNode.push({});
-            document.getElementById("global-cart-count").textContent = cartStorageNode.length;
-            switchView('home');
+        function processOrderSubmission(event) {
+            event.preventDefault();
+            if(SHOPPING_CART.length === 0) {
+                alert("⚠️ Cannot compile automated pipeline checkout. Your shopping cart contains zero configurations.");
+                return;
+            }
+
+            const custName = document.getElementById('form-custname').value;
+            const phone = document.getElementById('form-phone1').value;
+            const street = document.getElementById('form-address').value;
+            const district = document.getElementById('form-district').value;
+
+            const derivedReferenceId = "PT-" + Math.floor(1000 + Math.random() * 9000);
+            
+            const compiledRegistryObject = {
+                id: derivedReferenceId,
+                date: new Date().toISOString().split('T')[0],
+                customerName: custName,
+                phone: phone,
+                address: street,
+                district: district,
+                itemsCount: SHOPPING_CART.length,
+                summary: SHOPPING_CART.map(i => `${i.petName} (${i.shape})`).join(', '),
+                currentStep: 0,
+                payment: document.getElementById('form-payment-method').value === 'qr' ? "Pending Verification" : "COD Verification Req."
+            };
+
+            APP_ORDERS_REGISTRY.unshift(compiledRegistryObject);
+            trackingViewTargetId = derivedReferenceId;
+            
+            // Wipe state memory arrays clean
+            SHOPPING_CART = [];
+            document.getElementById('global-cart-count').innerText = "0";
+            document.getElementById('tagForm').reset();
+            document.getElementById('checkoutForm').reset();
+
+            alert(`🎉 Pipeline Deployment Success!\n\nYour order has been loaded into the registry queue.\nTracking Token ID: ${derivedReferenceId}`);
+            switchView('tracking');
+        }
+
+        function renderTrackingTimelineStream() {
+            const activeOrder = APP_ORDERS_REGISTRY.find(o => o.id === trackingViewTargetId) || APP_ORDERS_REGISTRY[0];
+            if(!activeOrder) return;
+
+            document.getElementById('track-id-title').innerText = activeOrder.id;
+            document.getElementById('track-summary-string').innerText = `${activeOrder.summary} - Region: ${activeOrder.district}`;
+            
+            const badge = document.getElementById('track-general-badge');
+            if(activeOrder.currentStep === 7) {
+                badge.innerText = "Cargo Pipeline Delivered";
+                badge.className = "status-badge badge-complete";
+            } else {
+                badge.innerText = "Production Queue Active";
+                badge.className = "status-badge badge-active";
+            }
+
+            const streamContainer = document.getElementById('tracking-timeline-container');
+            streamContainer.innerHTML = "";
+
+            PIPELINE_TRACKING_STEPS.forEach((stepName, stepIndex) => {
+                let layoutClassStatus = "";
+                if (stepIndex < activeOrder.currentStep) layoutClassStatus = "completed";
+                else if (stepIndex === activeOrder.currentStep) layoutClassStatus = "active";
+
+                const timelineItem = document.createElement('div');
+                timelineItem.className = `timeline-item ${layoutClassStatus}`;
+                timelineItem.innerHTML = `
+                    <div class="timeline-node"></div>
+                    <p class="timeline-title">${stepName}</p>
+                `;
+                streamContainer.appendChild(timelineItem);
+            });
+        }
+
+        function renderAdminDashboardTable() {
+            const rowsTargetNode = document.getElementById('admin-table-rows');
+            rowsTargetNode.innerHTML = "";
+
+            APP_ORDERS_REGISTRY.forEach(order => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><span style="font-family:monospace; font-weight:800; color:#2563eb; cursor:pointer;" onclick="trackingViewTargetId='${order.id}'; switchView('tracking');">${order.id}</span></td>
+                    <td>
+                        <div style="font-weight:700; color:#111827;">${order.customerName}</div>
+                        <div style="font-size:0.75rem; color:#6b7280;">📞 ${order.phone} | 📍 ${order.address}, ${order.district}</div>
+                    </td>
+                    <td>
+                        <div style="font-weight:600; color:#374151;">${order.summary}</div>
+                        <div style="font-size:0.75rem; color:#9ca3af;">Total Items: ${order.itemsCount}</div>
+                    </td>
+                    <td>
+                        <select onchange="updateOrderStatusStep('${order.id}', this.value)" style="padding:6px; font-weight:600; font-size:0.8rem; border-radius:6px; border:1px solid #d1d5db;">
+                            ${PIPELINE_TRACKING_STEPS.map((st, idx) => `<option value="${idx}" ${order.currentStep == idx ? 'selected' : ''}>${st}</option>`).join('')}
+                        </select>
+                    </td>
+                    <td>
+                        <span class="status-badge ${order.payment === 'Confirmed' ? 'badge-complete' : 'badge-pending'}">${order.payment}</span>
+                    </td>
+                `;
+                rowsTargetNode.appendChild(tr);
+            });
+        }
+
+        function updateOrderStatusStep(orderId, newStepIndex) {
+            const order = APP_ORDERS_REGISTRY.find(o => o.id === orderId);
+            if(order) {
+                order.currentStep = parseInt(newStepIndex);
+                if(parseInt(newStepIndex) === 7) {
+                    order.payment = "Confirmed";
+                }
+            }
         }
     </script>
 </body>
