@@ -21,7 +21,7 @@
         }
 
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0; 
             padding: 0; 
             background-color: var(--light); 
@@ -29,7 +29,7 @@
         }
 
         header { 
-            background: white; 
+            background: white;
             padding: 20px; 
             box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
             position: sticky;
@@ -56,7 +56,7 @@
         }
 
         .logo { 
-            width: 220px; 
+            width: 220px;
             height: auto; 
             object-fit: contain; 
             transition: transform 0.2s ease;
@@ -135,18 +135,51 @@
         .preview-font-Arial { font-family: 'Arial Black', 'Arial', sans-serif; font-weight: 900; }
         .preview-font-ComicSans { font-family: 'Comic Sans MS', cursive, sans-serif; font-weight: 700; }
 
-        /* Grid Layout Frameworks (Fully Mobile Responsive) */
+        /* Grid Layout Frameworks */
         .grid { 
-            display: grid; 
+            display: grid;
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
             gap: 20px; 
             margin: 20px 0; 
         }
-        .printed-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+
+        /* NEW DYNAMIC AUTOMATIC HORIZONTAL CAROUSEL SYSTEM */
+        .carousel-wrapper {
+            overflow: hidden;
+            width: 100%;
+            padding: 20px 0;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+            animation: scrollCarousel 40s linear infinite;
+        }
+
+        /* Pause auto-scroll when user hovers over it to explore */
+        .carousel-wrapper:hover .carousel-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollCarousel {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Scrolls exactly half way (through first identical set) */
+        }
+
+        .carousel-item {
+            width: 220px;
+            flex-shrink: 0;
+        }
 
         /* Cards and Item Selection Matrices */
         .card { 
-            background: white; 
+            background: white;
             border-radius: 12px; 
             overflow: hidden; 
             box-shadow: 0 4px 12px rgba(0,0,0,0.04); 
@@ -158,7 +191,7 @@
         .card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
         .card.selected { border-color: var(--primary); background-color: #fffbeb; }
         .card img { width: 100%; height: 160px; object-fit: cover; display: block; background-color: #f3f4f6; }
-        .printed-grid .card img { height: 240px; }
+        .carousel-item .card img { height: 240px; }
         .card p { margin: 12px; font-weight: 600; font-size: 0.9rem; color: #444; text-transform: capitalize; }
         
         .card-checkbox {
@@ -288,17 +321,7 @@
         .timeline-item.completed .timeline-title { color: #111827; }
 
         /* Admin Dashboard System Styling */
-        .lock-screen-container {
-            max-width: 400px;
-            margin: 60px auto;
-            background: white;
-            padding: 35px;
-            border-radius: 16px;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-
+        .lock-screen-container { max-width: 400px; margin: 60px auto; background: white; padding: 35px; border-radius: 16px; border: 1px solid #e5e7eb; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; }
         .admin-dashboard { background: white; border-radius: 16px; border: 1px solid #e5e7eb; padding: 25px; margin-top: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
         .admin-table-container { overflow-x: auto; margin-top: 20px; border-radius: 12px; border: 1px solid #e5e7eb; }
         table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
@@ -309,7 +332,6 @@
         .badge-pending { background-color: #fef3c7; color: #d97706; }
         .badge-active { background-color: #dbeafe; color: #2563eb; }
         .badge-complete { background-color: #d1fae5; color: #059669; }
-
         .admin-actions { display: flex; gap: 10px; justify-content: flex-end; margin-bottom: 20px; }
         .btn-sm { padding: 8px 14px; font-size: 0.8rem; border-radius: 6px; width: auto; text-transform: none; font-weight: 600; }
         
@@ -345,11 +367,35 @@
             </div>
 
             <h2>Our Real Printed Products Showcase</h2>
-            <div class="grid printed-grid">
-                <div class="card"><img src="assets/printed products/1.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Premium+Tag+1'"><p>Crafted Tag Example 1</p></div>
-                <div class="card"><img src="assets/printed products/2.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Happy+Pup+Preview'"><p>Happy Pup Preview</p></div>
-                <div class="card"><img src="assets/printed products/3.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Rottweiler+Solid'"><p>Rottweiler Solid Style</p></div>
-                <div class="card"><img src="assets/printed products/4.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Outdoor+Durability'"><p>Outdoor Durability Test</p></div>
+            
+            <div class="carousel-wrapper">
+                <div class="carousel-track">
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/2.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Happy+Pup+Preview'"><p>Happy Pup Preview</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/3.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Rottweiler+Solid'"><p>Rottweiler Solid Style</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/4.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Outdoor+Durability'"><p>Outdoor Durability Test</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/5.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Premium+Design+5'"><p>Premium Tag Badge 5</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/6.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Neon+Glow+Style'"><p>Neon Glow Edition 6</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/7.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Durable+Bone+7'"><p>Durable Bone Finish 7</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/8.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Classic+Circle+8'"><p>Classic Circle Coat 8</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/9.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Bold+Text+Pro+9'"><p>Bold Text Pro 9</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/10.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Chunky+Pet+Fit+10'"><p>Chunky Pet Fit 10</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/11.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Sleek+Kitty+Profile'"><p>Sleek Kitty Profile 11</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/12.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Heavy+Duty+Extrusion'"><p>Heavy Extrusion Build 12</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/13.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Owner+Choice+13'"><p>Owner Choice Tag 13</p></div></div>
+                    
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/2.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Happy+Pup+Preview'"><p>Happy Pup Preview</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/3.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Rottweiler+Solid'"><p>Rottweiler Solid Style</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/4.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Outdoor+Durability'"><p>Outdoor Durability Test</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/5.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Premium+Design+5'"><p>Premium Tag Badge 5</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/6.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Neon+Glow+Style'"><p>Neon Glow Edition 6</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/7.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Durable+Bone+7'"><p>Durable Bone Finish 7</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/8.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Classic+Circle+8'"><p>Classic Circle Coat 8</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/9.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Bold+Text+Pro+9'"><p>Bold Text Pro 9</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/10.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Chunky+Pet+Fit+10'"><p>Chunky Pet Fit 10</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/11.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Sleek+Kitty+Profile'"><p>Sleek Kitty Profile 11</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/12.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Heavy+Duty+Extrusion'"><p>Heavy Extrusion Build 12</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/13.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Owner+Choice+13'"><p>Owner Choice Tag 13</p></div></div>
+                </div>
             </div>
 
             <h2>Available Tag Base Shapes</h2>
@@ -384,19 +430,17 @@
                                 </svg>
                             </div>
                         </div>
+        
                         <h4 style="margin: 20px 0 5px 0; font-weight: 700; color: #4b5563; text-align: left;">Selected Breed Context Profile:</h4>
-                        
                         <div class="breed-preview-wrapper">
                             <img id="breed-preview-frame" src="assets/pet-breeds/dog/American Bully.jpg" class="breed-indicator-img" alt="Selected Breed Silhouette">
                         </div>
-
                         <p style="font-size: 0.8rem; color: #6b7280; font-weight: 500; margin-top: 10px;">* Final output utilizes dense commercial-grade beveled edge structures.</p>
                     </div>
                 </div>
 
                 <div class="form-flow">
                     <form id="tagForm" onsubmit="addCurrentConfigToCart(event)">
-                        
                         <div class="form-section">
                             <h3><span>1</span> Pet Specification Details</h3>
                             <div class="input-group">
@@ -419,7 +463,6 @@
 
                         <div class="form-section">
                             <h3><span>2</span> Structural Form Configuration</h3>
-                            
                             <div class="input-group">
                                 <label>Base Structural Matrix Shape</label>
                                 <div class="grid" style="grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 5px 0 15px 0;">
@@ -556,29 +599,48 @@
                             <p style="margin:0; font-weight:700; font-size:0.9rem; color:var(--dark);">Scan via Commercial, HNB, Sampath, or BOC Apps</p>
                             <div class="qr-placeholder">
                                 <div class="qr-box-pattern"></div>
-                                <div class="qr-center-logo">LANKA QR</div>
+                                <div class="qr-center-logo">PETTAGS.LK</div>
                             </div>
+                            <p style="margin:0; font-size:0.75rem; color:#6b7280; font-weight:600;">Please attach payment reference timeline note upon completion.</p>
                         </div>
-                        
-                        <button type="submit" class="btn btn-secondary" style="margin-top:20px;">Place Order Securely</button>
+
+                        <button type="submit" class="btn" style="margin-top:15px;">Finalize Checkout & Authorize Build</button>
                     </form>
                 </div>
             </div>
         </div>
 
         <div id="view-tracking" class="app-view">
-            <div class="tracking-card">
-                <h2>Track Your Custom Production Build</h2>
-                <div class="input-group" style="display:flex; gap:10px; margin-top:20px;">
-                    <input type="text" id="search-track-id" class="form-control" placeholder="Enter Order Identification ID (e.g., ORD-1234)">
-                    <button class="btn" style="width:auto; white-space:nowrap;" onclick="lookupOrderTracking()">Query Engine</button>
+            <h1>Production Line Status Tracker</h1>
+            <p class="subtitle">Enter reference ID below to pull live pipeline build staging statistics.</p>
+            
+            <div class="lock-screen-container" style="max-width: 550px; margin-top: 30px;">
+                <div class="input-group" style="display:flex; gap:10px; margin-bottom:0;">
+                    <input type="text" id="tracking-search-id" class="form-control" placeholder="e.g. PT-9982" style="text-transform: uppercase;">
+                    <button class="btn" style="width:auto; padding:0 25px;" onclick="searchOrderTracking()">Track</button>
                 </div>
-                <div id="tracking-result-area" style="margin-top:30px; display:none;">
-                    <h3>Order Status History: <span id="track-display-id" style="color:var(--primary)"></span></h3>
-                    <div class="timeline">
-                        <div class="timeline-item" id="node-pending"><div class="timeline-node"></div><p class="timeline-title">Order Received / Filament Batch Allocated</p></div>
-                        <div class="timeline-item" id="node-printing"><div class="timeline-node"></div><p class="timeline-title">In 3D Print Array Production Line</p></div>
-                        <div class="timeline-item" id="node-shipped"><div class="timeline-node"></div><p class="timeline-title">Handed Over to Domestic Logistics Hub</p></div>
+            </div>
+
+            <div id="tracking-result-box" class="tracking-card" style="display:none;">
+                <h3 style="margin:0 0 5px 0;" id="track-manifest-id">Order ID: PT-0000</h3>
+                <p style="margin:0 0 15px 0; font-size:0.9rem; color:#6b7280;" id="track-manifest-name">Customer: ...</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item" id="node-stage-1">
+                        <div class="timeline-node"></div>
+                        <p class="timeline-title">Order Received & Payment Verified</p>
+                    </div>
+                    <div class="timeline-item" id="node-stage-2">
+                        <div class="timeline-node"></div>
+                        <p class="timeline-title">3D Slice Engine Model Optimization Queue</p>
+                    </div>
+                    <div class="timeline-item" id="node-stage-3">
+                        <div class="timeline-node"></div>
+                        <p class="timeline-title">Filament Layer Extrusion Printing Staging</p>
+                    </div>
+                    <div class="timeline-item" id="node-stage-4">
+                        <div class="timeline-node"></div>
+                        <p class="timeline-title">Dispatched via Local Courier Delivery Loop</p>
                     </div>
                 </div>
             </div>
@@ -586,38 +648,44 @@
 
         <div id="view-admin-lock" class="app-view">
             <div class="lock-screen-container">
-                <h2>Admin Panel Verification Gateway</h2>
-                <div class="input-group" style="margin-top:20px;">
-                    <label>Security Keyphrase</label>
-                    <input type="password" id="admin-passkey" class="form-control" placeholder="••••••••">
+                <div style="font-size: 2.5rem; margin-bottom: 15px;">🔐</div>
+                <h3>Owner Gateway Clearance</h3>
+                <p style="color:#6b7280; font-size:0.85rem; margin-top:-10px; margin-bottom:20px;">Access require authorization token signature.</p>
+                <div class="input-group">
+                    <input type="password" id="admin-pass-key" class="form-control" placeholder="Enter security passphrase key">
                 </div>
-                <button class="btn" style="margin-top:10px;" onclick="authenticateAdminGateway()">Access Environment</button>
+                <button class="btn" onclick="validateAdminClearance()">Unlock Management Core</button>
             </div>
         </div>
 
         <div id="view-admin-dashboard" class="app-view">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <h1>Production Pipeline Control Console</h1>
+                    <p class="subtitle">Manage, view details, update print statuses, or export configurations.</p>
+                </div>
+                <button class="btn btn-secondary" style="width:auto;" onclick="switchView('home')">Exit Session</button>
+            </div>
+
             <div class="admin-dashboard">
-                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-                    <h2>Production Control Environment</h2>
-                    <button class="btn btn-secondary btn-sm" onclick="switchView('home')">Terminate Session</button>
-                </div>
                 <div class="admin-actions">
-                    <button class="btn btn-secondary btn-sm" onclick="clearAllSystemOrders()">Purge Database Memory</button>
+                    <button class="btn btn-sm btn-excel" onclick="alert('Exporting data to spreadsheet format...')">📊 Export Excel Sheet</button>
+                    <button class="btn btn-sm btn-pdf" onclick="alert('Generating print ready manifest PDF...')">📋 Print PDF Manifest</button>
                 </div>
+
                 <div class="admin-table-container">
                     <table>
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Customer Logistics</th>
-                                <th>Tag Configuration Build Metrics</th>
+                                <th>Order Ref</th>
+                                <th>Client Details</th>
+                                <th>Enrolled Tags Metadata Specs</th>
                                 <th>Total Cost</th>
-                                <th>Pipeline State</th>
-                                <th style="text-align:right">Interventions</th>
+                                <th>Current Status Node</th>
+                                <th style="text-align: right;">Action Operation</th>
                             </tr>
                         </thead>
-                        <tbody id="admin-orders-table-body">
-                            </tbody>
+                        <tbody id="admin-orders-table-rows"></tbody>
                     </table>
                 </div>
             </div>
@@ -626,333 +694,405 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 PetTags.lk Additive Manufacturing Systems. Colombo, Sri Lanka.</p>
+        <p>© 2026 PetTags.lk Sri Lanka. Precision Engineered Custom 3D Filament Label Components.</p>
     </footer>
 
     <script>
-        // System Databases
-        let systemCart = [];
-        let globalOrdersDatabase = JSON.parse(localStorage.getItem('pettags_orders')) || [];
-        let currentSelectedShape = 'bone';
-        let currentSelectedColor = '#ff0000';
-
-        const breedDictionary = {
-            dog: ['American Bully', 'German Shepherd', 'Golden Retriever', 'Labrador', 'Rottweiler', 'Sri Lankan Lion Dog', 'Mixed Breed Mongrel'],
-            cat: ['Persian Cat', 'Siamese Cat', 'Domestic Shorthair', 'Sri Lankan Alley Cat']
+        // MASTER REGISTRY DICTIONARY DATA
+        const breedRegistryData = {
+            dog: [
+                { id: "american_bully_2", name: "American Bully 2", file: "American Bully 2.jpg" }, 
+                { id: "american_bully", name: "American Bully", file: "American Bully.jpg" },     
+                { id: "beagle", name: "Beagle", file: "Beagle.jpg" },                             
+                { id: "german_shepherd", name: "German Shepherd", file: "German Shepherd.jpg" },   
+                { id: "german_shepherd2", name: "German Shepherd 2", file: "German Shepherd2.jpg" }, 
+                { id: "golden_retriever", name: "Golden Retriever", file: "Golden Retriever.jpg" }, 
+                { id: "shih_tzu", name: "Shih Tzu", file: "Shih Tzu.jpg" },                       
+                { id: "siberian_husky", name: "Siberian Husky", file: "Siberian Husky.jpg" },     
+                { id: "dalmatian", name: "Dalmatian", file: "dalmatian.jpg" },                     
+                { id: "normal", name: "Normal Breed Mix", file: "normal.jpg" },                    
+                { id: "richbake", name: "Richbake Blend", file: "richbake .jpg" },                 
+                { id: "rottweiler", name: "Rottweiler", file: "rottweiler.jpg" }                  
+            ],
+            cat: [
+                { id: "shape_1", name: "Peeking Silhouette 1", file: "shape 1.jpg" },             
+                { id: "shape_2", name: "Profile Clean Cutout 2", file: "shape 2.jpg" },           
+                { id: "shape_3", name: "Playful Kitten Sketch 3", file: "shape 3.jpg" },           
+                { id: "shape_4", name: "Curious Looking Frame 4", file: "shape 4.jpg" }            
+            ]
         };
 
-        const shapePathMatrix = {
+        const shapePaths = {
             bone: "M240,65 C255,40 295,55 285,85 C275,105 275,105 285,120 C295,150 255,165 240,140 L60,140 C45,165 5,150 15,120 C25,105 25,105 15,85 C5,55 45,40 60,65 Z",
-            bone2: "M 240 70 C 240 45 280 45 280 75 C 280 95 260 100 250 100 C 260 100 280 105 280 125 C 280 155 240 155 240 130 L 60 130 C 60 155 20 155 20 125 C 20 105 40 100 50 100 C 40 100 20 95 20 75 C 20 45 60 45 60 70 Z",
-            Circle: "M 150, 10 A 90,90 0 1,1 149.9,10 Z"
+            bone2: "M250,60 C270,60 280,75 270,95 L260,105 L270,115 C280,135 270,150 250,150 L50,150 C30,150 20,135 30,115 L40,105 L30,95 C20,75 30,60 50,60 Z",
+            Circle: "M150,20 A80,80 0 1,1 149.9,20 Z"
         };
 
-        // App Initialization
-        window.addEventListener('DOMContentLoaded', () => {
+        const sizePrices = { Small: 400, Standard: 600, Large: 800 };
+
+        // APP CORE VOLATILE LOCAL RECORD STORES
+        let currentSelectedShape = "bone";
+        let currentSelectedColor = "#ff0000";
+        let shoppingCartList = [];
+        
+        // MASTER ADMIN/TRACKING DATABASE MODEL
+        let globalOrdersDatabase = [
+            {
+                id: "PT-4921",
+                customerName: "Anura Perera",
+                phone: "0771234567",
+                address: "42, Galle Road, Colombo 03",
+                district: "Colombo",
+                paymentMethod: "qr",
+                items: [{ shape: "bone", petName: "REX", petType: "dog", breedName: "German Shepherd", size: "Standard", color: "#ff0000", cost: 600 }],
+                total: 600,
+                status: 3
+            },
+            {
+                id: "PT-7729",
+                customerName: "Minoli Silva",
+                phone: "0719876543",
+                address: "15/A, Peradeniya Road, Kandy",
+                district: "Kandy",
+                paymentMethod: "cod",
+                items: [{ shape: "Circle", petName: "KITTY", petType: "cat", breedName: "Peeking Silhouette 1", size: "Small", color: "#ec4899", cost: 400 }],
+                total: 400,
+                status: 1
+            }
+        ];
+
+        // START INITIALIZATION ENGINE
+        window.addEventListener("DOMContentLoaded", () => {
             populateBreedDropdown();
             syncPreviewState();
-            updateGlobalCartInterface();
+            refreshCartDisplayView();
         });
 
-        // App Router System
-        function switchView(viewId) {
-            document.querySelectorAll('.app-view').forEach(view => view.classList.remove('view-active'));
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            
-            const targetedView = document.getElementById(`view-${viewId}`);
-            if(targetedView) targetedView.classList.add('view-active');
+        // VIEW NAVIGATION SWAPPER ROUTER
+        function switchView(targetViewId) {
+            document.querySelectorAll('.app-view').forEach(element => element.classList.remove('view-active'));
+            document.querySelectorAll('.nav-btn').forEach(element => element.classList.remove('active'));
 
-            const targetedButton = document.getElementById(`btn-${viewId === 'admin-dashboard' ? 'admin' : viewId}`);
-            if(targetedButton) targetedButton.classList.add('active');
+            const targetSelector = document.getElementById(`view-${targetViewId}`);
+            if (targetSelector) {
+                targetSelector.classList.add('view-active');
+            }
 
-            if(viewId === 'cart') renderCartItemElements();
-            if(viewId === 'admin-dashboard') renderAdminTableRecords();
+            let buttonRef = targetViewId;
+            if (targetViewId === 'admin-dashboard') buttonRef = 'admin';
+            const navBtnSelector = document.getElementById(`btn-${buttonRef}`);
+            if (navBtnSelector) navBtnSelector.classList.add('active');
             
-            window.scrollTo(0,0);
+            window.scrollTo(0, 0);
         }
 
-        function selectShapeAndGo(shape) {
-            selectShapeFactor(shape);
+        // ENTRY HOOK FROM THE MAIN LANDING CARD CLICKS
+        function selectShapeAndGo(shapeKey) {
+            selectShapeFactor(shapeKey);
             switchView('customizer');
         }
 
-        // Customizer Controls
+        // STUDIO DROP DOWN GENERATOR
         function populateBreedDropdown() {
-            const family = document.getElementById('form-pettype').value;
-            const dropdown = document.getElementById('form-breed');
-            dropdown.innerHTML = '';
+            const petTypeSelection = document.getElementById("form-pettype").value;
+            const breedDropdownSelector = document.getElementById("form-breed");
             
-            breedDictionary[family].forEach(breed => {
-                let opt = document.createElement('option');
-                opt.value = breed;
-                opt.textContent = breed;
-                dropdown.appendChild(opt);
+            breedDropdownSelector.innerHTML = "";
+            
+            breedRegistryData[petTypeSelection].forEach(item => {
+                const opt = document.createElement("option");
+                opt.value = item.id;
+                opt.textContent = item.name;
+                breedDropdownSelector.appendChild(opt);
             });
         }
 
+        // STUDIO FORM MANIPULATION ASSIGNMENTS
         function selectShapeFactor(shapeKey) {
             currentSelectedShape = shapeKey;
-            document.querySelectorAll('#view-customizer [id^="shape-card-"]').forEach(card => card.classList.remove('selected'));
-            const selectedCard = document.getElementById(`shape-card-${shapeKey}`);
-            if(selectedCard) selectedCard.classList.add('selected');
+            document.querySelectorAll('[id^="shape-card-"]').forEach(card => card.classList.remove('selected'));
+            
+            const selectedShapeCard = document.getElementById(`shape-card-${shapeKey}`);
+            if (selectedShapeCard) selectedShapeCard.classList.add('selected');
+            
             syncPreviewState();
         }
 
-        function selectFilamentColor(hexColor, element) {
-            currentSelectedColor = hexColor;
-            document.querySelectorAll('.swatch').forEach(s => s.classList.remove('selected'));
-            element.classList.add('selected');
+        function selectFilamentColor(hexColorValue, domElement) {
+            currentSelectedColor = hexColorValue;
+            document.querySelectorAll('.swatch').forEach(sw => sw.classList.remove('selected'));
+            domElement.classList.add('selected');
+            
             syncPreviewState();
         }
 
+        // DYNAMIC PREVIEW SYNCHRONIZATION ALGORITHM
         function syncPreviewState() {
-            const petName = document.getElementById('form-petname').value.toUpperCase() || 'PET NAME';
-            const selectedFont = document.getElementById('form-font').value;
-            const petFamily = document.getElementById('form-pettype').value;
-            const selectedBreed = document.getElementById('form-breed').value || 'American Bully';
+            let petNameInput = document.getElementById("form-petname").value.trim().toUpperCase();
+            if (!petNameInput) petNameInput = "PET NAME";
 
-            // Vector Mapping Engine updates
-            const pathNode = document.getElementById('svg-tag-base');
-            const textNode = document.getElementById('svg-tag-text');
-            
-            if(pathNode) {
-                pathNode.setAttribute('d', shapePathMatrix[currentSelectedShape] || shapePathMatrix.bone);
-                pathNode.setAttribute('fill', currentSelectedColor);
-            }
-            
-            if(textNode) {
-                textNode.textContent = petName;
-                textNode.className = `preview-font-${selectedFont}`;
-                textNode.setAttribute('fill', currentSelectedColor.toLowerCase() === '#ffffff' ? '#111827' : '#ffffff');
+            const fontSelection = document.getElementById("form-font").value;
+            const petTypeSelection = document.getElementById("form-pettype").value;
+            const currentBreedId = document.getElementById("form-breed").value;
+
+            // Update SVG Base Path and fill profile elements
+            const svgPathNode = document.getElementById("svg-tag-base");
+            if (svgPathNode) {
+                svgPathNode.setAttribute("d", shapePaths[currentSelectedShape] || shapePaths.bone);
+                svgPathNode.setAttribute("fill", currentSelectedColor);
             }
 
-            // Silhouette Engine mapping fallback paths
-            const breedFrame = document.getElementById('breed-preview-frame');
-            if(breedFrame) {
-                breedFrame.src = `assets/pet-breeds/${petFamily}/${selectedBreed}.jpg`;
-                breedFrame.onerror = function() {
-                    this.src = `https://placehold.co/140x140/000000/ffffff?text=${encodeURIComponent(selectedBreed)}`;
+            // Update SVG Live Typography Elements
+            const svgTextNode = document.getElementById("svg-tag-text");
+            if (svgTextNode) {
+                svgTextNode.textContent = petNameInput;
+                svgTextNode.className.baseVal = `preview-font-${fontSelection}`;
+                
+                if (currentSelectedColor === "#ffffff") {
+                    svgTextNode.setAttribute("fill", "#111827");
+                } else {
+                    svgTextNode.setAttribute("fill", "#ffffff");
+                }
+            }
+
+            // Update Selected Breed Image Matrix Frame Profile safely
+            const arrayFinder = breedRegistryData[petTypeSelection];
+            const targetBreedObject = arrayFinder.find(b => b.id === currentBreedId) || arrayFinder[0];
+            const imageDisplayElement = document.getElementById("breed-preview-frame");
+            if (imageDisplayElement && targetBreedObject) {
+                imageDisplayElement.src = `assets/pet-breeds/${petTypeSelection}/${targetBreedObject.file}`;
+                imageDisplayElement.onerror = () => {
+                    imageDisplayElement.src = `https://placehold.co/240x140/000000/FFFFFF?text=${encodeURIComponent(targetBreedObject.name)}`;
                 };
             }
         }
 
-        // Cart Engineering Systems
-        function calculateTagBasePrice(sizeStr) {
-            if(sizeStr === 'Small') return 400;
-            if(sizeStr === 'Large') return 800;
-            return 600; // Standard matrix scale
-        }
+        // SHOPPING CART CONTROLLER FUNCTIONS
+        function addCurrentConfigToCart(event) {
+            event.preventDefault();
+            const petNameInput = document.getElementById("form-petname").value.trim().toUpperCase();
+            const petTypeSelection = document.getElementById("form-pettype").value;
+            const currentBreedId = document.getElementById("form-breed").value;
+            const sizeSelection = document.getElementById("form-size").value;
+            const fontSelection = document.getElementById("form-font").value;
+            const breedArray = breedRegistryData[petTypeSelection];
+            const breedObject = breedArray.find(b => b.id === currentBreedId) || breedArray[0];
 
-        function addCurrentConfigToCart(e) {
-            e.preventDefault();
-            const petSize = document.getElementById('form-size').value;
-            
-            const productBlueprint = {
-                id: 'TAG-' + Date.now(),
-                name: document.getElementById('form-petname').value.toUpperCase(),
-                type: document.getElementById('form-pettype').value,
-                breed: document.getElementById('form-breed').value,
+            const calculationPriceValue = sizePrices[sizeSelection] || 600;
+            const structuredItemBlueprint = {
                 shape: currentSelectedShape,
-                size: petSize,
-                font: document.getElementById('form-font').value,
+                petName: petNameInput,
+                petType: petTypeSelection,
+                breedName: breedObject.name,
+                size: sizeSelection,
+                font: fontSelection,
                 color: currentSelectedColor,
-                price: calculateTagBasePrice(petSize)
+                cost: calculationPriceValue
             };
-
-            systemCart.push(productBlueprint);
-            updateGlobalCartInterface();
+            shoppingCartList.push(structuredItemBlueprint);
             
-            // Reset Name element field cleanly
-            document.getElementById('form-petname').value = '';
-            syncPreviewState();
-            
+            document.getElementById("form-petname").value = "";
+            refreshCartDisplayView();
+            alert(`Successfully added custom build execution profile for "${petNameInput}" inside local shopping cart matrix.`);
             switchView('cart');
         }
 
-        function removeCartElement(itemId) {
-            systemCart = systemCart.filter(item => item.id !== itemId);
-            updateGlobalCartInterface();
-            renderCartItemElements();
+        function removeCartItemIndex(indexValue) {
+            shoppingCartList.splice(indexValue, 1);
+            refreshCartDisplayView();
         }
 
-        function updateGlobalCartInterface() {
-            document.getElementById('global-cart-count').textContent = systemCart.length;
-        }
-
-        function renderCartItemElements() {
-            const container = document.getElementById('cart-items-container');
-            const totalNode = document.getElementById('cart-total-amount');
-            container.innerHTML = '';
+        function refreshCartDisplayView() {
+            document.getElementById("global-cart-count").textContent = shoppingCartList.length;
+            const container = document.getElementById("cart-items-container");
+            const totalDisplay = document.getElementById("cart-total-amount");
             
-            if(systemCart.length === 0) {
-                container.innerHTML = `<p style="font-weight:600; color:#6b7280; padding:20px 0;">No modular tags configured in cart memory slots.</p>`;
-                totalNode.textContent = '0.00';
+            if (!container) return;
+            if (shoppingCartList.length === 0) {
+                container.innerHTML = `<p style="color:#6b7280; font-weight:500; text-align:center; padding:20px 0;">Your configuration inventory build layout is empty.</p>`;
+                totalDisplay.textContent = "0.00";
                 return;
             }
 
-            let sumAggregator = 0;
-            systemCart.forEach(item => {
-                sumAggregator += item.price;
-                let entry = document.createElement('div');
-                entry.className = 'cart-item-row';
-                entry.innerHTML = `
+            let computedSum = 0;
+            container.innerHTML = "";
+
+            shoppingCartList.forEach((item, index) => {
+                computedSum += item.cost;
+                
+                const itemRow = document.createElement("div");
+                itemRow.className = "cart-item-row";
+                itemRow.innerHTML = `
                     <div>
-                        <strong style="font-size:1.05rem; color:var(--dark)">${item.name} (${item.size})</strong>
-                        <div style="font-size:0.8rem; color:#6b7280; margin-top:4px;">
-                            Shape: <span style="text-transform:capitalize">${item.shape}</span> | Color Code: ${item.color} | Breed: ${item.breed}
-                        </div>
+                        <strong style="color:var(--dark); font-size:1rem;">${item.petName} (${item.breedName})</strong>
+                        <p style="margin:4px 0 0 0; font-size:0.8rem; color:#6b7280; font-weight:500;">
+                            Shape: ${item.shape} | Sizing: ${item.size} | Color: <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:${item.color}; vertical-align:middle;"></span> ${item.color}
+                        </p>
                     </div>
                     <div style="display:flex; align-items:center; gap:15px;">
-                        <span style="font-weight:700; color:var(--dark)">LKR ${item.price}.00</span>
-                        <button class="btn btn-secondary btn-sm" style="margin:0; background-color:#ef4444;" onclick="removeCartElement('${item.id}')">×</button>
+                        <span style="font-weight:700; color:var(--dark);">LKR ${item.cost}.00</span>
+                        <button type="button" onclick="removeCartItemIndex(${index})" style="background:none; border:none; color:#ef4444; font-weight:bold; cursor:pointer; font-size:1.1rem;" title="Remove configuration item">×</button>
                     </div>
                 `;
-                container.appendChild(entry);
+                container.appendChild(itemRow);
             });
-            totalNode.textContent = sumAggregator.toFixed(2);
+
+            totalDisplay.textContent = `${computedSum}.00`;
         }
 
         function togglePaymentGatewayView() {
-            const mode = document.getElementById('form-payment-method').value;
-            document.getElementById('payment-qr-area').style.display = (mode === 'qr') ? 'block' : 'none';
+            const currentRouteSelection = document.getElementById("form-payment-method").value;
+            const qrBoxAreaWrapper = document.getElementById("payment-qr-area");
+            
+            if (currentRouteSelection === "qr") {
+                qrBoxAreaWrapper.style.display = "block";
+            } else {
+                qrBoxAreaWrapper.style.display = "none";
+            }
         }
 
-        // Order Submissions Pipe
-        function processOrderSubmission(e) {
-            e.preventDefault();
-            if(systemCart.length === 0) {
-                alert("Runtime Exception: Cannot checkout an empty shopping array data profile.");
+        // CHECKOUT DISPATCH TO MASTER DATABASE
+        function processOrderSubmission(event) {
+            event.preventDefault();
+
+            if (shoppingCartList.length === 0) {
+                alert("Your checkout manifest registration rejected because shopping cart array contains no items.");
                 return;
             }
 
-            const uniqueOrderID = 'ORD-' + Math.floor(100000 + Math.random() * 900000);
-            const compiledOrderPayload = {
-                orderId: uniqueOrderID,
-                customerName: document.getElementById('form-custname').value,
-                phone1: document.getElementById('form-phone1').value,
-                phone2: document.getElementById('form-phone2').value,
-                address: document.getElementById('form-address').value,
-                district: document.getElementById('form-district').value,
-                paymentMethod: document.getElementById('form-payment-method').value,
-                items: [...systemCart],
-                total: systemCart.reduce((acc, curr) => acc + curr.price, 0),
-                status: 'pending',
-                timestamp: new Date().toLocaleString()
+            const clientNameValue = document.getElementById("form-custname").value.trim();
+            const contactPhone1 = document.getElementById("form-phone1").value.trim();
+            const contactPhone2 = document.getElementById("form-phone2").value.trim();
+            const streetAddressValue = document.getElementById("form-address").value.trim();
+            const selectedDistrict = document.getElementById("form-district").value;
+            const selectedPaymentRoute = document.getElementById("form-payment-method").value;
+
+            let finalSumTotal = 0;
+            shoppingCartList.forEach(i => finalSumTotal += i.cost);
+
+            const uniqueRandomId = `PT-${Math.floor(1000 + Math.random() * 9000)}`;
+            const customMasterManifestOrderBlueprint = {
+                id: uniqueRandomId,
+                customerName: clientNameValue,
+                phone: contactPhone1 + (contactPhone2 ? ` / ${contactPhone2}` : ""),
+                address: streetAddressValue,
+                district: selectedDistrict,
+                paymentMethod: selectedPaymentRoute,
+                items: [...shoppingCartList],
+                total: finalSumTotal,
+                status: 1
             };
-
-            globalOrdersDatabase.push(compiledOrderPayload);
-            localStorage.setItem('pettags_orders', JSON.stringify(globalOrdersDatabase));
-
-            // Flush temporary states
-            systemCart = [];
-            updateGlobalCartInterface();
-            document.getElementById('checkoutForm').reset();
-
-            alert(`Order deployed successfully to micro-fulfillment stack!\nSave Order Token reference code: ${uniqueOrderID}`);
+            globalOrdersDatabase.push(customMasterManifestOrderBlueprint);
             
-            const trackerInput = document.getElementById('search-track-id');
-            if(trackerInput) trackerInput.value = uniqueOrderID;
-            
+            shoppingCartList = [];
+            refreshCartDisplayView();
+            document.getElementById("checkoutForm").reset();
+            togglePaymentGatewayView();
+
+            alert(`Success! Your order has been placed. Tracking code: ${uniqueRandomId}`);
+            document.getElementById("tracking-search-id").value = uniqueRandomId;
+            searchOrderTracking();
             switchView('tracking');
-            lookupOrderTracking();
         }
 
-        // Tracking Algorithms
-        function lookupOrderTracking() {
-            const token = document.getElementById('search-track-id').value.trim();
-            const match = globalOrdersDatabase.find(o => o.orderId.toLowerCase() === token.toLowerCase());
-            const displayArea = document.getElementById('tracking-result-area');
-
-            if(!match) {
-                alert("Order Registry Reference Key mismatch or not found in local system cache database registry.");
-                displayArea.style.display = 'none';
+        // PIPELINE TRACKER LOGIC ENGINE
+        function searchOrderTracking() {
+            const searchQueryKey = document.getElementById("tracking-search-id").value.trim().toUpperCase();
+            const outputBox = document.getElementById("tracking-result-box");
+            
+            if (!searchQueryKey) {
+                alert("Please declare a tracking transaction confirmation reference identification code.");
                 return;
             }
 
-            document.getElementById('track-display-id').textContent = match.orderId;
-            displayArea.style.display = 'block';
-
-            // Reset matching classes UI matrix cleanly
-            document.querySelectorAll('.timeline-item').forEach(el => el.className = 'timeline-item');
-
-            const pendingNode = document.getElementById('node-pending');
-            const printingNode = document.getElementById('node-printing');
-            const shippedNode = document.getElementById('node-shipped');
-
-            if(match.status === 'pending') {
-                if(pendingNode) pendingNode.classList.add('active');
-            } else if(match.status === 'printing') {
-                if(pendingNode) pendingNode.classList.add('completed');
-                if(printingNode) printingNode.classList.add('active');
-            } else if(match.status === 'shipped') {
-                if(pendingNode) pendingNode.classList.add('completed');
-                if(printingNode) printingNode.classList.add('completed');
-                if(shippedNode) shippedNode.classList.add('completed', 'active');
+            const foundRecordMatch = globalOrdersDatabase.find(o => o.id === searchQueryKey);
+            if (!foundRecordMatch) {
+                alert(`Reference node ID string allocation "${searchQueryKey}" match lookup could not be tracked.`);
+                outputBox.style.display = "none";
+                return;
             }
+
+            document.getElementById("track-manifest-id").textContent = `Order Reference Ref: ${foundRecordMatch.id}`;
+            document.getElementById("track-manifest-name").textContent = `Consignee Delivery Target Profile: ${foundRecordMatch.customerName} (${foundRecordMatch.district} Sector Zone Hub)`;
+            
+            const maxCompletedStageLevel = foundRecordMatch.status;
+            for (let i = 1; i <= 4; i++) {
+                const nodeElementDomRef = document.getElementById(`node-stage-${i}`);
+                if (nodeElementDomRef) {
+                    nodeElementDomRef.className = "timeline-item";
+                    
+                    if (i < maxCompletedStageLevel) {
+                        nodeElementDomRef.classList.add("completed");
+                    } else if (i === maxCompletedStageLevel) {
+                        nodeElementDomRef.classList.add("active");
+                    }
+                }
+            }
+
+            outputBox.style.display = "block";
         }
 
-        // Secure Owner Admin Pipeline
-        function authenticateAdminGateway() {
-            const key = document.getElementById('admin-passkey').value;
-            if(key === 'admin123' || key === 'pettagsadmin') {
-                document.getElementById('admin-passkey').value = '';
+        // OWNER CLEARANCE ROUTINE VALIDATION
+        function validateAdminClearance() {
+            const providedPasswordValue = document.getElementById("admin-pass-key").value;
+            if (providedPasswordValue === "admin123" || providedPasswordValue === "owner7") {
+                document.getElementById("admin-pass-key").value = "";
+                refreshAdminDashboardTableData();
                 switchView('admin-dashboard');
             } else {
-                alert("Security handshake validation rejected: Invalid credential footprint.");
+                alert("Security handshake initialization error access code verification match failed.");
             }
         }
 
-        function renderAdminTableRecords() {
-            const tbody = document.getElementById('admin-orders-table-body');
-            tbody.innerHTML = '';
+        function refreshAdminDashboardTableData() {
+            const tableRowsContainerNode = document.getElementById("admin-orders-table-rows");
+            if (!tableRowsContainerNode) return;
 
-            if(globalOrdersDatabase.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:#9ca3af; padding:30px;">System execution registry order log arrays are currently empty.</td></tr>`;
-                return;
-            }
+            tableRowsContainerNode.innerHTML = "";
 
             globalOrdersDatabase.forEach(order => {
-                let row = document.createElement('tr');
-                
-                let itemSummaryHtml = order.items.map(i => 
-                    `• [${i.shape.toUpperCase()}] ${i.name} (${i.size} / ${i.color})`
-                ).join('<br>');
+                let itemsDescriptionString = "";
+                order.items.forEach(i => {
+                    itemsDescriptionString += `<div>• <strong>[${i.petName}]</strong> ${i.size} ${i.petType} (${i.breedName}) [Color: ${i.color}]</div>`;
+                });
 
-                row.innerHTML = `
-                    <td style="font-family:monospace; font-weight:700; color:var(--primary-hover)">${order.orderId}</td>
+                let stateBadgeTemplateMarkup = "";
+                if (order.status === 1) stateBadgeTemplateMarkup = `<span class="status-badge badge-pending">1. Verified Queue</span>`;
+                if (order.status === 2) stateBadgeTemplateMarkup = `<span class="status-badge badge-active">2. Slicing Model Engine</span>`;
+                if (order.status === 3) stateBadgeTemplateMarkup = `<span class="status-badge badge-active">3. Filament Extruding</span>`;
+                if (order.status === 4) stateBadgeTemplateMarkup = `<span class="status-badge badge-complete">4. Courier Handover Complete</span>`;
+
+                const rowElement = document.createElement("tr");
+                rowElement.innerHTML = `
+                    <td style="font-family:monospace; font-weight:bold; color:var(--dark); font-size:1rem;">${order.id}</td>
                     <td>
-                        <strong>${order.customerName}</strong><br>
-                        <span style="font-size:0.75rem; color:#6b7280">${order.phone1} | ${order.district}</span>
+                        <div style="font-weight:700;">${order.customerName}</div>
+                        <div style="font-size:0.75rem; color:#6b7280;">Tel: ${order.phone}</div>
+                        <div style="font-size:0.75rem; color:#6b7280; max-width:180px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${order.address}">${order.address}</div>
                     </td>
-                    <td style="font-size:0.8rem; line-height:1.4;">${itemSummaryHtml}</td>
-                    <td style="font-weight:700;">LKR ${order.total}.00</td>
-                    <td><span class="status-badge badge-${order.status === 'pending' ? 'pending' : order.status === 'printing' ? 'active' : 'complete'}">${order.status.toUpperCase()}</span></td>
-                    <td style="text-align:right">
-                        <select style="font-size:0.8rem; padding:4px; border-radius:4px;" onchange="updatePipelineStateAdmin('${order.orderId}', this.value)">
-                            <option value="pending" ${order.status === 'pending' ? 'selected' : ''}>Pending</option>
-                            <option value="printing" ${order.status === 'printing' ? 'selected' : ''}>Printing</option>
-                            <option value="shipped" ${order.status === 'shipped' ? 'selected' : ''}>Shipped</option>
+                    <td style="font-size:0.8rem; color:#4b5563;">${itemsDescriptionString}</td>
+                    <td style="font-weight:800; color:#111827;">LKR ${order.total}.00<br><span style="font-size:0.7rem; color:#9ca3af; text-transform:uppercase;">Method: ${order.paymentMethod}</span></td>
+                    <td>${stateBadgeTemplateMarkup}</td>
+                    <td style="text-align: right;">
+                        <select onchange="updateOrderStagingCode('${order.id}', this.value)" style="padding:6px; font-size:0.8rem; font-weight:600; border-radius:6px; border:1px solid #d1d5db; background:white;">
+                            <option value="1" ${order.status === 1 ? 'selected' : ''}>Stage 1: Verified</option>
+                            <option value="2" ${order.status === 2 ? 'selected' : ''}>Stage 2: Slice Engine</option>
+                            <option value="3" ${order.status === 3 ? 'selected' : ''}>Stage 3: Extrusion</option>
+                            <option value="4" ${order.status === 4 ? 'selected' : ''}>Stage 4: Dispatched</option>
                         </select>
                     </td>
                 `;
-                tbody.appendChild(row);
+                tableRowsContainerNode.appendChild(rowElement);
             });
         }
 
-        function updatePipelineStateAdmin(id, nextState) {
-            globalOrdersDatabase = globalOrdersDatabase.map(o => {
-                if(o.orderId === id) o.status = nextState;
-                return o;
-            });
-            localStorage.setItem('pettags_orders', JSON.stringify(globalOrdersDatabase));
-            renderAdminTableRecords();
-        }
-
-        function clearAllSystemOrders() {
-            if(confirm("Confirm action step: Purge whole local client tracking databases?")) {
-                globalOrdersDatabase = [];
-                localStorage.removeItem('pettags_orders');
-                renderAdminTableRecords();
+        function updateOrderStagingCode(targetOrderIdKey, selectedNewStatusCodeString) {
+            const numericCodeValue = parseInt(selectedNewStatusCodeString, 10);
+            const foundTargetIndexRow = globalOrdersDatabase.find(o => o.id === targetOrderIdKey);
+            
+            if (foundTargetIndexRow) {
+                foundTargetIndexRow.status = numericCodeValue;
+                refreshAdminDashboardTableData();
             }
         }
     </script>
