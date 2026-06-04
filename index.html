@@ -606,29 +606,28 @@
         let isSystemAdminAuthenticated = false;
 
         // BREED IDENTIFICATION DATABASE DIRECTORY
-       const breedRegistryData = {
+      const breedRegistryData = {
     dog: [
-        { id: "american_bully_2", name: "American Bully 2", file: "American Bully 2.jpg" },
-        { id: "american_bully", name: "American Bully", file: "American Bully.jpg" },
-        { id: "beagle", name: "Beagle", file: "Beagle.jpg" },
-        { id: "dalmatian", name: "Dalmatian", file: "dalmatian.jpg" },
-        { id: "german_shepherd", name: "German Shepherd", file: "German Shepherd.jpg" },
-        { id: "german_shepherd2", name: "German Shepherd 2", file: "German Shepherd2.jpg" },
-        { id: "golden_retriever", name: "Golden Retriever", file: "Golden Retriever.jpg" },
-        { id: "normal", name: "Normal Breed Mix", file: "normal.jpg" },
-        { id: "richbake", name: "Richbake Blend", file: "richbake.jpg" },
-        { id: "rottweiler", name: "Rottweiler", file: "rottweiler.jpg" },
-        { id: "shih_tzu", name: "Shih Tzu", file: "Shih Tzu.jpg" },
-        { id: "siberian_husky", name: "Siberian Husky", file: "Siberian Husky.jpg" }
+        { id: "american_bully_2", name: "American Bully 2", file: "American Bully 2.jpg" }, // Matches image_5e409a.png
+        { id: "american_bully", name: "American Bully", file: "American Bully.jpg" },     // Matches image_5e409a.png
+        { id: "beagle", name: "Beagle", file: "Beagle.jpg" },                             // Matches image_5e409a.png
+        { id: "german_shepherd", name: "German Shepherd", file: "German Shepherd.jpg" },   // Matches image_5e409a.png
+        { id: "german_shepherd2", name: "German Shepherd 2", file: "German Shepherd2.jpg" }, // Matches image_5e409a.png
+        { id: "golden_retriever", name: "Golden Retriever", file: "Golden Retriever.jpg" }, // Matches image_5e409a.png
+        { id: "shih_tzu", name: "Shih Tzu", file: "Shih Tzu.jpg" },                       // Matches image_5e409a.png
+        { id: "siberian_husky", name: "Siberian Husky", file: "Siberian Husky.jpg" },     // Matches image_5e409a.png
+        { id: "dalmatian", name: "Dalmatian", file: "dalmatian.jpg" },                     // Matches image_5e409a.png
+        { id: "normal", name: "Normal Breed Mix", file: "normal.jpg" },                   // Matches image_5e409a.png
+        { id: "richbake", name: "Richbake Blend", file: "richbake .jpg" },                 // ⚠️ CRITICAL FIXED SPACE MATCH FOR image_5e409a.png
+        { id: "rottweiler", name: "Rottweiler", file: "rottweiler.jpg" }                  // Matches image_5e409a.png
     ],
     cat: [
-        { id: "shape_1", name: "Peeking Silhouette 1", file: "shape 1.jpg" },
-        { id: "shape_2", name: "Profile Clean Cutout 2", file: "shape 2.jpg" },
-        { id: "shape_3", name: "Playful Kitten Sketch 3", file: "shape 3.jpg" },
-        { id: "shape_4", name: "Curious Looking Frame 4", file: "shape 4.jpg" }
+        { id: "shape_1", name: "Peeking Silhouette 1", file: "shape 1.jpg" },             // Matches image_5e4041.png
+        { id: "shape_2", name: "Profile Clean Cutout 2", file: "shape 2.jpg" },           // Matches image_5e4041.png
+        { id: "shape_3", name: "Playful Kitten Sketch 3", file: "shape 3.jpg" },           // Matches image_5e4041.png
+        { id: "shape_4", name: "Curious Looking Frame 4", file: "shape 4.jpg" }            // Matches image_5e4041.png
     ]
 };
-
         // MATHEMATICAL VECTOR SHAPE GEOMETRY PATH COORDINATES
         const vectorShapePaths = {
             bone: "M240,65 C255,40 295,55 285,85 C275,105 275,105 285,120 C295,150 255,165 240,140 L60,140 C45,165 5,150 15,120 C25,105 25,105 15,85 C5,55 45,40 60,65 Z",
