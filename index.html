@@ -143,37 +143,40 @@
             margin: 20px 0; 
         }
 
-        /* NEW DYNAMIC AUTOMATIC HORIZONTAL CAROUSEL SYSTEM */
+        /* FIXED AUTOMATIC INFINITE HORIZONTAL CAROUSEL
+           Forces layout into a strict horizontal row and contains image boundaries.
+        */
         .carousel-wrapper {
             overflow: hidden;
             width: 100%;
-            padding: 20px 0;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
-            margin: 20px 0;
+            padding: 25px 0;
+            background: #ffffff;
+            border-radius: 14px;
+            box-shadow: inset 0 0 12px rgba(0,0,0,0.03);
+            margin: 25px 0;
             position: relative;
         }
 
         .carousel-track {
             display: flex;
-            gap: 20px;
+            flex-wrap: nowrap;
+            gap: 25px;
             width: max-content;
-            animation: scrollCarousel 40s linear infinite;
+            animation: scrollCarousel 45s linear infinite;
         }
 
-        /* Pause auto-scroll when user hovers over it to explore */
+        /* Safe option: Pauses the moving showcase when user hovers */
         .carousel-wrapper:hover .carousel-track {
             animation-play-state: paused;
         }
 
         @keyframes scrollCarousel {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* Scrolls exactly half way (through first identical set) */
+            100% { transform: translateX(-50%); } 
         }
 
         .carousel-item {
-            width: 220px;
+            width: 260px;
             flex-shrink: 0;
         }
 
@@ -182,17 +185,28 @@
             background: white;
             border-radius: 12px; 
             overflow: hidden; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
             transition: all 0.2s ease; 
             border: 2px solid transparent; 
             cursor: pointer;
             position: relative;
         }
-        .card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.09); }
         .card.selected { border-color: var(--primary); background-color: #fffbeb; }
-        .card img { width: 100%; height: 160px; object-fit: cover; display: block; background-color: #f3f4f6; }
-        .carousel-item .card img { height: 240px; }
-        .card p { margin: 12px; font-weight: 600; font-size: 0.9rem; color: #444; text-transform: capitalize; }
+        
+        /* FIXED: Changed object-fit to 'contain' to stop images from getting cropped/zoomed */
+        .card img { 
+            width: 100%; 
+            height: 160px; 
+            object-fit: contain; 
+            display: block; 
+            background-color: #f4f5f7; 
+        }
+        .carousel-item .card img { 
+            height: 200px; 
+            background-color: #f9fafb;
+        }
+        .card p { margin: 12px; font-weight: 600; font-size: 0.9rem; color: #444; text-transform: capitalize; text-align: center; }
         
         .card-checkbox {
             position: absolute;
@@ -370,31 +384,31 @@
             
             <div class="carousel-wrapper">
                 <div class="carousel-track">
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/2.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Happy+Pup+Preview'"><p>Happy Pup Preview</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/3.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Rottweiler+Solid'"><p>Rottweiler Solid Style</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/4.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Outdoor+Durability'"><p>Outdoor Durability Test</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/5.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Premium+Design+5'"><p>Premium Tag Badge 5</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/6.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Neon+Glow+Style'"><p>Neon Glow Edition 6</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/7.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Durable+Bone+7'"><p>Durable Bone Finish 7</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/8.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Classic+Circle+8'"><p>Classic Circle Coat 8</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/9.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Bold+Text+Pro+9'"><p>Bold Text Pro 9</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/10.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Chunky+Pet+Fit+10'"><p>Chunky Pet Fit 10</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/11.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Sleek+Kitty+Profile'"><p>Sleek Kitty Profile 11</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/12.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Heavy+Duty+Extrusion'"><p>Heavy Extrusion Build 12</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/13.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Owner+Choice+13'"><p>Owner Choice Tag 13</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/2.jpg" alt="Product 2" onError="this.src='https://placehold.co/260x200/f59e0b/ffffff?text=Showcase+Product+2'"><p>Showcase Product 2</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/3.jpg" alt="Product 3" onError="this.src='https://placehold.co/260x200/3b82f6/ffffff?text=Showcase+Product+3'"><p>Showcase Product 3</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/4.jpg" alt="Product 4" onError="this.src='https://placehold.co/260x200/10b981/ffffff?text=Showcase+Product+4'"><p>Showcase Product 4</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/5.jpg" alt="Product 5" onError="this.src='https://placehold.co/260x200/6366f1/ffffff?text=Showcase+Product+5'"><p>Showcase Product 5</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/6.jpg" alt="Product 6" onError="this.src='https://placehold.co/260x200/ef4444/ffffff?text=Showcase+Product+6'"><p>Showcase Product 6</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/7.jpg" alt="Product 7" onError="this.src='https://placehold.co/260x200/ec4899/ffffff?text=Showcase+Product+7'"><p>Showcase Product 7</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/8.jpg" alt="Product 8" onError="this.src='https://placehold.co/260x200/8b5cf6/ffffff?text=Showcase+Product+8'"><p>Showcase Product 8</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/9.jpg" alt="Product 9" onError="this.src='https://placehold.co/260x200/14b8a6/ffffff?text=Showcase+Product+9'"><p>Showcase Product 9</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/10.jpg" alt="Product 10" onError="this.src='https://placehold.co/260x200/f43f5e/ffffff?text=Showcase+Product+10'"><p>Showcase Product 10</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/11.jpg" alt="Product 11" onError="this.src='https://placehold.co/260x200/06b6d4/ffffff?text=Showcase+Product+11'"><p>Showcase Product 11</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/12.jpg" alt="Product 12" onError="this.src='https://placehold.co/260x200/a855f7/ffffff?text=Showcase+Product+12'"><p>Showcase Product 12</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/13.jpg" alt="Product 13" onError="this.src='https://placehold.co/260x200/059669/ffffff?text=Showcase+Product+13'"><p>Showcase Product 13</p></div></div>
                     
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/2.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Happy+Pup+Preview'"><p>Happy Pup Preview</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/3.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Rottweiler+Solid'"><p>Rottweiler Solid Style</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/4.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Outdoor+Durability'"><p>Outdoor Durability Test</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/5.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Premium+Design+5'"><p>Premium Tag Badge 5</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/6.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Neon+Glow+Style'"><p>Neon Glow Edition 6</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/7.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Durable+Bone+7'"><p>Durable Bone Finish 7</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/8.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Classic+Circle+8'"><p>Classic Circle Coat 8</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/9.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Bold+Text+Pro+9'"><p>Bold Text Pro 9</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/10.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Chunky+Pet+Fit+10'"><p>Chunky Pet Fit 10</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/11.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Sleek+Kitty+Profile'"><p>Sleek Kitty Profile 11</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/12.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Heavy+Duty+Extrusion'"><p>Heavy Extrusion Build 12</p></div></div>
-                    <div class="carousel-item"><div class="card"><img src="assets/printed products/13.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Owner+Choice+13'"><p>Owner Choice Tag 13</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/2.jpg" alt="Product 2" onError="this.src='https://placehold.co/260x200/f59e0b/ffffff?text=Showcase+Product+2'"><p>Showcase Product 2</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/3.jpg" alt="Product 3" onError="this.src='https://placehold.co/260x200/3b82f6/ffffff?text=Showcase+Product+3'"><p>Showcase Product 3</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/4.jpg" alt="Product 4" onError="this.src='https://placehold.co/260x200/10b981/ffffff?text=Showcase+Product+4'"><p>Showcase Product 4</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/5.jpg" alt="Product 5" onError="this.src='https://placehold.co/260x200/6366f1/ffffff?text=Showcase+Product+5'"><p>Showcase Product 5</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/6.jpg" alt="Product 6" onError="this.src='https://placehold.co/260x200/ef4444/ffffff?text=Showcase+Product+6'"><p>Showcase Product 6</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/7.jpg" alt="Product 7" onError="this.src='https://placehold.co/260x200/ec4899/ffffff?text=Showcase+Product+7'"><p>Showcase Product 7</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/8.jpg" alt="Product 8" onError="this.src='https://placehold.co/260x200/8b5cf6/ffffff?text=Showcase+Product+8'"><p>Showcase Product 8</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/9.jpg" alt="Product 9" onError="this.src='https://placehold.co/260x200/14b8a6/ffffff?text=Showcase+Product+9'"><p>Showcase Product 9</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/10.jpg" alt="Product 10" onError="this.src='https://placehold.co/260x200/f43f5e/ffffff?text=Showcase+Product+10'"><p>Showcase Product 10</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/11.jpg" alt="Product 11" onError="this.src='https://placehold.co/260x200/06b6d4/ffffff?text=Showcase+Product+11'"><p>Showcase Product 11</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/12.jpg" alt="Product 12" onError="this.src='https://placehold.co/260x200/a855f7/ffffff?text=Showcase+Product+12'"><p>Showcase Product 12</p></div></div>
+                    <div class="carousel-item"><div class="card"><img src="assets/printed products/13.jpg" alt="Product 13" onError="this.src='https://placehold.co/260x200/059669/ffffff?text=Showcase+Product+13'"><p>Showcase Product 13</p></div></div>
                 </div>
             </div>
 
