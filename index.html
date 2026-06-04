@@ -431,6 +431,16 @@
                             <div class="live-tag-svg-wrapper" id="svg-zoom-viewport">
                                 <!-- The master vector view which unifies breed profiles and names exactly like image_5a9da3.png and image_5a9de2.png -->
                                 <svg id="vector-rendering-engine" viewBox="0 0 300 200" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <!-- Pure Silhouette Filters for isolating JPEG backgrounds programmatically -->
+                                        <filter id="turn-white">
+                                            <feColorMatrix type="matrix" values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1   1 0 0 0 0"/>
+                                        </filter>
+                                        <filter id="turn-black">
+                                            <feColorMatrix type="matrix" values="0 0 0 0 0.07   0 0 0 0 0.09   0 0 0 0 0.15   1 0 0 0 0"/>
+                                        </filter>
+                                    </defs>
+
                                     <!-- Base Tag Frame Layout -->
                                     <path id="svg-tag-base" d="M240,65 C255,40 295,55 285,85 C275,105 275,105 285,120 C295,150 255,165 240,140 L60,140 C45,165 5,150 15,120 C25,105 25,105 15,85 C5,55 45,40 60,65 Z" fill="#111827" filter="drop-shadow(0px 4px 6px rgba(0,0,0,0.2))"/>
                                     
@@ -443,7 +453,7 @@
                                     </g>
 
                                     <!-- Integrated Breed Silhouette Image Frame layer for Circle Layout (Ref: image_5a9da3.png) -->
-                                    <image id="svg-circle-breed-silhouette" x="85" y="30" width="130" height="110" href="" preserveAspectRatio="xMidYMid meet" style="filter: brightness(0) invert(1); display: none;" />
+                                    <image id="svg-circle-breed-silhouette" x="85" y="25" width="130" height="110" href="" preserveAspectRatio="xMidYMid meet" style="display: none;" />
 
                                     <!-- Unified Dynamic Typography Text Label -->
                                     <text id="svg-tag-text" x="150" y="112" text-anchor="middle" fill="#ffffff" class="preview-font-Poppins" font-size="28" letter-spacing="1">PET NAME</text>
@@ -538,16 +548,24 @@
                                 </div>
                             </div>
 
-                            <!-- Overhauled High-Density Neutral Tone Filament Palette Collection -->
+                            <!-- Expanded Premium 12-Tone Dark High-Contrast Filament Palette Collection -->
                             <div class="input-group">
                                 <label>High-Density Filament Color Solution</label>
                                 <div class="swatch-container">
-                                    <div class="swatch selected" style="background-color: #111827;" onclick="selectFilamentColor('#111827', this)" title="Dark Black"></div>
-                                    <div class="swatch" style="background-color: #ffffff;" onclick="selectFilamentColor('#ffffff', this)" title="Solid White"></div>
+                                    <div class="swatch selected" style="background-color: #111827;" onclick="selectFilamentColor('#111827', this)" title="Midnight Black"></div>
+                                    <div class="swatch" style="background-color: #374151;" onclick="selectFilamentColor('#374151', this)" title="Dark Charcoal"></div>
+                                    <div class="swatch" style="background-color: #1e3a8a;" onclick="selectFilamentColor('#1e3a8a', this)" title="Navy Blue"></div>
+                                    <div class="swatch" style="background-color: #115e59;" onclick="selectFilamentColor('#115e59', this)" title="Deep Teal"></div>
+                                    <div class="swatch" style="background-color: #451a03;" onclick="selectFilamentColor('#451a03', this)" title="Chocolate Brown"></div>
+                                    <div class="swatch" style="background-color: #365314;" onclick="selectFilamentColor('#365314', this)" title="Olive Drab"></div>
+                                    <div class="swatch" style="background-color: #4c0519;" onclick="selectFilamentColor('#4c0519', this)" title="Deep Maroon"></div>
+                                    <div class="swatch" style="background-color: #7c2d12;" onclick="selectFilamentColor('#7c2d12', this)" title="Burnt Orange"></div>
+                                    <div class="swatch" style="background-color: #064e3b;" onclick="selectFilamentColor('#064e3b', this)" title="Forest Green"></div>
+                                    <div class="swatch" style="background-color: #4a044e;" onclick="selectFilamentColor('#4a044e', this)" title="Dark Plum"></div>
+                                    <div class="swatch" style="background-color: #1f2937;" onclick="selectFilamentColor('#1f2937', this)" title="Gunmetal Gray"></div>
+                                    <div class="swatch" style="background-color: #312e81;" onclick="selectFilamentColor('#312e81', this)" title="Indigo Night"></div>
+                                    <div class="swatch" style="background-color: #ffffff;" onclick="selectFilamentColor('#ffffff', this)" title="Solid White Highlight"></div>
                                     <div class="swatch" style="background-color: #e5e7eb;" onclick="selectFilamentColor('#e5e7eb', this)" title="Light Gray"></div>
-                                    <div class="swatch" style="background-color: #6b7280;" onclick="selectFilamentColor('#6b7280', this)" title="Medium Gray"></div>
-                                    <div class="swatch" style="background-color: #d7ccc8;" onclick="selectFilamentColor('#d7ccc8', this)" title="Light Brown"></div>
-                                    <div class="swatch" style="background-color: #bae6fd;" onclick="selectFilamentColor('#bae6fd', this)" title="Light Blue"></div>
                                 </div>
                             </div>
                         </div>
@@ -771,7 +789,7 @@
 
         // APP CORE VOLATILE LOCAL RECORD STORES[cite: 3]
         let currentSelectedShape = "bone";
-        let currentSelectedColor = "#111827"; // Default to Dark Black filament
+        let currentSelectedColor = "#111827"; // Default to Midnight Black
         let shoppingCartList = [];
         
         // MASTER ADMIN/TRACKING DATABASE MODEL[cite: 3]
@@ -794,7 +812,7 @@
                 address: "15/A, Peradeniya Road, Kandy",
                 district: "Kandy",
                 paymentMethod: "cod",
-                items: [{ shape: "Circle", petName: "KITTY", petType: "cat", breedName: "Peeking Silhouette 1", size: "Small", color: "#6b7280", fontSize: "24", cost: 400 }],
+                items: [{ shape: "Circle", petName: "KITTY", petType: "cat", breedName: "Peeking Silhouette 1", size: "Small", color: "#374151", fontSize: "24", cost: 400 }],
                 total: 400,
                 status: 1
             }
@@ -902,8 +920,10 @@
             const boneDecorationGroup = document.getElementById("svg-bone-decorations");
             const circleBreedImageNode = document.getElementById("svg-circle-breed-silhouette");
 
-            // Define High-Contrast Complementary Print Filament Tone for Graphics
-            const internalGraphicColor = (currentSelectedColor === "#ffffff" || currentSelectedColor === "#bae6fd" || currentSelectedColor === "#e5e7eb") ? "#111827" : "#ffffff";
+            // Automatic Contrast Detection Rule Engine 
+            const lightColors = ["#ffffff", "#e5e7eb"];
+            const isLightBackground = lightColors.includes(currentSelectedColor.toLowerCase());
+            const internalGraphicColor = isLightBackground ? "#111827" : "#ffffff";
 
             if (textElementNode) {
                 textElementNode.textContent = petNameInput;
@@ -914,13 +934,12 @@
 
             // Execution Matrix Rules mapped to user specifications (Ref: image_5a9da3.png & image_5a9de2.png)
             if (currentSelectedShape === "Circle") {
-                // 1. Completely remove or hide bone details
                 if (boneDecorationGroup) boneDecorationGroup.style.display = "none";
                 
-                // 2. Center Face Profile Component and make white overlay visible
                 if (circleBreedImageNode) {
                     circleBreedImageNode.style.display = "block";
-                    circleBreedImageNode.style.filter = (internalGraphicColor === "#111827") ? "none" : "brightness(0) invert(1)";
+                    // Apply dynamic pure monochrome mask inversion depending on backdrop shade
+                    circleBreedImageNode.style.filter = isLightBackground ? "url(#turn-black)" : "url(#turn-white)";
                     
                     const arrayFinder = breedRegistryData[petTypeSelection];
                     const targetBreedObject = arrayFinder.find(b => b.id === currentBreedId) || arrayFinder[0];
@@ -929,22 +948,19 @@
                     }
                 }
                 
-                // 3. Move typography label down near base center
                 if (textElementNode) {
                     textElementNode.setAttribute("y", "165");
                 }
             } else {
-                // Shape selected is bone or bone2: Center pet names only, with side paws enabled (Ref: image_5a9de2.png)
                 if (circleBreedImageNode) circleBreedImageNode.style.display = "none";
                 
                 if (boneDecorationGroup) {
                     boneDecorationGroup.style.display = "block";
-                    // Dynamic fill for inner paw vectors based on tag background
                     Array.from(boneDecorationGroup.children).forEach(path => path.setAttribute("fill", internalGraphicColor));
                 }
                 
                 if (textElementNode) {
-                    textElementNode.setAttribute("y", "115"); // Snap directly to absolute vertical center
+                    textElementNode.setAttribute("y", "115"); 
                 }
             }
         }
