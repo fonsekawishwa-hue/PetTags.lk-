@@ -6,7 +6,6 @@
     <title>PetTags.lk - Premium Custom Pet Tags Sri Lanka</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Expanded modern typography font collection stack -->
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@700&family=Fredoka+One&family=Lobster&family=Pacifico&family=Poppins:ital,wght@0,700;1,700&family=Roboto:wght@700;900&display=swap" rel="stylesheet">
     
     <style>
@@ -117,7 +116,6 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         
-        /* App View Route Management */
         .app-view { display: none; }
         .app-view.view-active { display: block; animation: fadeIn 0.3s ease-in-out; }
 
@@ -130,7 +128,6 @@
         h2 { color: #222; text-align: left; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; margin-top: 40px; font-size: 1.6rem; font-weight: 700; }
         .subtitle { color: #666; font-size: 1.1rem; margin-bottom: 0; }
 
-        /* Typography & Custom Preview Font Injectors */
         .preview-font-Poppins { font-family: 'Poppins', sans-serif; font-weight: 700; }
         .preview-font-Roboto { font-family: 'Roboto', sans-serif; font-weight: 900; }
         .preview-font-Arial { font-family: 'Arial Black', 'Arial', sans-serif; font-weight: 900; }
@@ -141,7 +138,6 @@
         .preview-font-Pacifico { font-family: 'Pacifico', cursive, sans-serif; font-weight: 400; }
         .preview-font-Caveat { font-family: 'Caveat', cursive, sans-serif; font-weight: 700; }
 
-        /* Grid Layout Frameworks */
         .grid { 
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
@@ -149,7 +145,6 @@
             margin: 20px 0; 
         }
 
-        /* FIXED AUTOMATIC INFINITE HORIZONTAL CAROUSEL */
         .carousel-wrapper {
             overflow: hidden;
             width: 100%;
@@ -183,7 +178,6 @@
             flex-shrink: 0;
         }
 
-        /* Cards and Item Selection Matrices */
         .card { 
             background: white;
             border-radius: 12px; 
@@ -229,7 +223,6 @@
 
         .hero-banner { width: 100%; max-height: 350px; object-fit: cover; border-radius: 12px; margin-top: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
 
-        /* Interactive Dynamic Customizer Forms Layout */
         .studio-layout {
             display: grid;
             grid-template-columns: 1fr;
@@ -242,7 +235,6 @@
             .sticky-preview { position: sticky; top: 120px; }
         }
 
-        /* Live Canvas Preview Component Panel */
         .preview-box {
             background: white;
             border-radius: 16px;
@@ -276,7 +268,6 @@
             transform-origin: center center;
         }
 
-        /* Form Controls Styling */
         .form-section { background: white; padding: 25px; border-radius: 16px; border: 1px solid #e5e7eb; margin-bottom: 25px; text-align: left; }
         .form-section h3 { margin-top: 0; margin-bottom: 20px; font-size: 1.25rem; font-weight: 700; color: var(--dark); display: flex; align-items: center; gap: 10px; }
         .form-section h3 span { background: var(--primary); color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; }
@@ -286,7 +277,6 @@
         .form-control { width: 100%; border: 1px solid #d1d5db; padding: 12px; box-sizing: border-box; border-radius: 10px; font-size: 0.95rem; font-weight: 500; transition: border 0.2s; }
         .form-control:focus { outline: none; border-color: var(--primary); }
         
-        /* Swatches and selection grids */
         .swatch-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
         .swatch { width: 36px; height: 36px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px #d1d5db; cursor: pointer; transition: transform 0.2s; position: relative; }
         .swatch:hover { transform: scale(1.05); }
@@ -298,23 +288,19 @@
         .btn-secondary { background-color: #4b5563; margin-top: 10px; }
         .btn-secondary:hover { background-color: #374151; }
 
-        /* Slider Control Formatting */
         .slider-wrapper { display: flex; align-items: center; gap: 15px; margin-top: 5px; }
         .slider-control { flex: 1; -webkit-appearance: none; height: 6px; border-radius: 5px; background: #e5e7eb; outline: none; }
         .slider-control::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--primary); cursor: pointer; }
         .slider-value-indicator { font-weight: bold; font-size: 0.9rem; min-width: 30px; text-align: right; color: var(--dark); }
 
-        /* Shopping Cart Styles */
         .cart-item-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
         .cart-summary-box { background: #fffbeb; border: 1px dashed var(--primary); padding: 15px; border-radius: 10px; margin-top: 15px; }
 
-        /* Payment Module Structures */
         .payment-box { text-align: center; border: 2px dashed #d1d5db; padding: 20px; border-radius: 12px; margin-top: 15px; background: #f9fafb; }
         .qr-placeholder { width: 180px; height: 180px; background: white; margin: 15px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 4px solid var(--dark); border-radius: 10px; position: relative; }
         .qr-box-pattern { width: 160px; height: 160px; background-image: radial-gradient(var(--dark) 25%, transparent 25%), radial-gradient(var(--dark) 25%, transparent 25%); background-size: 8px 8px; background-position: 0 0, 4px 4px; opacity: 0.85; }
         .qr-center-logo { position: absolute; background: white; padding: 4px; font-weight: 900; font-size: 0.65rem; border: 1px solid var(--dark); }
 
-        /* Tracking Pipeline Timeline System */
         .tracking-card { background: white; border-radius: 16px; border: 1px solid #e5e7eb; padding: 30px; max-width: 700px; margin: 30px auto; text-align: left; }
         .timeline { position: relative; border-left: 2px solid #e5e7eb; padding-left: 30px; margin-left: 15px; margin-top: 30px; }
         .timeline-item { position: relative; margin-bottom: 25px; }
@@ -325,7 +311,6 @@
         .timeline-item.active .timeline-title { color: var(--primary-hover); font-size: 1rem; }
         .timeline-item.completed .timeline-title { color: #111827; }
 
-        /* Admin Dashboard System Styling */
         .lock-screen-container { max-width: 400px; margin: 60px auto; background: white; padding: 35px; border-radius: 16px; border: 1px solid #e5e7eb; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; }
         .admin-dashboard { background: white; border-radius: 16px; border: 1px solid #e5e7eb; padding: 25px; margin-top: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
         .admin-table-container { overflow-x: auto; margin-top: 20px; border-radius: 12px; border: 1px solid #e5e7eb; }
@@ -429,39 +414,39 @@
                         <h4 style="margin: 0 0 10px 0; font-weight: 700; color: #4b5563;">Realtime Component Vector View</h4>
                         <div class="tag-canvas-container">
                             <div class="live-tag-svg-wrapper" id="svg-zoom-viewport">
-                                <!-- The master vector view which unifies breed profiles and names exactly like image_5a9da3.png and image_5a9de2.png -->
                                 <svg id="vector-rendering-engine" viewBox="0 0 300 200" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
-                                        <!-- Pure Silhouette Filters for isolating JPEG backgrounds programmatically -->
-                                        <filter id="turn-white">
-                                            <feColorMatrix type="matrix" values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1   1 0 0 0 0"/>
+                                        <filter id="magic-remove-bg-turn-white" x="0%" y="0%" width="100%" height="100%">
+                                            <feColorMatrix type="matrix" values="
+                                                0 0 0 0 1
+                                                0 0 0 0 1
+                                                0 0 0 0 1
+                                                -0.333 -0.333 -0.333 1 1"/>
                                         </filter>
-                                        <filter id="turn-black">
-                                            <feColorMatrix type="matrix" values="0 0 0 0 0.07   0 0 0 0 0.09   0 0 0 0 0.15   1 0 0 0 0"/>
+
+                                        <filter id="magic-remove-bg-turn-black" x="0%" y="0%" width="100%" height="100%">
+                                            <feColorMatrix type="matrix" values="
+                                                0 0 0 0 0.1
+                                                0 0 0 0 0.1
+                                                0 0 0 0 0.15
+                                                -0.333 -0.333 -0.333 1 1"/>
                                         </filter>
                                     </defs>
 
-                                    <!-- Base Tag Frame Layout -->
                                     <path id="svg-tag-base" d="M240,65 C255,40 295,55 285,85 C275,105 275,105 285,120 C295,150 255,165 240,140 L60,140 C45,165 5,150 15,120 C25,105 25,105 15,85 C5,55 45,40 60,65 Z" fill="#111827" filter="drop-shadow(0px 4px 6px rgba(0,0,0,0.2))"/>
                                     
-                                    <!-- Structural Elements Group for Bone Layout Side Paws (Ref: image_5a9de2.png) -->
                                     <g id="svg-bone-decorations">
-                                        <!-- Left Paw -->
                                         <path d="M 50 85 C 47 85, 45 88, 47 91 C 49 94, 53 94, 55 91 C 57 88, 54 85, 50 85 Z M 50 100 C 42 100, 38 106, 44 112 C 48 116, 54 116, 58 112 C 64 106, 58 100, 50 100 Z M 38 90 C 35 90, 33 93, 35 96 C 37 99, 41 99, 43 96 C 45 93, 42 90, 38 90 Z M 62 90 C 59 90, 57 93, 59 96 C 61 99, 65 99, 67 96 C 69 93, 66 90, 62 90 Z" fill="#ffffff"/>
-                                        <!-- Right Paw -->
                                         <path d="M 250 85 C 247 85, 245 88, 247 91 C 249 94, 253 94, 255 91 C 257 88, 254 85, 250 85 Z M 250 100 C 242 100, 238 106, 244 112 C 248 116, 254 116, 258 112 C 264 106, 258 100, 250 100 Z M 238 90 C 235 90, 233 93, 235 96 C 237 99, 241 99, 243 96 C 245 93, 242 90, 238 90 Z M 262 90 C 259 90, 257 93, 259 96 C 261 99, 265 99, 267 96 C 269 93, 266 90, 262 90 Z" fill="#ffffff"/>
                                     </g>
 
-                                    <!-- Integrated Breed Silhouette Image Frame layer for Circle Layout (Ref: image_5a9da3.png) -->
-                                    <image id="svg-circle-breed-silhouette" x="85" y="25" width="130" height="110" href="" preserveAspectRatio="xMidYMid meet" style="display: none;" />
+                                    <image id="svg-circle-breed-silhouette" x="90" y="20" width="120" height="110" href="" preserveAspectRatio="xMidYMid meet" style="display: none;" />
 
-                                    <!-- Unified Dynamic Typography Text Label -->
                                     <text id="svg-tag-text" x="150" y="112" text-anchor="middle" fill="#ffffff" class="preview-font-Poppins" font-size="28" letter-spacing="1">PET NAME</text>
                                 </svg>
                             </div>
                         </div>
 
-                        <!-- Live Interactive Design Zoom Controller Interface Slider Layout -->
                         <div class="input-group" style="margin-bottom: 0;">
                             <label style="text-align: left;">Live Preview Zoom Scale Factor</label>
                             <div class="slider-wrapper">
@@ -539,7 +524,6 @@
                                 </select>
                             </div>
 
-                            <!-- Interactive Dynamic Font Size Slider Component -->
                             <div class="input-group">
                                 <label>Font Size Fine Adjustment Tuning</label>
                                 <div class="slider-wrapper">
@@ -548,7 +532,6 @@
                                 </div>
                             </div>
 
-                            <!-- Expanded Premium 12-Tone Dark High-Contrast Filament Palette Collection -->
                             <div class="input-group">
                                 <label>High-Density Filament Color Solution</label>
                                 <div class="swatch-container">
@@ -755,7 +738,7 @@
     </footer>
 
     <script>
-        // MASTER REGISTRY DICTIONARY DATA[cite: 3]
+        // MASTER REGISTRY DICTIONARY DATA
         const breedRegistryData = {
             dog: [
                 { id: "american_bully_2", name: "American Bully 2", file: "American Bully 2.jpg" }, 
@@ -787,12 +770,10 @@
 
         const sizePrices = { Small: 400, Standard: 600, Large: 800 };
 
-        // APP CORE VOLATILE LOCAL RECORD STORES[cite: 3]
         let currentSelectedShape = "bone";
-        let currentSelectedColor = "#111827"; // Default to Midnight Black
+        let currentSelectedColor = "#111827"; 
         let shoppingCartList = [];
         
-        // MASTER ADMIN/TRACKING DATABASE MODEL[cite: 3]
         let globalOrdersDatabase = [
             {
                 id: "PT-4921",
@@ -818,14 +799,12 @@
             }
         ];
 
-        // START INITIALIZATION ENGINE[cite: 3]
         window.addEventListener("DOMContentLoaded", () => {
             populateBreedDropdown();
             syncPreviewState();
             refreshCartDisplayView();
         });
 
-        // VIEW NAVIGATION SWAPPER ROUTER[cite: 3]
         function switchView(targetViewId) {
             document.querySelectorAll('.app-view').forEach(element => element.classList.remove('view-active'));
             document.querySelectorAll('.nav-btn').forEach(element => element.classList.remove('active'));
@@ -843,13 +822,11 @@
             window.scrollTo(0, 0);
         }
 
-        // ENTRY HOOK FROM THE MAIN LANDING CARD CLICKS[cite: 3]
         function selectShapeAndGo(shapeKey) {
             selectShapeFactor(shapeKey);
             switchView('customizer');
         }
 
-        // STUDIO DROP DOWN GENERATOR[cite: 3]
         function populateBreedDropdown() {
             const petTypeSelection = document.getElementById("form-pettype").value;
             const breedDropdownSelector = document.getElementById("form-breed");
@@ -864,7 +841,6 @@
             });
         }
 
-        // STUDIO FORM MANIPULATION ASSIGNMENTS[cite: 3]
         function selectShapeFactor(shapeKey) {
             currentSelectedShape = shapeKey;
             document.querySelectorAll('[id^="shape-card-"]').forEach(card => card.classList.remove('selected'));
@@ -883,7 +859,6 @@
             syncPreviewState();
         }
 
-        // INTERACTIVE ZOOM APPLICATION INTERFACE STEP
         function applyLiveViewportZoom() {
             const zoomValueInput = document.getElementById("preview-zoom-slider").value;
             const percentageText = Math.round(zoomValueInput * 100) + "%";
@@ -895,7 +870,6 @@
             }
         }
 
-        // ADVANCED SHAPE-DEPENDENT CONFIGURATOR ENGINE REWRITTEN
         function syncPreviewState() {
             let petNameInput = document.getElementById("form-petname").value.trim().toUpperCase();
             if (!petNameInput) petNameInput = "PET NAME";
@@ -904,23 +878,19 @@
             const petTypeSelection = document.getElementById("form-pettype").value;
             const currentBreedId = document.getElementById("form-breed").value;
             
-            // Read Custom Font Size Slider Metrics
             const selectedFontSize = document.getElementById("form-fontsize-slider").value;
             document.getElementById("fontsize-slider-value").textContent = selectedFontSize + "px";
 
-            // Update SVG Base Path Layout Colors
             const svgPathNode = document.getElementById("svg-tag-base");
             if (svgPathNode) {
                 svgPathNode.setAttribute("d", shapePaths[currentSelectedShape] || shapePaths.bone);
                 svgPathNode.setAttribute("fill", currentSelectedColor);
             }
 
-            // Reference Sub-components
             const textElementNode = document.getElementById("svg-tag-text");
             const boneDecorationGroup = document.getElementById("svg-bone-decorations");
             const circleBreedImageNode = document.getElementById("svg-circle-breed-silhouette");
 
-            // Automatic Contrast Detection Rule Engine 
             const lightColors = ["#ffffff", "#e5e7eb"];
             const isLightBackground = lightColors.includes(currentSelectedColor.toLowerCase());
             const internalGraphicColor = isLightBackground ? "#111827" : "#ffffff";
@@ -932,14 +902,15 @@
                 textElementNode.setAttribute("fill", internalGraphicColor);
             }
 
-            // Execution Matrix Rules mapped to user specifications (Ref: image_5a9da3.png & image_5a9de2.png)
             if (currentSelectedShape === "Circle") {
                 if (boneDecorationGroup) boneDecorationGroup.style.display = "none";
                 
                 if (circleBreedImageNode) {
                     circleBreedImageNode.style.display = "block";
-                    // Apply dynamic pure monochrome mask inversion depending on backdrop shade
-                    circleBreedImageNode.style.filter = isLightBackground ? "url(#turn-black)" : "url(#turn-white)";
+                    
+                    // APPLY AUTOMATIC BACKGROUND REMOVAL FILTER HANDSHAKE
+                    // Removes white box backgrounds dynamically from source JPGs
+                    circleBreedImageNode.style.filter = isLightBackground ? "url(#magic-remove-bg-turn-black)" : "url(#magic-remove-bg-turn-white)";
                     
                     const arrayFinder = breedRegistryData[petTypeSelection];
                     const targetBreedObject = arrayFinder.find(b => b.id === currentBreedId) || arrayFinder[0];
@@ -965,7 +936,6 @@
             }
         }
 
-        // SHOPPING CART CONTROLLER FUNCTIONS[cite: 3]
         function addCurrentConfigToCart(event) {
             event.preventDefault();
             const petNameInput = document.getElementById("form-petname").value.trim().toUpperCase();
@@ -1051,7 +1021,6 @@
             }
         }
 
-        // CHECKOUT DISPATCH TO MASTER DATABASE[cite: 3]
         function processOrderSubmission(event) {
             event.preventDefault();
 
@@ -1095,7 +1064,6 @@
             switchView('tracking');
         }
 
-        // PIPELINE TRACKER LOGIC ENGINE[cite: 3]
         function searchOrderTracking() {
             const searchQueryKey = document.getElementById("tracking-search-id").value.trim().toUpperCase();
             const outputBox = document.getElementById("tracking-result-box");
@@ -1132,7 +1100,6 @@
             outputBox.style.display = "block";
         }
 
-        // OWNER CLEARANCE ROUTINE VALIDATION[cite: 3]
         function validateAdminClearance() {
             const providedPasswordValue = document.getElementById("admin-pass-key").value;
             if (providedPasswordValue === "admin123" || providedPasswordValue === "owner7") {
