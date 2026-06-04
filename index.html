@@ -377,10 +377,28 @@
                                 </svg>
                             </div>
                         </div>
-                        <h4 style="margin: 20px 0 5px 0; font-weight: 700; color: #4b5563; text-align: left;">Selected Breed Context Profile:</h4>
-                        <img id="breed-preview-frame" src="assets/breeds/labrador.jpg" class="breed-indicator-img" alt="Selected Breed Silhouette">
-                        <p style="font-size: 0.8rem; color: #6b7280; font-weight: 500; margin-top: 10px;">* Final output utilizes dense commercial-grade beveled edge structures.</p>
-                    </div>
+                        <h4 style={{ margin: "20px 0 5px 0", fontWeight: 700, color: "#4b5563", textAlign: "left" }}>Selected Breed Context Profile:</h4>
+                        
+                        {/* 🛠️ Fixed Dynamic Image Container */}
+                        <div style={{ background: '#000000', borderRadius: '12px', padding: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '160px' }}>
+                            {selectedBreed ? (
+                                <img 
+                                    id="breed-preview-frame"
+                                    src={`/assets/pet-breeds/${petType}/${selectedBreed.file}`} 
+                                    className="breed-indicator-img"
+                                    alt="Selected Breed Silhouette" 
+                                    style={{ maxHeight: '140px', maxWidth: '100%', objectFit: 'contain', display: 'block' }} 
+                                    onError={(e) => {
+                                        // Absolute path browser fallback engine 
+                                        e.target.src = `assets/pet-breeds/${petType}/${selectedBreed.file}`;
+                                    }}
+                                />
+                            ) : (
+                                <span style={{ color: '#6b7280' }}>Loading Map View...</span>
+                            )}
+                        </div>
+
+                        <p style={{ fontSize: "0.8rem", color: "#6b7280", fontWeight: 500, marginTop: "10px" }}>* Final output utilizes dense commercial-grade beveled edge structures.</p>
                 </div>
 
                 <div class="form-flow">
