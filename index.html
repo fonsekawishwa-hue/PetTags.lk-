@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetTags.lk - Premium Custom Pet Tags Sri Lanka</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,700&family=Roboto:wght@700;900&display=swap" rel="stylesheet">
+    
     <style>
         /* ==========================================
            MODERN PET SHOP BRAND STYLING & DESIGN SYSTEM
@@ -51,7 +55,6 @@
             color: inherit;
         }
 
-        /* UPGRADED: Increased logo presentation sizing for higher brand attraction */
         .logo { 
             width: 220px; 
             height: auto; 
@@ -127,10 +130,10 @@
         .subtitle { color: #666; font-size: 1.1rem; margin-bottom: 0; }
 
         /* Typography & Custom Preview Font Injectors */
-        .preview-font-Poppins { font-family: 'Poppins', sans-serif; font-weight: bold; }
-        .preview-font-Roboto { font-family: 'Roboto', sans-serif; font-weight: bold; }
-        .preview-font-Arial { font-family: 'Arial', sans-serif; font-weight: 900; }
-        .preview-font-ComicSans { font-family: 'Comic Sans MS', cursive; }
+        .preview-font-Poppins { font-family: 'Poppins', sans-serif; font-weight: 700; }
+        .preview-font-Roboto { font-family: 'Roboto', sans-serif; font-weight: 900; }
+        .preview-font-Arial { font-family: 'Arial Black', 'Arial', sans-serif; font-weight: 900; }
+        .preview-font-ComicSans { font-family: 'Comic Sans MS', cursive, sans-serif; font-weight: 700; }
 
         /* Grid Layout Frameworks (Fully Mobile Responsive) */
         .grid { 
@@ -214,7 +217,6 @@
             box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
         }
 
-        /* FIXED RESPONSIVE INLINE SVG SCALING STYLES */
         .live-tag-svg-wrapper {
             width: 260px;
             height: 180px;
@@ -223,13 +225,23 @@
             justify-content: center;
         }
 
-        .breed-indicator-img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px;
+        .breed-preview-wrapper {
+            background: #000000;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 160px;
             margin-top: 10px;
-            border: 1px solid #e5e7eb;
+        }
+
+        .breed-indicator-img {
+            max-height: 140px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            display: block;
         }
 
         /* Form Controls Styling */
@@ -238,7 +250,7 @@
         .form-section h3 span { background: var(--primary); color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; }
         
         .input-group { margin-bottom: 15px; }
-        .input-group label { display: block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; tracking-wider; color: #4b5563; margin-bottom: 6px; }
+        .input-group label { display: block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #4b5563; margin-bottom: 6px; }
         .form-control { width: 100%; border: 1px solid #d1d5db; padding: 12px; box-sizing: border-box; border-radius: 10px; font-size: 0.95rem; font-weight: 500; transition: border 0.2s; }
         .form-control:focus { outline: none; border-color: var(--primary); }
         
@@ -249,7 +261,7 @@
         .swatch.selected { box-shadow: 0 0 0 2px var(--primary); transform: scale(1.1); }
         .swatch.selected::after { content: "✓"; color: white; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
 
-        .btn { background-color: var(--primary); color: white; font-weight: 700; border: none; padding: 14px 28px; border-radius: 12px; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1rem; text-transform: uppercase; tracking-wider; text-align: center; }
+        .btn { background-color: var(--primary); color: white; font-weight: 700; border: none; padding: 14px 28px; border-radius: 12px; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; text-align: center; box-sizing: border-box; }
         .btn:hover { background-color: var(--primary-hover); transform: translateY(-1px); }
         .btn-secondary { background-color: #4b5563; margin-top: 10px; }
         .btn-secondary:hover { background-color: #374151; }
@@ -275,7 +287,7 @@
         .timeline-item.active .timeline-title { color: var(--primary-hover); font-size: 1rem; }
         .timeline-item.completed .timeline-title { color: #111827; }
 
-        /* Admin Gateway Lock View System Styling */
+        /* Admin Dashboard System Styling */
         .lock-screen-container {
             max-width: 400px;
             margin: 60px auto;
@@ -287,12 +299,12 @@
             text-align: center;
         }
 
-        /* Admin Dashboard */
         .admin-dashboard { background: white; border-radius: 16px; border: 1px solid #e5e7eb; padding: 25px; margin-top: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
         .admin-table-container { overflow-x: auto; margin-top: 20px; border-radius: 12px; border: 1px solid #e5e7eb; }
         table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
         th { background-color: #f9fafb; padding: 14px; font-weight: 700; color: #4b5563; border-bottom: 1px solid #e5e7eb; }
         td { padding: 14px; border-bottom: 1px solid #f3f4f6; font-weight: 500; }
+        
         .status-badge { padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; display: inline-block; }
         .badge-pending { background-color: #fef3c7; color: #d97706; }
         .badge-active { background-color: #dbeafe; color: #2563eb; }
@@ -300,8 +312,6 @@
 
         .admin-actions { display: flex; gap: 10px; justify-content: flex-end; margin-bottom: 20px; }
         .btn-sm { padding: 8px 14px; font-size: 0.8rem; border-radius: 6px; width: auto; text-transform: none; font-weight: 600; }
-        .btn-excel { background-color: #10b981; } .btn-excel:hover { background-color: #059669; }
-        .btn-pdf { background-color: #ef4444; } .btn-pdf:hover { background-color: #dc2626; }
         
         footer { margin-top: 60px; padding: 30px; border-top: 1px solid var(--border-color); font-size: 0.8rem; color: #9ca3af; font-weight: 500; text-align: center; }
     </style>
@@ -311,7 +321,7 @@
     <header>
         <div class="nav-container">
             <a href="#" class="logo-group" onclick="switchView('home')">
-                <img src="assets/logo.png" alt="PetTags.lk Logo" class="logo">
+                <img src="assets/logo.png" alt="PetTags.lk Logo" class="logo" onError="this.src='https://placehold.co/220x60?text=PetTags.lk'">
             </a>
             <div class="nav-menu">
                 <button class="nav-btn active" id="btn-home" onclick="switchView('home')">Home</button>
@@ -325,9 +335,8 @@
 
     <div class="container">
 
-        <!-- HOME DASHBOARD VIEW -->
         <div id="view-home" class="app-view view-active">
-            <img src="assets/theme/1.jpg" alt="Pet Tags Collection Showcase" class="hero-banner">
+            <img src="assets/theme/1.jpg" alt="Pet Tags Collection Showcase" class="hero-banner" onError="this.style.display='none'">
             
             <div style="padding: 40px 0; text-align: center;">
                 <h1>Custom 3D Printed Pet Tags Made Just For Your Best Friend</h1>
@@ -337,27 +346,26 @@
 
             <h2>Our Real Printed Products Showcase</h2>
             <div class="grid printed-grid">
-                <div class="card"><img src="assets/printed products/1.jpg" alt="Printed Tag"><p>Crafted Tag Example 1</p></div>
-                <div class="card"><img src="assets/printed products/2.jpg" alt="Printed Tag"><p>Happy Pup Preview</p></div>
-                <div class="card"><img src="assets/printed products/3.jpg" alt="Printed Tag"><p>Rottweiler Solid Style</p></div>
-                <div class="card"><img src="assets/printed products/4.jpg" alt="Printed Tag"><p>Outdoor Durability Test</p></div>
+                <div class="card"><img src="assets/printed products/1.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Premium+Tag+1'"><p>Crafted Tag Example 1</p></div>
+                <div class="card"><img src="assets/printed products/2.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Happy+Pup+Preview'"><p>Happy Pup Preview</p></div>
+                <div class="card"><img src="assets/printed products/3.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Rottweiler+Solid'"><p>Rottweiler Solid Style</p></div>
+                <div class="card"><img src="assets/printed products/4.jpg" alt="Printed Tag" onError="this.src='https://placehold.co/200x240?text=Outdoor+Durability'"><p>Outdoor Durability Test</p></div>
             </div>
 
             <h2>Available Tag Base Shapes</h2>
             <div class="grid">
-                <div class="card" onclick="switchView('customizer')"><img src="assets/tag-shapes/bone.png" alt="Bone"><p>Bone Pattern Style</p></div>
-                <div class="card" onclick="switchView('customizer')"><img src="assets/tag-shapes/bone2.png" alt="Bone 2"><p>Bone Solid Profile</p></div>
-                <div class="card" onclick="switchView('customizer')"><img src="assets/tag-shapes/Circle.png" alt="Circle"><p>Classic Circle Profile</p></div>
+                <div class="card" onclick="selectShapeAndGo('bone')"><img src="assets/tag-shapes/bone.png" alt="Bone" onError="this.src='https://placehold.co/160x160?text=Bone+Pattern'"><p>Bone Pattern Style</p></div>
+                <div class="card" onclick="selectShapeAndGo('bone2')"><img src="assets/tag-shapes/bone2.png" alt="Bone 2" onError="this.src='https://placehold.co/160x160?text=Bone+Solid'"><p>Bone Solid Profile</p></div>
+                <div class="card" onclick="selectShapeAndGo('Circle')"><img src="assets/tag-shapes/Circle.png" alt="Circle" onError="this.src='https://placehold.co/160x160?text=Classic+Circle'"><p>Classic Circle Profile</p></div>
             </div>
 
             <h2>Full Design Layout Sheets</h2>
             <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
-                <div class="card"><img src="assets/example-designs/example 1.png" alt="Catalog 1" style="height:auto;"><p>Design Catalog Sheet 1</p></div>
-                <div class="card"><img src="assets/example-designs/example 2.png" alt="Catalog 2" style="height:auto;"><p>Design Catalog Sheet 2</p></div>
+                <div class="card"><img src="assets/example-designs/example 1.png" alt="Catalog 1" style="height:auto;" onError="this.src='https://placehold.co/300x200?text=Design+Catalog+1'"><p>Design Catalog Sheet 1</p></div>
+                <div class="card"><img src="assets/example-designs/example 2.png" alt="Catalog 2" style="height:auto;" onError="this.src='https://placehold.co/300x200?text=Design+Catalog+2'"><p>Design Catalog Sheet 2</p></div>
             </div>
         </div>
 
-        <!-- REWRITTEN INTERACTIVE INTERFACE CUSTOMIZER STUDIO -->
         <div id="view-customizer" class="app-view">
             <div style="text-align: left; margin-bottom: 20px;">
                 <h1>Interactive Tag Configurator Studio</h1>
@@ -369,7 +377,6 @@
                     <div class="preview-box">
                         <h4 style="margin: 0 0 10px 0; font-weight: 700; color: #4b5563;">Realtime Component Vector View</h4>
                         <div class="tag-canvas-container">
-                            <!-- UPGRADED VIA INLINE SCALABLE SYSTEM LOGIC (REPLACED DENSE CLIP-PATHS) -->
                             <div class="live-tag-svg-wrapper">
                                 <svg id="vector-rendering-engine" viewBox="0 0 300 200" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
                                     <path id="svg-tag-base" d="M240,65 C255,40 295,55 285,85 C275,105 275,105 285,120 C295,150 255,165 240,140 L60,140 C45,165 5,150 15,120 C25,105 25,105 15,85 C5,55 45,40 60,65 Z" fill="#ff0000" filter="drop-shadow(0px 4px 6px rgba(0,0,0,0.2))"/>
@@ -377,28 +384,14 @@
                                 </svg>
                             </div>
                         </div>
-                        <h4 style={{ margin: "20px 0 5px 0", fontWeight: 700, color: "#4b5563", textAlign: "left" }}>Selected Breed Context Profile:</h4>
+                        <h4 style="margin: 20px 0 5px 0; font-weight: 700; color: #4b5563; text-align: left;">Selected Breed Context Profile:</h4>
                         
-                        {/* 🛠️ Fixed Dynamic Image Container */}
-                        <div style={{ background: '#000000', borderRadius: '12px', padding: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '160px' }}>
-                            {selectedBreed ? (
-                                <img 
-                                    id="breed-preview-frame"
-                                    src={`/assets/pet-breeds/${petType}/${selectedBreed.file}`} 
-                                    className="breed-indicator-img"
-                                    alt="Selected Breed Silhouette" 
-                                    style={{ maxHeight: '140px', maxWidth: '100%', objectFit: 'contain', display: 'block' }} 
-                                    onError={(e) => {
-                                        // Absolute path browser fallback engine 
-                                        e.target.src = `assets/pet-breeds/${petType}/${selectedBreed.file}`;
-                                    }}
-                                />
-                            ) : (
-                                <span style={{ color: '#6b7280' }}>Loading Map View...</span>
-                            )}
+                        <div class="breed-preview-wrapper">
+                            <img id="breed-preview-frame" src="assets/pet-breeds/dog/American Bully.jpg" class="breed-indicator-img" alt="Selected Breed Silhouette">
                         </div>
 
-                        <p style={{ fontSize: "0.8rem", color: "#6b7280", fontWeight: 500, marginTop: "10px" }}>* Final output utilizes dense commercial-grade beveled edge structures.</p>
+                        <p style="font-size: 0.8rem; color: #6b7280; font-weight: 500; margin-top: 10px;">* Final output utilizes dense commercial-grade beveled edge structures.</p>
+                    </div>
                 </div>
 
                 <div class="form-flow">
@@ -420,8 +413,7 @@
                             <div class="input-group">
                                 <label>Breed Identification Profiling</label>
                                 <select id="form-breed" class="form-control" onchange="syncPreviewState()">
-                                    <!-- Dynamic elements injected here -->
-                                </select>
+                                    </select>
                             </div>
                         </div>
 
@@ -432,15 +424,15 @@
                                 <label>Base Structural Matrix Shape</label>
                                 <div class="grid" style="grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 5px 0 15px 0;">
                                     <div class="card selected" id="shape-card-bone" onclick="selectShapeFactor('bone')">
-                                        <img src="assets/tag-shapes/bone.png" style="height:70px; object-fit:contain;" alt="Bone Pattern"><p style="font-size:0.75rem; margin:5px; text-align:center;">Bone Pattern</p>
+                                        <img src="assets/tag-shapes/bone.png" style="height:70px; object-fit:contain;" alt="Bone Pattern" onError="this.src='https://placehold.co/70x70?text=Bone+P'"><p style="font-size:0.75rem; margin:5px; text-align:center;">Bone Pattern</p>
                                         <div class="card-checkbox">✓</div>
                                     </div>
                                     <div class="card" id="shape-card-bone2" onclick="selectShapeFactor('bone2')">
-                                        <img src="assets/tag-shapes/bone2.png" style="height:70px; object-fit:contain;" alt="Bone Solid"><p style="font-size:0.75rem; margin:5px; text-align:center;">Bone Solid</p>
+                                        <img src="assets/tag-shapes/bone2.png" style="height:70px; object-fit:contain;" alt="Bone Solid" onError="this.src='https://placehold.co/70x70?text=Bone+S'"><p style="font-size:0.75rem; margin:5px; text-align:center;">Bone Solid</p>
                                         <div class="card-checkbox">✓</div>
                                     </div>
                                     <div class="card" id="shape-card-Circle" onclick="selectShapeFactor('Circle')">
-                                        <img src="assets/tag-shapes/Circle.png" style="height:70px; object-fit:contain;" alt="Circle"><p style="font-size:0.75rem; margin:5px; text-align:center;">Classic Circle</p>
+                                        <img src="assets/tag-shapes/Circle.png" style="height:70px; object-fit:contain;" alt="Circle" onError="this.src='https://placehold.co/70x70?text=Circle'"><p style="font-size:0.75rem; margin:5px; text-align:center;">Classic Circle</p>
                                         <div class="card-checkbox">✓</div>
                                     </div>
                                 </div>
@@ -484,7 +476,6 @@
             </div>
         </div>
 
-        <!-- NEW COMPONENT: SHOPPING CART & INTEGRATED PAYMENT WINDOW -->
         <div id="view-cart" class="app-view">
             <h1>Your Engineering Build Cart</h1>
             <p class="subtitle">Review custom metrics and complete checkout processing via local Lankapay nodes.</p>
@@ -493,8 +484,7 @@
                 <div class="form-section">
                     <h3>Current Cart Enrolled Items</h3>
                     <div id="cart-items-container">
-                        <!-- Simulated active cart items dump -->
-                    </div>
+                        </div>
                     <div class="cart-summary-box">
                         <p style="margin:0; font-weight:700; color:var(--dark); display:flex; justify-content:space-between; font-size:1.1rem;">
                             <span>Total Build Cost (LKR):</span>
@@ -563,7 +553,6 @@
                             </select>
                         </div>
 
-                        <!-- LANKAQR NODE PREVIEW SECTION -->
                         <div class="payment-box" id="payment-qr-area">
                             <p style="margin:0; font-weight:700; font-size:0.9rem; color:var(--dark);">Scan via Commercial, HNB, Sampath, or BOC Apps</p>
                             <div class="qr-placeholder">
@@ -579,196 +568,517 @@
             </div>
         </div>
 
-        <!-- TRACKING VIEW -->
         <div id="view-tracking" class="app-view">
             <h1>Production Line Status Tracker</h1>
-            <p class="subtitle">Enter reference ID or track recent submissions below.</p>
-        </div>
-
-        <!-- NEW COMPONENT SCREEN: ADMIN SECURITY SHIELD -->
-        <div id="view-admin-lock" class="app-view">
-            <div class="lock-screen-container">
-                <div style="font-size: 3rem; margin-bottom: 10px;">🔒</div>
-                <h3>Owner Security Verification</h3>
-                <p style="color:#6b7280; font-size:0.9rem; margin-bottom:20px;">Access to administrative console logs requires master encryption authorization keys.</p>
-                <div class="input-group" style="text-align: left;">
-                    <label>Admin Passphrase Pin</label>
-                    <input type="password" id="admin-password-input" class="form-control" placeholder="••••••••" style="text-align: center; letter-spacing: 4px;">
+            <p class="subtitle">Enter reference ID below to pull live pipeline build staging statistics.</p>
+            
+            <div class="lock-screen-container" style="max-width: 550px; margin-top: 30px;">
+                <div class="input-group" style="display:flex; gap:10px; margin-bottom:0;">
+                    <input type="text" id="tracking-search-id" class="form-control" placeholder="e.g. PT-9982" style="text-transform: uppercase;">
+                    <button class="btn" style="width:auto; padding:0 25px;" onclick="searchOrderTracking()">Track</button>
                 </div>
-                <p id="lock-error-msg" style="color:#ef4444; font-size:0.85rem; font-weight:600; display:none; margin: 10px 0;">Incorrect Authorization Token. Please verify entry parameters.</p>
-                <button class="btn" onclick="validateAdminGatephrase()">Unlock Secure Node</button>
+            </div>
+
+            <div id="tracking-result-box" class="tracking-card" style="display:none;">
+                <h3 style="margin:0 0 5px 0;" id="track-manifest-id">Order ID: PT-0000</h3>
+                <p style="margin:0 0 15px 0; font-size:0.9rem; color:#6b7280;" id="track-manifest-name">Customer: ...</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item" id="node-stage-1">
+                        <div class="timeline-node"></div>
+                        <p class="timeline-title">Order Received & Payment Verified</p>
+                    </div>
+                    <div class="timeline-item" id="node-stage-2">
+                        <div class="timeline-node"></div>
+                        <p class="timeline-title">3D Slice Engine Model Optimization Queue</p>
+                    </div>
+                    <div class="timeline-item" id="node-stage-3">
+                        <div class="timeline-node"></div>
+                        <p class="timeline-title">Filament Layer Extrusion Printing Staging</p>
+                    </div>
+                    <div class="timeline-item" id="node-stage-4">
+                        <div class="timeline-node"></div>
+                        <p class="timeline-title">Dispatched via Local Courier Delivery Loop</p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- ADMIN WORKSPACE LOG CONSOLE -->
-        <div id="view-admin" class="app-view">
+        <div id="view-admin-lock" class="app-view">
+            <div class="lock-screen-container">
+                <div style="font-size: 2.5rem; margin-bottom: 15px;">🔐</div>
+                <h3>Owner Gateway Clearance</h3>
+                <p style="color:#6b7280; font-size:0.85rem; margin-top:-10px; margin-bottom:20px;">Access require authorization token signature.</p>
+                <div class="input-group">
+                    <input type="password" id="admin-pass-key" class="form-control" placeholder="Enter security passphrase key">
+                </div>
+                <button class="btn" onclick="validateAdminClearance()">Unlock Management Core</button>
+            </div>
+        </div>
+
+        <div id="view-admin-dashboard" class="app-view">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <h1>Production Pipeline Control Console</h1>
+                    <p class="subtitle">Manage, view details, update print statuses, or export configurations.</p>
+                </div>
+                <button class="btn btn-secondary" style="width:auto;" onclick="switchView('home')">Exit Session</button>
+            </div>
+
             <div class="admin-dashboard">
-                <h2>Admin Workspace Node Panel</h2>
-                <p>Protected administration database management.</p>
+                <div class="admin-actions">
+                    <button class="btn btn-sm btn-excel" onclick="alert('Exporting manifest data rows to Excel Spreadsheet format...')">📊 Export Excel Sheet</button>
+                    <button class="btn btn-sm btn-pdf" onclick="alert('Generating print ready manifest PDF bundle blueprints...')">📋 Print PDF Manifest</button>
+                </div>
+
+                <div class="admin-table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order Ref</th>
+                                <th>Client Details</th>
+                                <th>Enrolled Tags Metadata Specs</th>
+                                <th>Total Cost</th>
+                                <th>Current Status Node</th>
+                                <th style="text-align: right;">Action Operation</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-orders-table-rows">
+                            </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
     </div>
 
     <footer>
-        &copy; 2026 PetTags.lk. All Rights Reserved. Crafted for Pet Lovers in Sri Lanka.
+        <p>© 2026 PetTags.lk Sri Lanka. Precision Engineered Custom 3D Filament Label Components.</p>
     </footer>
 
-    <!-- ==========================================
-       JAVASCRIPT APPLICATION ROUTING & VIEW ENGINE
-       ========================================== -->
     <script>
-        // GLOBAL REGISTRY APP STATE
-        let activeSelectedShape = "bone";
-        let currentSelectedColor = "#ff0000";
-        let isSystemAdminAuthenticated = false;
-
-        // BREED IDENTIFICATION DATABASE DIRECTORY
-      const breedRegistryData = {
-    dog: [
-        { id: "american_bully_2", name: "American Bully 2", file: "American Bully 2.jpg" }, // Matches image_5e409a.png
-        { id: "american_bully", name: "American Bully", file: "American Bully.jpg" },     // Matches image_5e409a.png
-        { id: "beagle", name: "Beagle", file: "Beagle.jpg" },                             // Matches image_5e409a.png
-        { id: "german_shepherd", name: "German Shepherd", file: "German Shepherd.jpg" },   // Matches image_5e409a.png
-        { id: "german_shepherd2", name: "German Shepherd 2", file: "German Shepherd2.jpg" }, // Matches image_5e409a.png
-        { id: "golden_retriever", name: "Golden Retriever", file: "Golden Retriever.jpg" }, // Matches image_5e409a.png
-        { id: "shih_tzu", name: "Shih Tzu", file: "Shih Tzu.jpg" },                       // Matches image_5e409a.png
-        { id: "siberian_husky", name: "Siberian Husky", file: "Siberian Husky.jpg" },     // Matches image_5e409a.png
-        { id: "dalmatian", name: "Dalmatian", file: "dalmatian.jpg" },                     // Matches image_5e409a.png
-        { id: "normal", name: "Normal Breed Mix", file: "normal.jpg" },                   // Matches image_5e409a.png
-        { id: "richbake", name: "Richbake Blend", file: "richbake .jpg" },                 // ⚠️ CRITICAL FIXED SPACE MATCH FOR image_5e409a.png
-        { id: "rottweiler", name: "Rottweiler", file: "rottweiler.jpg" }                  // Matches image_5e409a.png
-    ],
-    cat: [
-        { id: "shape_1", name: "Peeking Silhouette 1", file: "shape 1.jpg" },             // Matches image_5e4041.png
-        { id: "shape_2", name: "Profile Clean Cutout 2", file: "shape 2.jpg" },           // Matches image_5e4041.png
-        { id: "shape_3", name: "Playful Kitten Sketch 3", file: "shape 3.jpg" },           // Matches image_5e4041.png
-        { id: "shape_4", name: "Curious Looking Frame 4", file: "shape 4.jpg" }            // Matches image_5e4041.png
-    ]
-};
-        // MATHEMATICAL VECTOR SHAPE GEOMETRY PATH COORDINATES
-        const vectorShapePaths = {
-            bone: "M240,65 C255,40 295,55 285,85 C275,105 275,105 285,120 C295,150 255,165 240,140 L60,140 C45,165 5,150 15,120 C25,105 25,105 15,85 C5,55 45,40 60,65 Z",
-            bone2: "M30,50 L270,50 C295,50 295,150 270,150 L30,150 C5,150 5,50 30,50 Z",
-            Circle: "M 150, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"
+        // MASTER REGISTRY DICTIONARY DATA
+        const breedRegistryData = {
+            dog: [
+                { id: "american_bully_2", name: "American Bully 2", file: "American Bully 2.jpg" }, 
+                { id: "american_bully", name: "American Bully", file: "American Bully.jpg" },     
+                { id: "beagle", name: "Beagle", file: "Beagle.jpg" },                             
+                { id: "german_shepherd", name: "German Shepherd", file: "German Shepherd.jpg" },   
+                { id: "german_shepherd2", name: "German Shepherd 2", file: "German Shepherd2.jpg" }, 
+                { id: "golden_retriever", name: "Golden Retriever", file: "Golden Retriever.jpg" }, 
+                { id: "shih_tzu", name: "Shih Tzu", file: "Shih Tzu.jpg" },                       
+                { id: "siberian_husky", name: "Siberian Husky", file: "Siberian Husky.jpg" },     
+                { id: "dalmatian", name: "Dalmatian", file: "dalmatian.jpg" },                     
+                { id: "normal", name: "Normal Breed Mix", file: "normal.jpg" },                   
+                { id: "richbake", name: "Richbake Blend", file: "richbake .jpg" },                 
+                { id: "rottweiler", name: "Rottweiler", file: "rottweiler.jpg" }                  
+            ],
+            cat: [
+                { id: "shape_1", name: "Peeking Silhouette 1", file: "shape 1.jpg" },             
+                { id: "shape_2", name: "Profile Clean Cutout 2", file: "shape 2.jpg" },           
+                { id: "shape_3", name: "Playful Kitten Sketch 3", file: "shape 3.jpg" },           
+                { id: "shape_4", name: "Curious Looking Frame 4", file: "shape 4.jpg" }            
+            ]
         };
 
-        // DOM CORE INITIALIZATION LOADER
+        const shapePaths = {
+            bone: "M240,65 C255,40 295,55 285,85 C275,105 275,105 285,120 C295,150 255,165 240,140 L60,140 C45,165 5,150 15,120 C25,105 25,105 15,85 C5,55 45,40 60,65 Z",
+            bone2: "M250,60 C270,60 280,75 270,95 L260,105 L270,115 C280,135 270,150 250,150 L50,150 C30,150 20,135 30,115 L40,105 L30,95 C20,75 30,60 50,60 Z",
+            Circle: "M150,20 A80,80 0 1,1 149.9,20 Z"
+        };
+
+        const sizePrices = { Small: 400, Standard: 600, Large: 800 };
+
+        // APP CORE VOLATILE LOCAL RECORD STORES
+        let currentSelectedShape = "bone";
+        let currentSelectedColor = "#ff0000";
+        let shoppingCartList = [];
+        
+        // MASTER ADMIN/TRACKING DATABASE MODEL
+        let globalOrdersDatabase = [
+            {
+                id: "PT-4921",
+                customerName: "Anura Perera",
+                phone: "0771234567",
+                address: "42, Galle Road, Colombo 03",
+                district: "Colombo",
+                paymentMethod: "qr",
+                items: [{ shape: "bone", petName: "REX", petType: "dog", breedName: "German Shepherd", size: "Standard", color: "#ff0000", cost: 600 }],
+                total: 600,
+                status: 3 // Extrusion stage
+            },
+            {
+                id: "PT-7729",
+                customerName: "Minoli Silva",
+                phone: "0719876543",
+                address: "15/A, Peradeniya Road, Kandy",
+                district: "Kandy",
+                paymentMethod: "cod",
+                items: [{ shape: "Circle", petName: "KITTY", petType: "cat", breedName: "Peeking Silhouette 1", size: "Small", color: "#ec4899", cost: 400 }],
+                total: 400,
+                status: 1 // Received stage
+            }
+        ];
+
+        // START INITIALIZATION ENGINE
         window.addEventListener("DOMContentLoaded", () => {
             populateBreedDropdown();
             syncPreviewState();
+            refreshCartDisplayView();
         });
 
-        // VIEW ROUTING ENGINE COMPONENT
-        function switchView(viewId) {
-            // Intercept Admin requests if not authenticated
-            if (viewId === 'admin' && !isSystemAdminAuthenticated) {
-                viewId = 'admin-lock';
+        // VIEW NAVIGATION SWAPPER ROUTER
+        function switchView(targetViewId) {
+            document.querySelectorAll('.app-view').forEach(element => element.classList.remove('view-active'));
+            document.querySelectorAll('.nav-btn').forEach(element => element.classList.remove('active'));
+
+            const targetSelector = document.getElementById(`view-${targetViewId}`);
+            if (targetSelector) {
+                targetSelector.classList.add('view-active');
             }
 
-            // Remove active status from all view targets
-            document.querySelectorAll('.app-view').forEach(view => {
-                view.classList.remove('view-active');
-            });
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-
-            // Activate specific selected screen node
-            const targetView = document.getElementById(`view-${viewId}`);
-            if (targetView) targetView.classList.add('view-active');
-
-            // Set navbar active tab indicator
-            let navButtonMap = { 'home': 'btn-home', 'customizer': 'btn-studio', 'cart': 'btn-cart', 'tracking': 'btn-tracking', 'admin': 'btn-admin', 'admin-lock': 'btn-admin' };
-            const activeBtnId = navButtonMap[viewId];
-            if (activeBtnId) document.getElementById(activeBtnId).classList.add('active');
+            // Highlighting buttons safely
+            let buttonRef = targetViewId;
+            if (targetViewId === 'admin-dashboard') buttonRef = 'admin';
+            const navBtnSelector = document.getElementById(`btn-${buttonRef}`);
+            if (navBtnSelector) navBtnSelector.classList.add('active');
             
             window.scrollTo(0, 0);
         }
 
-        // DYNAMIC DROPDOWN GENERATOR FOR PET FAMILY SELECTION
-        function populateBreedDropdown() {
-            const currentPetType = document.getElementById("form-pettype").value;
-            const breedSelectElement = document.getElementById("form-breed");
-            breedSelectElement.innerHTML = "";
+        // ENTRY HOOK FROM THE MAIN LANDING CARD CLICKS
+        function selectShapeAndGo(shapeKey) {
+            selectShapeFactor(shapeKey);
+            switchView('customizer');
+        }
 
-            breedRegistryData[currentPetType].forEach(breed => {
-                let optionNode = document.createElement("option");
-                optionNode.value = breed.id;
-                optionNode.textContent = breed.name;
-                breedSelectElement.appendChild(optionNode);
+        // STUDIO DROP DOWN GENERATOR
+        function populateBreedDropdown() {
+            const petTypeSelection = document.getElementById("form-pettype").value;
+            const breedDropdownSelector = document.getElementById("form-breed");
+            
+            breedDropdownSelector.innerHTML = "";
+            
+            breedRegistryData[petTypeSelection].forEach(item => {
+                const opt = document.createElement("option");
+                opt.value = item.id;
+                opt.textContent = item.name;
+                breedDropdownSelector.appendChild(opt);
             });
         }
 
-        // INTERACTIVE studio MATRICES: HANDLING SELECTED ACTIVE SHAPE CARDS
+        // STUDIO FORM MANIPULATION ASSIGNMENTS
         function selectShapeFactor(shapeKey) {
-            activeSelectedShape = shapeKey;
-            document.querySelectorAll("[id^='shape-card-']").forEach(card => card.classList.remove("selected"));
-            document.getElementById(`shape-card-${shapeKey}`).classList.add("selected");
-            syncPreviewState();
-        }
-
-        // FILAMENT COLOR SOLUTION MATRIX HANDLER
-        function selectFilamentColor(colorHex, swatchElement) {
-            currentSelectedColor = colorHex;
-            document.querySelectorAll(".swatch").forEach(sw => sw.classList.remove("selected"));
-            swatchElement.classList.add("selected");
-            syncPreviewState();
-        }
-
-        // RE-ENGINEERED REALTIME VECTOR ENGINE PREVIEW SYNCHRONIZER
-        function syncPreviewState() {
-            const petNameInputValue = document.getElementById("form-petname").value || "PET NAME";
-            const fontSelectionValue = document.getElementById("form-font").value;
+            currentSelectedShape = shapeKey;
+            document.querySelectorAll('[id^="shape-card-"]').forEach(card => card.classList.remove('selected'));
             
-            // 1. Synchronize text data variables
-            const svgTextNode = document.getElementById("svg-tag-text");
-            if (svgTextNode) {
-                svgTextNode.textContent = petNameInputValue.toUpperCase();
-                svgTextNode.setAttribute("class", `preview-font-${fontSelectionValue}`);
-            }
+            const selectedShapeCard = document.getElementById(`shape-card-${shapeKey}`);
+            if (selectedShapeCard) selectedShapeCard.classList.add('selected');
+            
+            syncPreviewState();
+        }
 
-            // 2. Map structural mathematical paths contextually
+        function selectFilamentColor(hexColorValue, domElement) {
+            currentSelectedColor = hexColorValue;
+            document.querySelectorAll('.swatch').forEach(sw => sw.classList.remove('selected'));
+            domElement.classList.add('selected');
+            
+            syncPreviewState();
+        }
+
+        // DYNAMIC PREVIEW SYNCHRONIZATION ALGORITHM
+        function syncPreviewState() {
+            let petNameInput = document.getElementById("form-petname").value.trim().toUpperCase();
+            if (!petNameInput) petNameInput = "PET NAME";
+
+            const fontSelection = document.getElementById("form-font").value;
+            const petTypeSelection = document.getElementById("form-pettype").value;
+            const currentBreedId = document.getElementById("form-breed").value;
+
+            // Update SVG Base Path and fill profile elements
             const svgPathNode = document.getElementById("svg-tag-base");
-            if (svgPathNode && vectorShapePaths[activeSelectedShape]) {
-                svgPathNode.setAttribute("d", vectorShapePaths[activeSelectedShape]);
+            if (svgPathNode) {
+                svgPathNode.setAttribute("d", shapePaths[currentSelectedShape] || shapePaths.bone);
                 svgPathNode.setAttribute("fill", currentSelectedColor);
             }
 
-            // 3. Dynamic Breed Identification Frame Updates
-            const currentPetType = document.getElementById("form-pettype").value;
-            const currentBreedId = document.getElementById("form-breed").value;
-            const breedPreviewFrame = document.getElementById("breed-preview-frame");
-
-            if (breedPreviewFrame && currentBreedId) {
-                const searchBreedObj = breedRegistryData[currentPetType].find(b => b.id === currentBreedId);
-                if (searchBreedObj) {
-                    const folderPath = currentPetType === 'dog' ? 'breeds/' : 'tag-shapes/';
-                    breedPreviewFrame.src = `assets/${folderPath}${searchBreedObj.file}`;
+            // Update SVG Live Typography Elements
+            const svgTextNode = document.getElementById("svg-tag-text");
+            if (svgTextNode) {
+                svgTextNode.textContent = petNameInput;
+                svgTextNode.className.baseVal = `preview-font-${fontSelection}`;
+                
+                // Color Contrast Tuning Vector Formula
+                if (currentSelectedColor === "#ffffff") {
+                    svgTextNode.setAttribute("fill", "#111827");
+                } else {
+                    svgTextNode.setAttribute("fill", "#ffffff");
                 }
             }
-        }
 
-        // ACCESS BARRIER VERIFICATION MODULE FOR SECURE PANEL
-        function validateAdminGatephrase() {
-            const enteredTokenInput = document.getElementById("admin-password-input").value;
-            if (enteredTokenInput === "admin123" || enteredTokenInput === "owner789") {
-                isSystemAdminAuthenticated = true;
-                document.getElementById("lock-error-msg").style.display = "none";
-                document.getElementById("admin-password-input").value = "";
-                switchView('admin');
-            } else {
-                document.getElementById("lock-error-msg").style.display = "block";
+            // Update Selected Breed Image View Matrix Frame Profile safely
+            const arrayFinder = breedRegistryData[petTypeSelection];
+            const targetBreedObject = arrayFinder.find(b => b.id === currentBreedId) || arrayFinder[0];
+            const imageDisplayElement = document.getElementById("breed-preview-frame");
+            
+            if (imageDisplayElement && targetBreedObject) {
+                imageDisplayElement.src = `assets/pet-breeds/${petTypeSelection}/${targetBreedObject.file}`;
+                imageDisplayElement.onerror = () => {
+                    // Failover fallback mechanism if local asset files are physically missing
+                    imageDisplayElement.src = `https://placehold.co/240x140/000000/FFFFFF?text=${encodeURIComponent(targetBreedObject.name)}`;
+                };
             }
         }
 
-        // REQUISITE PLACEHOLDER UTILITIES
-        function togglePaymentGatewayView() {
-            const paymentMethod = document.getElementById("form-payment-method").value;
-            document.getElementById("payment-qr-area").style.display = paymentMethod === 'qr' ? 'block' : 'none';
+        // SHOPPING CART CONTROLLER FUNCTIONS
+        function addCurrentConfigToCart(event) {
+            event.preventDefault();
+
+            const petNameInput = document.getElementById("form-petname").value.trim().toUpperCase();
+            const petTypeSelection = document.getElementById("form-pettype").value;
+            const currentBreedId = document.getElementById("form-breed").value;
+            const sizeSelection = document.getElementById("form-size").value;
+            const fontSelection = document.getElementById("form-font").value;
+
+            const breedArray = breedRegistryData[petTypeSelection];
+            const breedObject = breedArray.find(b => b.id === currentBreedId) || breedArray[0];
+
+            const calculationPriceValue = sizePrices[sizeSelection] || 600;
+
+            const structuredItemBlueprint = {
+                shape: currentSelectedShape,
+                petName: petNameInput,
+                petType: petTypeSelection,
+                breedName: breedObject.name,
+                size: sizeSelection,
+                font: fontSelection,
+                color: currentSelectedColor,
+                cost: calculationPriceValue
+            };
+
+            shoppingCartList.push(structuredItemBlueprint);
+            
+            // Clean up studio state metrics
+            document.getElementById("form-petname").value = "";
+            
+            refreshCartDisplayView();
+            alert(`Successfully added custom build execution profile for "${petNameInput}" inside local shopping cart matrix.`);
+            switchView('cart');
         }
-        function addCurrentConfigToCart(e) { e.preventDefault(); alert("Configuration successfully added to system build queue!"); }
-        function processOrderSubmission(e) { e.preventDefault(); alert("Order request successfully transmitted to local Sri Lankan production hubs!"); }
+
+        function removeCartItemIndex(indexValue) {
+            shoppingCartList.splice(indexValue, 1);
+            refreshCartDisplayView();
+        }
+
+        function refreshCartDisplayView() {
+            // Count badges configuration
+            document.getElementById("global-cart-count").textContent = shoppingCartList.length;
+
+            const container = document.getElementById("cart-items-container");
+            const totalDisplay = document.getElementById("cart-total-amount");
+            
+            if (!container) return;
+            
+            if (shoppingCartList.length === 0) {
+                container.innerHTML = `<p style="color:#6b7280; font-weight:500; text-align:center; padding:20px 0;">Your configuration inventory build layout is empty.</p>`;
+                totalDisplay.textContent = "0.00";
+                return;
+            }
+
+            let computedSum = 0;
+            container.innerHTML = "";
+
+            shoppingCartList.forEach((item, index) => {
+                computedSum += item.cost;
+                
+                const itemRow = document.createElement("div");
+                itemRow.className = "cart-item-row";
+                itemRow.innerHTML = `
+                    <div>
+                        <strong style="color:var(--dark); font-size:1rem;">${item.petName} (${item.breedName})</strong>
+                        <p style="margin:4px 0 0 0; font-size:0.8rem; color:#6b7280; font-weight:500;">
+                            Shape: ${item.shape} | Sizing: ${item.size} | Color Option: <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:${item.color}; vertical-align:middle;"></span> ${item.color}
+                        </p>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:15px;">
+                        <span style="font-weight:700; color:var(--dark);">LKR ${item.cost}.00</span>
+                        <button type="button" onclick="removeCartItemIndex(${index})" style="background:none; border:none; color:#ef4444; font-weight:bold; cursor:pointer; font-size:1.1rem;" title="Remove configuration item">×</button>
+                    </div>
+                `;
+                container.appendChild(itemRow);
+            });
+
+            totalDisplay.textContent = `${computedSum}.00`;
+        }
+
+        function togglePaymentGatewayView() {
+            const currentRouteSelection = document.getElementById("form-payment-method").value;
+            const qrBoxAreaWrapper = document.getElementById("payment-qr-area");
+            
+            if (currentRouteSelection === "qr") {
+                qrBoxAreaWrapper.style.display = "block";
+            } else {
+                qrBoxAreaWrapper.style.display = "none";
+            }
+        }
+
+        // CHECKOUT DISPATCH TO MASTER MOCK REPOSITORY DATABASE
+        function processOrderSubmission(event) {
+            event.preventDefault();
+
+            if (shoppingCartList.length === 0) {
+                alert("Your checkout manifest registration rejected because shopping cart array contains no items.");
+                return;
+            }
+
+            const clientNameValue = document.getElementById("form-custname").value.trim();
+            const contactPhone1 = document.getElementById("form-phone1").value.trim();
+            const contactPhone2 = document.getElementById("form-phone2").value.trim();
+            const streetAddressValue = document.getElementById("form-address").value.trim();
+            const selectedDistrict = document.getElementById("form-district").value;
+            const selectedPaymentRoute = document.getElementById("form-payment-method").value;
+
+            let finalSumTotal = 0;
+            shoppingCartList.forEach(i => finalSumTotal += i.cost);
+
+            // Generate tracking identification sequence key
+            const uniqueRandomId = `PT-${Math.floor(1000 + Math.random() * 9000)}`;
+
+            const customMasterManifestOrderBlueprint = {
+                id: uniqueRandomId,
+                customerName: clientNameValue,
+                phone: contactPhone1 + (contactPhone2 ? ` / ${contactPhone2}` : ""),
+                address: streetAddressValue,
+                district: selectedDistrict,
+                paymentMethod: selectedPaymentRoute,
+                items: [...shoppingCartList],
+                total: finalSumTotal,
+                status: 1 // Baseline staging default state code
+            };
+
+            globalOrdersDatabase.push(customMasterManifestOrderBlueprint);
+            
+            // Wipe internal temporary stores state maps clear
+            shoppingCartList = [];
+            refreshCartDisplayView();
+            document.getElementById("checkoutForm").reset();
+            togglePaymentGatewayView();
+
+            alert(`Success! Your 3D blueprint file registry generated tracking code: ${uniqueRandomId}`);
+            
+            // Auto redirect directly into the status workflow tracking screen view
+            document.getElementById("tracking-search-id").value = uniqueRandomId;
+            searchOrderTracking();
+            switchView('tracking');
+        }
+
+        // PIPELINE TRACKER PROCESSING LOGIC ENGINE
+        function searchOrderTracking() {
+            const searchQueryKey = document.getElementById("tracking-search-id").value.trim().toUpperCase();
+            const outputBox = document.getElementById("tracking-result-box");
+            
+            if (!searchQueryKey) {
+                alert("Please declare a tracking transaction confirmation reference identification code.");
+                return;
+            }
+
+            const foundRecordMatch = globalOrdersDatabase.find(o => o.id === searchQueryKey);
+            
+            if (!foundRecordMatch) {
+                alert(`Reference node ID string allocation "${searchQueryKey}" match lookup could not be tracked within the Lankapay local system nodes.`);
+                outputBox.style.display = "none";
+                return;
+            }
+
+            // Populate text elements metadata values
+            document.getElementById("track-manifest-id").textContent = `Order Reference Ref: ${foundRecordMatch.id}`;
+            document.getElementById("track-manifest-name").textContent = `Consignee Delivery Target Profile: ${foundRecordMatch.customerName} (${foundRecordMatch.district} Sector Zone Hub)`;
+
+            // Loop reset timeline nodes style presentation profiles safely
+            const maxCompletedStageLevel = foundRecordMatch.status; // Range integer 1 - 4
+            
+            for (let i = 1; i <= 4; i++) {
+                const nodeElementDomRef = document.getElementById(`node-stage-${i}`);
+                if (nodeElementDomRef) {
+                    nodeElementDomRef.className = "timeline-item"; // Wipe clean states
+                    
+                    if (i < maxCompletedStageLevel) {
+                        nodeElementDomRef.classList.add("completed");
+                    } else if (i === maxCompletedStageLevel) {
+                        nodeElementDomRef.classList.add("active");
+                    }
+                }
+            }
+
+            outputBox.style.display = "block";
+        }
+
+        // OWNER CLEARANCE ROUTINE VALIDATION GATEWAYS
+        function validateAdminClearance() {
+            const providedPasswordValue = document.getElementById("admin-pass-key").value;
+            
+            // Plain text gateway validation pass structural key value sequence matching
+            if (providedPasswordValue === "admin123" || providedPasswordValue === "owner7") {
+                document.getElementById("admin-pass-key").value = ""; // Flush value
+                refreshAdminDashboardTableData();
+                switchView('admin-dashboard');
+            } else {
+                alert("Security handshake initialization error access code verification match failed.");
+            }
+        }
+
+        function refreshAdminDashboardTableData() {
+            const tableRowsContainerNode = document.getElementById("admin-orders-table-rows");
+            if (!tableRowsContainerNode) return;
+
+            tableRowsContainerNode.innerHTML = "";
+
+            globalOrdersDatabase.forEach(order => {
+                let itemsDescriptionString = "";
+                order.items.forEach(i => {
+                    itemsDescriptionString += `<div>• <strong>[${i.petName}]</strong> ${i.size} ${i.petType} (${i.breedName}) [Filament Color Code: ${i.color}]</div>`;
+                });
+
+                let stateBadgeTemplateMarkup = "";
+                if (order.status === 1) stateBadgeTemplateMarkup = `<span class="status-badge badge-pending">1. Verified Queue</span>`;
+                if (order.status === 2) stateBadgeTemplateMarkup = `<span class="status-badge badge-active">2. Slicing Model Engine</span>`;
+                if (order.status === 3) stateBadgeTemplateMarkup = `<span class="status-badge badge-active">3. Filament Extruding</span>`;
+                if (order.status === 4) stateBadgeTemplateMarkup = `<span class="status-badge badge-complete">4. Courier Handover Complete</span>`;
+
+                const rowElement = document.createElement("tr");
+                rowElement.innerHTML = `
+                    <td style="font-family:monospace; font-weight:bold; color:var(--dark); font-size:1rem;">${order.id}</td>
+                    <td>
+                        <div style="font-weight:700;">${order.customerName}</div>
+                        <div style="font-size:0.75rem; color:#6b7280;">Tel: ${order.phone}</div>
+                        <div style="font-size:0.75rem; color:#6b7280; max-width:180px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${order.address}">${order.address}</div>
+                    </td>
+                    <td style="font-size:0.8rem; color:#4b5563;">${itemsDescriptionString}</td>
+                    <td style="font-weight:800; color:#111827;">LKR ${order.total}.00<br><span style="font-size:0.7rem; color:#9ca3af; text-transform:uppercase;">Method: ${order.paymentMethod}</span></td>
+                    <td>${stateBadgeTemplateMarkup}</td>
+                    <td style="text-align: right;">
+                        <select onchange="updateOrderStagingCode('${order.id}', this.value)" style="padding:6px; font-size:0.8rem; font-weight:600; border-radius:6px; border:1px solid #d1d5db; background:white;">
+                            <option value="1" ${order.status === 1 ? 'selected' : ''}>Stage 1: Verified</option>
+                            <option value="2" ${order.status === 2 ? 'selected' : ''}>Stage 2: Slice Engine</option>
+                            <option value="3" ${order.status === 3 ? 'selected' : ''}>Stage 3: Extrusion</option>
+                            <option value="4" ${order.status === 4 ? 'selected' : ''}>Stage 4: Dispatched</option>
+                        </select>
+                    </td>
+                `;
+                tableRowsContainerNode.appendChild(rowElement);
+            });
+        }
+
+        function updateOrderStagingCode(targetOrderIdKey, selectedNewStatusCodeString) {
+            const numericCodeValue = parseInt(selectedNewStatusCodeString, 10);
+            const foundTargetIndexRow = globalOrdersDatabase.find(o => o.id === targetOrderIdKey);
+            
+            if (foundTargetIndexRow) {
+                foundTargetIndexRow.status = numericCodeValue;
+                refreshAdminDashboardTableData(); // Trigger pipeline visual state updates
+            }
+        }
     </script>
 </body>
 </html>
