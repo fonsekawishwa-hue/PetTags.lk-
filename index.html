@@ -1195,45 +1195,6 @@
                 refreshAdminDashboardTableData();
             }
         }
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
-
-    const firebaseConfig = {
-        apiKey: "AIzaSyARC3NyBLEqW8AMFsxoFlliKQ3w8tSrwFk",
-        authDomain: "pettagslk.firebaseapp.com",
-        projectId: "pettagslk",
-        databaseURL: "https://pettagslk-default-rtdb.firebaseio.com/",
-        storageBucket: "pettagslk.firebasestorage.app",
-        messagingSenderId: "599089566681",
-        appId: "1:599089566681:web:a279a0c61a8763d4e1bfc8"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-
-    // 1. Firebase Listener
-    onValue(ref(db, 'orders'), (snapshot) => {
-        const data = snapshot.val();
-        window.globalOrdersDatabase = data ? Object.values(data) : [];
-        if (typeof window.refreshAdminDashboardTableData === 'function') {
-            window.refreshAdminDashboardTableData();
-        }
-    });
-
-    // 2. Bridge Functions (These make your buttons work again)
-    window.switchView = function(viewName) {
-        // ... your switchView logic ...
-    };
-
-    window.updateOrderStagingCode = function(id, status) {
-        const numericCodeValue = parseInt(status, 10);
-        update(ref(db, 'orders/' + id), { status: numericCodeValue });
-    };
-
-    window.refreshAdminDashboardTableData = function() {
-        // ... your table refresh logic ...
-    };
-</script>
+    </script>
 </body>
 </html>
