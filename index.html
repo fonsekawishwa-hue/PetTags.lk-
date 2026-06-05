@@ -1195,7 +1195,7 @@
                 refreshAdminDashboardTableData();
             }
         }
-   <script type="module">
+  <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
@@ -1203,7 +1203,7 @@
         apiKey: "AIzaSyARC3NyBLEqW8AMFsxoFlliKQ3w8tSrwFk",
         authDomain: "pettagslk.firebaseapp.com",
         projectId: "pettagslk",
-        databaseURL: "https://pettagslk-default-rtdb.firebaseio.com/", // Your database URL goes here
+        databaseURL: "https://pettagslk-default-rtdb.firebaseio.com/",
         storageBucket: "pettagslk.firebasestorage.app",
         messagingSenderId: "599089566681",
         appId: "1:599089566681:web:a279a0c61a8763d4e1bfc8"
@@ -1211,27 +1211,29 @@
 
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
-    // ... your listener and other logic here
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-    // ... your firebaseConfig and initialization ...
+    // 1. Firebase Listener
+    onValue(ref(db, 'orders'), (snapshot) => {
+        const data = snapshot.val();
+        window.globalOrdersDatabase = data ? Object.values(data) : [];
+        if (typeof window.refreshAdminDashboardTableData === 'function') {
+            window.refreshAdminDashboardTableData();
+        }
+    });
 
-    // FIX: Bridge functions to the global window object
+    // 2. Bridge Functions (These make your buttons work again)
     window.switchView = function(viewName) {
-        // ... your original switchView logic ...
+        // ... your switchView logic ...
     };
 
     window.updateOrderStagingCode = function(id, status) {
-        // ... your update logic ...
+        const numericCodeValue = parseInt(status, 10);
+        update(ref(db, 'orders/' + id), { status: numericCodeValue });
     };
 
     window.refreshAdminDashboardTableData = function() {
         // ... your table refresh logic ...
     };
-    
-    // ... your Firebase listener logic ...
 </script>
 </body>
 </html>
