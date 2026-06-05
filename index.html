@@ -1195,6 +1195,38 @@
                 refreshAdminDashboardTableData();
             }
         }
+   <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyARC3NyBLEqW8AMFsxoFlliKQ3w8tSrwFk",
+            authDomain: "pettagslk.firebaseapp.com",
+            projectId: "pettagslk",
+            databaseURL: "https://pettagslk-default-rtdb.firebaseio.com/", // Your database URL goes here
+            storageBucket: "pettagslk.firebasestorage.app",
+            messagingSenderId: "599089566681",
+            appId: "1:599089566681:web:a279a0c61a8763d4e1bfc8",
+            measurementId: "G-TBKDDZENP0"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Sync Cloud data to your table
+        onValue(ref(db, 'orders'), (snapshot) => {
+            const data = snapshot.val();
+            window.globalOrdersDatabase = data ? Object.values(data) : [];
+            if (typeof window.refreshAdminDashboardTableData === 'function') {
+                window.refreshAdminDashboardTableData();
+            }
+        });
+
+        // Bridge function so your HTML can still call this
+        window.updateOrderStagingCode = function(targetOrderIdKey, selectedNewStatusCodeString) {
+            const numericCodeValue = parseInt(selectedNewStatusCodeString, 10);
+            update(ref(db, 'orders/' + targetOrderIdKey), { status: numericCodeValue });
+        };
     </script>
 </body>
 </html>
