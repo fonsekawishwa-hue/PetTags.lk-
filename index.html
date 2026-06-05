@@ -1212,6 +1212,26 @@
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
     // ... your listener and other logic here
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+    // ... your firebaseConfig and initialization ...
+
+    // FIX: Bridge functions to the global window object
+    window.switchView = function(viewName) {
+        // ... your original switchView logic ...
+    };
+
+    window.updateOrderStagingCode = function(id, status) {
+        // ... your update logic ...
+    };
+
+    window.refreshAdminDashboardTableData = function() {
+        // ... your table refresh logic ...
+    };
+    
+    // ... your Firebase listener logic ...
 </script>
 </body>
 </html>
